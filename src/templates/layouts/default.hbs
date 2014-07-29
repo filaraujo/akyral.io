@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: src/templates/layouts/blank.hbs
+---
 
-<head>
-    <title>{{title}} | {{site.title}}</title>
-    {{> meta }}
-    <script src="{{assets}}/components/platform/platform.js"></script>
-    <link rel="import" href="{{assets}}/components/ui-layout/ui-layout.html">
-</head>
+<ui-layout>
+    <div drawer>
+        {{> drawer }}
+    </div>
+    <div main class="{{pageType}}">
+        <header>
+            <h1>
+                Akyral
+                <span>alpha</span>
+            </h1>
+            <h2>Responsive, highly customizable web component library built on Polymer.</h2>
+        </header>
 
-<body>
-    <ui-layout>
-        <div drawer>x</div>
-        <div main>{{> body }}</div>
-    </ui-layout>
-</body>
-
-</html>
+        {{> body }}
+    </div>
+</ui-layout>

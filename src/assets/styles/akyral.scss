@@ -1,0 +1,144 @@
+@import 'normalize';
+@import 'fonts';
+
+$brown: #372d3b;
+$lighterBrown: #4f3043;
+$pink: #c5415d;
+$beige: #eddeab;
+$offwhite: #ffffde;
+$green: #c6ce9e;
+
+
+body {
+    background: $brown;
+    color: $pink;
+    font-family: 'Roboto Slab';
+    font-weight: 300;
+}
+
+
+h1 {
+
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+div[main]{
+    background: $brown !important;
+
+    > header {
+        color: $offwhite;
+        padding: 50px 20px 50px;
+        position: relative;
+        text-align: center;
+
+        h1 {
+            font-size: 80px;
+            font-weight: 700;
+            margin: 0;
+
+            span {
+                color: $pink;
+                font-style: italic;
+                font-size: .4em;
+                font-weight: 300;
+            }
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 300;
+            margin: 0;
+        }
+    }
+
+
+
+    h3 {
+        color: $brown;
+        font-size: 24px;
+        font-weight: 300;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    section {
+        background: $pink;
+        color: $lighterBrown;
+        position: relative;
+        padding: 20px;
+        // margin-bottom: 10px;
+
+        &:nth-of-type(2) {
+            background: $beige;
+            margin: 20px 0;
+        }
+
+        &:nth-of-type(3){
+            background: $green;
+        }
+    }
+
+    &.documention {
+
+        header {
+            padding: 6px;
+
+            h1 {
+                font-size: 32px;
+                text-align: left;
+            }
+
+            h2 {
+                display: none;
+            }
+        }
+    }
+}
+
+div[drawer] {
+    padding: 20px;
+
+    h2 {
+        font-size: 18px;
+        font-weight: 300;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+    }
+
+
+    a {
+        color: $lighterBrown;
+        display: block;
+        font-weight: 400;
+        padding: 14px;
+
+        span {
+            float: right;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+    li {
+        margin-bottom: 3px;
+    }
+
+    li:first-child{
+        background: $pink;
+    }
+
+    li:nth-child(2){
+        background: $green;
+    }
+}
