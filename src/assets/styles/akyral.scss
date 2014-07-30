@@ -42,7 +42,7 @@ div[main]{
         color: $brown;
         font-size: 20px;
         font-weight: 400;
-        margin: 0;
+        margin: 0 0 10px;
         text-transform: uppercase;
     }
 
@@ -53,18 +53,39 @@ div[main]{
         padding: 20px;
         margin-bottom: 6px;
 
-        &:nth-of-type(2) {
+        p {
+            margin-top: 0;
+        }
+
+        &.section__yellow {
             background: $beige;
         }
 
-        &:nth-of-type(3){
+        &.section__green {
             background: $green;
+        }
+
+        &.section__inverted {
+            background: transparent;
+            color: $pink;
+
+            h3 {
+                color: $pink;
+            }
+        }
+
+        code {
+            background: $gray;
+            color: $offwhite;
+            display: block;
+            padding: 10px;
         }
     }
 }
 
-
+// layout
 div[main][demo="layout"]{
+
     a[data-position],
     a[data-type] {
         box-sizing: border-box;
@@ -127,11 +148,21 @@ div[main][demo="layout"]{
     a[data-position]:after {
         content: attr(data-position);
     }
+
+    .resize {
+        display: none;
+    }
+
+    @media (min-width: 944px){
+        .resize {
+            display: block;
+        }
+    }
 }
 
 div[drawer] {
     background: $brown !important;
-    padding: 20px;
+    padding: 75px 20px 20px;
 
     h2 {
         font-size: 18px;

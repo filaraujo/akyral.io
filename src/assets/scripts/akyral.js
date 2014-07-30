@@ -4,5 +4,4 @@
     menu.addEventListener('click', function(){
         document.querySelector('ui-layout').toggleDrawer();
     });
-
 }());

@@ -7,35 +7,26 @@ components:
 ---
 
 
-<section>
+<section class="section__yellow">
     <h3>Drawer Position</h3>
     <a href="#" data-position="left">left</a>
     <a href="#" data-position="right">right</a>
 </section>
 
-<section>
+<section class="section__green">
     <h3>Drawer Type</h3>
+    <p class="resize">Resize brower down to play with these options.</p>
     <a href="#" data-type="pan">pan</a>
     <a href="#" data-type="parallax">parallax</a>
     <a href="#" data-type="reveal">reveal</a>
     <a href="#" data-type="slide">slide</a>
 </section>
 
-<section>
-    <h2>[Main] <span>element</span></h2>
-    <p>
-        Aliquip ipsum laborum nulla occaecat ad fugiat voluptate fugiat culpa laboris fugiat voluptate nulla aliquip. Nulla exercitation proident deserunt dolore adipisicing veniam. Cillum quis consequat incididunt officia elit. Nulla officia magna occaecat esse cupidatat reprehenderit dolore. Nisi duis nostrud commodo occaecat duis ullamco duis Lorem dolore in exercitation laborum.
-    Labore fugiat ullamco nostrud aliquip do labore quis velit veniam. Incididunt mollit ea velit ea sit adipisicing in ea magna duis veniam. Occaecat quis veniam dolor aliqua et do elit. Reprehenderit Lorem pariatur aliqua proident ut minim pariatur veniam do excepteur. Incididunt ipsum excepteur qui laboris sit.
-    Velit deserunt mollit aliqua voluptate esse mollit do proident elit.
-    </p>
-    <p>
-        Quis non cupidatat occaecat ullamco nisi ullamco. Nostrud non elit nisi amet velit consectetur officia. Voluptate mollit veniam incididunt incididunt Lorem mollit. Dolor ea magna id laboris ex incididunt qui ut. Cupidatat dolore cupidatat nostrud nostrud cillum adipisicing esse labore non veniam nisi in. In enim aute pariatur excepteur irure duis reprehenderit excepteur et pariatur ex sunt anim. Mollit in irure nisi dolor ea.
-    Reprehenderit nulla irure nulla quis laboris aute. Est aliquip aliqua est irure fugiat consequat ad ex esse. Aliquip non sit laborum voluptate cillum proident. Est culpa nulla laboris veniam irure eu. Esse Lorem aliquip consequat nulla proident veniam ipsum nulla. Dolor in occaecat excepteur esse nulla ullamco ipsum fugiat cupidatat fugiat eu. Elit adipisicing ad pariatur exercitation eiusmod nisi elit eu.
-    Sit amet reprehenderit qui ea eu laboris laboris adipisicing. Quis dolore voluptate ullamco sit incididunt laborum.
-    </p>
-    <p>
-        Ea ex nisi incididunt mollit mollit ex. Sunt anim consequat fugiat sit nulla esse esse laboris sint cillum esse duis in tempor.
-    </p>
+<section class="section__inverted">
+    <h3>Install</h3>
+    <code>
+        $ bower install --save ui-layout
+    </code>
 </section>
 
 <script charset="utf-8">
@@ -48,13 +39,9 @@ components:
 
         function bindEvents(){
             var anchors = document.querySelectorAll('[main] a');
+
             [].forEach.call(anchors, function(anchor){
                 anchor.addEventListener('click', createNewUi);
-            });
-
-            document.querySelector('button[name="menu"]').addEventListener('click', function(){
-                document.querySelector('ui-layout').toggleDrawer();
-                // ga('send', 'event', 'ui-layout', 'open drawer', 'open', 1);
             });
 
             document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
@@ -74,6 +61,10 @@ components:
             main.setAttribute('demo', 'layout');
             main.innerHTML = mainInner;
 
+            main.querySelector('button[name="menu"]').addEventListener('click', function(){
+                document.querySelector('ui-layout').toggleDrawer();
+            });
+
             newUi.appendChild(drawer);
             newUi.appendChild(main);
 
@@ -87,9 +78,6 @@ components:
 
             drawer.setAttribute(currentPosition,'');
             drawer.setAttribute(currentType,'');
-
-
-
 
             // ga('send', 'event', 'ui-layout', 'set type and position', currentPosition+' '+currentType);
 

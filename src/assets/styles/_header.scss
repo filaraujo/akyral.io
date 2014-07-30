@@ -17,8 +17,11 @@
         padding: 12px;
         position: absolute;
         text-transform: uppercase;
-    }
 
+        @media (min-width: 944px){
+            display: none !important;
+        }
+    }
 
     h1 {
         font-size: 80px;
@@ -43,20 +46,34 @@
 
 .page__header--compressed {
     padding: 0;
-    margin: 8px 0 8px;
-    height: 44px;
+    margin: 13px 0 30px;
+    height: 45px;
 
     button {
         display: inline;
         float: left;
-        height: 44px;
-        margin: 0 16px 0 0;
+        height: 45px;
+        margin: 0;
         position: static;
     }
 
     h1 {
+        background: $pink;
+        color: $brown;
         font-size: 32px;
+        height: 45px;
+        padding-left: 10px;
+        margin-left: 70px;
         text-align: left;
+
+        @media (min-width: 944px){
+            margin-left: 0;
+        }
+
+        span {
+            color: $brown;
+            font-weight: 400;
+        }
     }
 
     h2 {
