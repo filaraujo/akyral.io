@@ -1,12 +1,14 @@
-@import 'normalize';
-@import 'fonts';
-
 $brown: #372d3b;
 $lighterBrown: #4f3043;
+$gray: #514A53;
 $pink: #c5415d;
 $beige: #eddeab;
 $offwhite: #ffffde;
 $green: #c6ce9e;
+
+@import 'normalize';
+@import 'icons';
+@import 'header';
 
 
 body {
@@ -14,11 +16,6 @@ body {
     color: $pink;
     font-family: 'Roboto Slab';
     font-weight: 300;
-}
-
-
-h1 {
-
 }
 
 ul {
@@ -31,44 +28,20 @@ a {
     text-decoration: none;
 }
 
-
+.icon {
+    font-family: 'icon';
+}
 
 
 div[main]{
     background: $brown !important;
-
-    > header {
-        color: $offwhite;
-        padding: 50px 20px 50px;
-        position: relative;
-        text-align: center;
-
-        h1 {
-            font-size: 80px;
-            font-weight: 700;
-            margin: 0;
-
-            span {
-                color: $pink;
-                font-style: italic;
-                font-size: .4em;
-                font-weight: 300;
-            }
-        }
-
-        h2 {
-            font-size: 18px;
-            font-weight: 300;
-            margin: 0;
-        }
-    }
-
+    padding: 20px;
 
 
     h3 {
         color: $brown;
-        font-size: 24px;
-        font-weight: 300;
+        font-size: 20px;
+        font-weight: 400;
         margin: 0;
         text-transform: uppercase;
     }
@@ -78,36 +51,86 @@ div[main]{
         color: $lighterBrown;
         position: relative;
         padding: 20px;
-        // margin-bottom: 10px;
+        margin-bottom: 6px;
 
         &:nth-of-type(2) {
             background: $beige;
-            margin: 20px 0;
         }
 
         &:nth-of-type(3){
             background: $green;
         }
     }
+}
 
-    &.documention {
 
-        header {
-            padding: 6px;
+div[main][demo="layout"]{
+    a[data-position],
+    a[data-type] {
+        box-sizing: border-box;
+        display: inline-block;
+        border: 1px solid #000;
+        text-decoration: none;
+        background-image: url(/assets/images/demo/layout.gif);
+        height: 150px;
+        width: 125px;
+        position: relative;
+        font-size: 0;
+        opacity: .4;
+        will-change: opacity;
+        transform: translate3d(0,0,0) scale(.9);
+        transition: opacity .2s, transform .2s;
+    }
+    a[data-position].active,
+    a[data-type].active {
+        outline: 1px solid #000;
+        opacity: 1;
+        transform: scale(1);
+    }
+    a[data-position]:hover,
+    a[data-type]:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
 
-            h1 {
-                font-size: 32px;
-                text-align: left;
-            }
+    a[data-position]:after,
+    a[data-type]:after {
+        color: #fff;
+        font-size: 14px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #333;
+        padding: 2px 6px;
+    }
 
-            h2 {
-                display: none;
-            }
-        }
+    a[data-position="right"]{
+        background-position: 0 -125px;
+    }
+    a[data-type="parallax"]{
+        background-position: 0 -375px;
+    }
+    a[data-type="reveal"]{
+        background-position: 0 -625px;
+    }
+    a[data-type="slide"]{
+        background-position: 0 -500px;
+    }
+    a[data-type="pan"]{
+        background-position: 0 -250px;
+    }
+
+    a[data-type]:after {
+        content: attr(data-type);
+    }
+    a[data-position]:after {
+        content: attr(data-position);
     }
 }
 
 div[drawer] {
+    background: $brown !important;
     padding: 20px;
 
     h2 {
@@ -116,7 +139,6 @@ div[drawer] {
         margin: 0 0 10px;
         text-transform: uppercase;
     }
-
 
     a {
         color: $lighterBrown;

@@ -3,18 +3,16 @@ layout: src/templates/layouts/blank.hbs
 ---
 
 <ui-layout>
-    <div drawer>
-        {{> drawer }}
-    </div>
-    <div main class="{{pageType}}">
-        <header>
+    {{> drawer }}
+    <div main demo="{{page.components}}">
+        <header class="page__header {{#is header "compressed"}}page__header--compressed{{/is}}">
+            <button name="menu" class="icon icon-menu">menu</button>
             <h1>
                 Akyral
                 <span>alpha</span>
             </h1>
             <h2>Responsive, highly customizable web component library built on Polymer.</h2>
         </header>
-
         {{> body }}
     </div>
 </ui-layout>

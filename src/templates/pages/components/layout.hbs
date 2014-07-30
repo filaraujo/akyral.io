@@ -1,10 +1,17 @@
 ---
 title: Layout
-pageType: documention
+header: compressed
 components:
 - layout
 
 ---
+
+
+<section>
+    <h3>Drawer Position</h3>
+    <a href="#" data-position="left">left</a>
+    <a href="#" data-position="right">right</a>
+</section>
 
 <section>
     <h3>Drawer Type</h3>
@@ -15,15 +22,6 @@ components:
 </section>
 
 <section>
-    <h3>Drawer Position</h3>
-    <a href="#" data-position="left">left</a>
-    <a href="#" data-position="right">right</a>
-</section>
-
-<section>
-
-    <button name="open">open</button>
-
     <h2>[Main] <span>element</span></h2>
     <p>
         Aliquip ipsum laborum nulla occaecat ad fugiat voluptate fugiat culpa laboris fugiat voluptate nulla aliquip. Nulla exercitation proident deserunt dolore adipisicing veniam. Cillum quis consequat incididunt officia elit. Nulla officia magna occaecat esse cupidatat reprehenderit dolore. Nisi duis nostrud commodo occaecat duis ullamco duis Lorem dolore in exercitation laborum.
@@ -39,3 +37,70 @@ components:
         Ea ex nisi incididunt mollit mollit ex. Sunt anim consequat fugiat sit nulla esse esse laboris sint cillum esse duis in tempor.
     </p>
 </section>
+
+<script charset="utf-8">
+    (function(){
+        var drawerInner = document.querySelector('[drawer]').innerHTML,
+            mainInner = document.querySelector('[main]').innerHTML,
+            ui = document.querySelector('ui-layout'),
+            currentType = 'pan',
+            currentPosition = 'left';
+
+        function bindEvents(){
+            var anchors = document.querySelectorAll('[main] a');
+            [].forEach.call(anchors, function(anchor){
+                anchor.addEventListener('click', createNewUi);
+            });
+
+            document.querySelector('button[name="menu"]').addEventListener('click', function(){
+                document.querySelector('ui-layout').toggleDrawer();
+                // ga('send', 'event', 'ui-layout', 'open drawer', 'open', 1);
+            });
+
+            document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
+            document.querySelector('a[data-position="'+currentPosition+'"]').classList.add('active');
+        }
+
+        function createNewUi(e){
+            var ui = document.querySelector('ui-layout'),
+                drawer = document.createElement('div'),
+                main = document.createElement('div'),
+                newUi = new UiLayout();
+
+            drawer.setAttribute('drawer', '');
+            drawer.innerHTML = drawerInner;
+
+            main.setAttribute('main', '');
+            main.setAttribute('demo', 'layout');
+            main.innerHTML = mainInner;
+
+            newUi.appendChild(drawer);
+            newUi.appendChild(main);
+
+            if(this.hasAttribute('data-type')){
+                currentType = this.getAttribute('data-type');
+            }
+
+            if(this.hasAttribute('data-position')){
+                currentPosition = this.getAttribute('data-position');
+            }
+
+            drawer.setAttribute(currentPosition,'');
+            drawer.setAttribute(currentType,'');
+
+
+
+
+            // ga('send', 'event', 'ui-layout', 'set type and position', currentPosition+' '+currentType);
+
+            document.body.removeChild(ui);
+            document.body.appendChild(newUi);
+
+            bindEvents();
+
+            return false;
+        }
+
+        bindEvents();
+    }());
+</script>

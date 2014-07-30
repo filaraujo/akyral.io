@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.src %>/',
-                    src: ['assets/**/*','!assets/styles/**/*.scss'],
+                    src: ['assets/**/*', '!assets/styles/**/*.scss'],
                     dest: '<%= config.dist %>'
                 }]
             }
@@ -81,6 +81,16 @@ module.exports = function(grunt) {
             }
         },
 
+        font: {
+            dist: {
+                src: '<%= config.src %>/assets/svg/*.svg',
+                destCss: '<%= config.src %>/assets/styles/_icons.scss',
+                destFonts: '<%= config.src %>/assets/fonts/icons.{svg,woff,eot,ttf}',
+                cssFormat: 'scss',
+                fontFamily: 'icon'
+            },
+        },
+
         'gh-pages': {
             options: {
                 base: 'dist'
@@ -88,8 +98,8 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
-        sass: {                                 // task
-            dist: {                             // target
+        sass: { // task
+            dist: { // target
                 files: [{
                     expand: true,
                     cwd: '<%= config.src %>/',
@@ -102,12 +112,12 @@ module.exports = function(grunt) {
 
         watch: {
             assemble: {
-            files: ['<%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
+                files: ['<%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
                 tasks: ['assemble']
             },
             assets: {
                 files: ['<%= config.src %>/assets/**'],
-                tasks: ['sass','copy']
+                tasks: ['sass', 'copy']
             },
             livereload: {
                 options: {
@@ -129,6 +139,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-fontsmith');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-gh-pages');
 
@@ -136,6 +147,7 @@ module.exports = function(grunt) {
         'clean',
         'assemble',
         'sass',
+        // 'font',
         'copy',
         'connect:livereload',
         'watch'
