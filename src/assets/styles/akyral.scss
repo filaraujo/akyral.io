@@ -233,7 +233,56 @@ div[drawer] {
 }
 
 
+akyral-docs {
+    background: $beige;
+    padding: 20px;
+    margin-bottom: 6px;
 
+
+    &::shadow {
+        * {
+            color: $brown;
+        }
+
+        code,
+        pre {
+            background: $offwhite;
+            padding: 6px;
+        }
+        pre {
+            padding: 10px;
+
+            code {
+                background: transparent;
+            }
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
+        }
+
+        .name {
+            float: left;
+        }
+
+        .info {
+            margin-left: 150px;
+        }
+
+        .row {
+            margin: 10px;
+            border-bottom: 1px solid $offwhite;
+            min-height: 40px;
+
+            &:last-child {
+                border: 0;
+            }
+        }
+    }
+}
 
 core-component-page {
     height: auto;
