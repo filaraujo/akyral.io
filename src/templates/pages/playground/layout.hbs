@@ -1,25 +1,37 @@
 ---
 title: Layout
 header: compressed
+componentName: ui-layout
 components:
 - layout
 
 ---
 
-
+<h2>[ Drawer ]  <span>Configuration</span></h2>
 <section class="section__yellow">
-    <h3>Drawer Position</h3>
-    <a href="#" data-position="left">left</a>
-    <a href="#" data-position="right">right</a>
+    <h3>Position</h3>
+    <p>
+        Position will define where the sidebar is positioned.
+    </p>
+    <div class="text-centered">
+        <a href="#" data-position="left">left</a>
+        <a href="#" data-position="right">right</a>
+    </div>
 </section>
 
 <section class="section__green">
-    <h3>Drawer Type</h3>
-    <p class="resize">Resize brower down to play with these options.</p>
-    <a href="#" data-type="pan">pan</a>
-    <a href="#" data-type="parallax">parallax</a>
-    <a href="#" data-type="reveal">reveal</a>
-    <a href="#" data-type="slide">slide</a>
+    <h3>Type</h3>
+    <p>
+        Type will define the visual effect given to the drawer on exiting and entering.
+        This value only applies to viewports smaller than 944 pixels
+        <span class="resize">, so go ahead and resize down your browser</span>.
+    </p>
+    <div class="text-centered">
+        <a href="#" data-type="pan">pan</a>
+        <a href="#" data-type="parallax">parallax</a>
+        <a href="#" data-type="reveal">reveal</a>
+        <a href="#" data-type="slide">slide</a>
+    </div>
 </section>
 
 <section class="section__inverted">
@@ -27,6 +39,19 @@ components:
     <code>
         $ bower install --save ui-layout
     </code>
+</section>
+
+<section class="section__green">
+    <h3>Helpful Tip</h3>
+    <p>
+        <b>{{componentName}}</b> should be placed inside the body tag, this will allow
+        to fully fit the window.
+    </p>
+</section>
+
+<h2>Documentation</h2>
+<section class="section__yellow">
+    <core-component-page moduleName="../assets/components/{{componentName}}/{{componentName}}"></core-component-page>
 </section>
 
 <script charset="utf-8">

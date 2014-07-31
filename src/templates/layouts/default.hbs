@@ -4,8 +4,8 @@ layout: src/templates/layouts/blank.hbs
 
 <ui-layout>
     {{> drawer }}
-    <div main demo="{{page.components}}">
-        <header class="page__header {{#is header "compressed"}}page__header--compressed{{/is}}">
+    <div main {{#isnt page.components undefined}}demo="{{page.components}}"{{/isnt}}>
+        <header class="page__header {{#isnt header undefined}}page__header--compressed{{/isnt}}">
             <button name="menu" class="icon icon-menu">menu</button>
             <h1>
                 Akyral
