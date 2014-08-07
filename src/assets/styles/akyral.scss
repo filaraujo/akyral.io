@@ -10,6 +10,8 @@ $green: #c6ce9e;
 @import 'normalize';
 @import 'icons';
 @import 'header';
+@import 'footer';
+
 
 
 body {
@@ -19,6 +21,10 @@ body {
     font-weight: 300;
 }
 
+ui-layout {
+    max-width: none;
+}
+
 ul {
     list-style: none;
     margin: 0;
@@ -26,7 +32,17 @@ ul {
 }
 
 a {
+    // background: $offwhite;
+    border-bottom: 1px dotted $lightpink;
+    color: $lightpink;
+    font-weight: 400;
     text-decoration: none;
+
+    &:hover {
+        border-color: $offwhite;
+        color: $offwhite;
+    }
+
 }
 
 b {
@@ -55,8 +71,23 @@ div[main]{
         background: $pink;
         color: $lighterBrown;
         position: relative;
-        padding: 20px;
-        margin-bottom: 6px;
+        padding: 50px 20px;
+
+        svg {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            width: 100%;
+        }
+        g {
+            width: 100%;
+        }
+
+        path {
+            fill: $pink;
+        }
 
         p {
             margin-top: 0;
@@ -85,6 +116,12 @@ div[main]{
     text-align: center;
 }
 
+div[main][page="index"]{
+
+    .icon-lab {
+    }
+}
+
 div[main][demo] {
     h2 {
         color: $pink;
@@ -107,6 +144,11 @@ div[main][demo] {
             // text-transform: lowercase;
             font-size: 16px;
         }
+    }
+
+    h2:before,
+    h3:before {
+        margin-right: 7px;
     }
 
     code {
@@ -186,6 +228,8 @@ div[main][demo="layout"]{
     }
 
     .resize {
+        color: $pink;
+        font-weight: 400;
         display: none;
     }
 
@@ -194,6 +238,8 @@ div[main][demo="layout"]{
             display: inline;
         }
     }
+
+
 }
 
 div[drawer] {
@@ -208,28 +254,44 @@ div[drawer] {
     }
 
     a {
-        color: $lighterBrown;
+        border: 0;
+        color: $offwhite;
         display: block;
+        font-size: 17px;
         font-weight: 400;
         padding: 14px;
 
+        // &[href="#"] span {
+        //     color: $pink;
+        //     font-size: 10px;
+        //     line-height: 23px;
+        //     padding: 0 5px;
+        // }
+
         span {
-            float: right;
-            font-size: 14px;
+            display: block;
+            font-size: 11px;
+                line-height: 23px;
             font-weight: 300;
         }
     }
     li {
-        margin-bottom: 3px;
+        border-bottom: 1px solid rgba(255,255,255,.8);
+        position: relative;
+        overflow: hidden;
     }
 
-    li:first-child{
-        background: $pink;
+
+    li{
+        margin-bottom: 5px;
     }
 
-    li:nth-child(2){
-        background: $green;
-    }
+    // li:nth-child(2n){
+    //     background: $green;
+    // }
+    // li:nth-child(3n){
+    //     background: $beige;
+    // }
 }
 
 
@@ -248,6 +310,7 @@ akyral-docs {
         pre {
             background: $offwhite;
             padding: 6px;
+            overflow: auto;
         }
         pre {
             padding: 10px;

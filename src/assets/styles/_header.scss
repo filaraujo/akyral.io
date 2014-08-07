@@ -1,9 +1,13 @@
 .page__header {
     color: $offwhite;
-    padding: 40px 20px 60px;
+    padding: 30px 20px 70px;
     margin-bottom: 6px;
     position: relative;
     text-align: center;
+
+    @media (max-width: 600px){
+        padding-top: 0;
+    }
 
     button {
         background: $gray;
@@ -18,6 +22,10 @@
         position: absolute;
         text-transform: uppercase;
 
+        &:before {
+            margin-right: 10px;
+        }
+
         @media (min-width: 944px){
             display: none !important;
         }
@@ -27,6 +35,10 @@
         font-size: 80px;
         font-weight: 700;
         margin: 0;
+
+        @media (max-width: 600px){
+            font-size: 50px;
+        }
 
         span {
             color: $pink;
@@ -63,7 +75,7 @@
         font-size: 32px;
         height: 45px;
         padding-left: 10px;
-        margin-left: 70px;
+        margin-left: 96px;
         text-align: left;
 
         @media (min-width: 944px){

@@ -1,9 +1,27 @@
 <div drawer parallax>
-    <h2>/ playgrounds /</h2>
-    {{#ul components}}
-        <a href ="/playground/{{component }}.html">
-            {{component }}
-            <span>akyral-{{component}}</span>
-        </a>
-    {{/ul}}
+    <h2>UI Components</h2>
+
+    <ul>
+
+        {{#each components}}
+            {{#isnt component.disabled undefined}}
+                <li>
+                    <a href ="/ui/{{component.name}}.html">
+                        {{component.name}}
+                        <span>akyral-{{component.name}}</span>
+                    </a>
+                </li>
+            {{/isnt}}
+        {{/each}}
+        {{#each components}}
+            {{#is component.disabled undefined}}
+                <li>
+                    <a href="#">
+                        {{component.name}}
+                        <span>*in development</span>
+                    </a>
+                </li>
+            {{/is}}
+        {{/each}}
+    </ul>
 </div>

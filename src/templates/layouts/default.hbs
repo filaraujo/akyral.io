@@ -4,15 +4,9 @@ layout: src/templates/layouts/blank.hbs
 
 <ui-layout>
     {{> drawer }}
-    <div main {{#isnt page.components undefined}}demo="{{page.components}}"{{/isnt}}>
-        <header class="page__header {{#isnt header undefined}}page__header--compressed{{/isnt}}">
-            <button name="menu" class="icon icon-menu">menu</button>
-            <h1>
-                Akyral
-                <span>alpha</span>
-            </h1>
-            <h2>Responsive, highly customizable web component library built on Polymer.</h2>
-        </header>
+    <div main {{#isnt page.components undefined}}demo="{{page.components.name}}"{{/isnt}} {{#isnt pageType undefined}}page="{{pageType}}"{{/isnt}}>
+        {{> header}}
         {{> body }}
+        {{> footer }}
     </div>
 </ui-layout>
