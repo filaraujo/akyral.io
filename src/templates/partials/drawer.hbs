@@ -1,8 +1,7 @@
 <div drawer parallax>
-    <h2>UI Components</h2>
+    <h2>User Interface</h2>
 
     <ul>
-
         {{#each components}}
             {{#isnt component.disabled undefined}}
                 <li>
@@ -18,10 +17,11 @@
                 <li>
                     <a href="#">
                         {{component.name}}
-                        <span>*in development</span>
+                        <span>in development</span>
                     </a>
                 </li>
             {{/is}}
         {{/each}}
     </ul>
+
 </div>

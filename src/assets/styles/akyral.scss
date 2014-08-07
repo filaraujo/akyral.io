@@ -11,6 +11,7 @@ $green: #c6ce9e;
 @import 'icons';
 @import 'header';
 @import 'footer';
+@import 'footer';
 
 
 
@@ -21,9 +22,6 @@ body {
     font-weight: 300;
 }
 
-ui-layout {
-    max-width: none;
-}
 
 ul {
     list-style: none;
@@ -32,17 +30,14 @@ ul {
 }
 
 a {
-    // background: $offwhite;
-    border-bottom: 1px dotted $lightpink;
-    color: $lightpink;
-    font-weight: 400;
-    text-decoration: none;
+    color: $pink;
 
     &:hover {
         border-color: $offwhite;
         color: $offwhite;
     }
 
+    text-decoration: none;
 }
 
 b {
@@ -70,8 +65,8 @@ div[main]{
     section {
         background: $pink;
         color: $lighterBrown;
-        position: relative;
-        padding: 50px 20px;
+        padding: 20px 20px;
+        margin-bottom: 6px;
 
         svg {
             position: absolute;
@@ -88,6 +83,7 @@ div[main]{
         path {
             fill: $pink;
         }
+
 
         p {
             margin-top: 0;
@@ -115,12 +111,45 @@ div[main]{
 .text-centered {
     text-align: center;
 }
-
 div[main][page="index"]{
 
-    .icon-lab {
+    .section__yellow {
+        display: flex;
+        padding-top: 40px;
+        position: relative;
+
+        @media (max-width:600px){
+            flex-direction: column;
+        }
+
+        h3 {
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        span {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            margin-left: -15px;
+            font-size: 30px;
+        }
+
+        article {
+            flex: 1;
+            text-align: center;
+
+            &:nth-child(2){
+                margin: 0 20px;
+            }
+        }
     }
 }
+
 
 div[main][demo] {
     h2 {
@@ -145,11 +174,11 @@ div[main][demo] {
             font-size: 16px;
         }
     }
-
     h2:before,
     h3:before {
         margin-right: 7px;
     }
+
 
     code {
         background: $gray;
@@ -227,9 +256,9 @@ div[main][demo="layout"]{
         content: attr(data-position);
     }
 
-    .resize {
         color: $pink;
         font-weight: 400;
+    .resize {
         display: none;
     }
 
@@ -237,14 +266,20 @@ div[main][demo="layout"]{
         .resize {
             display: inline;
         }
+
+
     }
-
-
 }
 
 div[drawer] {
-    background: $brown !important;
+    // background: $pink !important;
     padding: 75px 20px 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: $pink;
 
     h2 {
         font-size: 18px;
@@ -253,45 +288,33 @@ div[drawer] {
         text-transform: uppercase;
     }
 
+    li {
+        margin-bottom: 3px;
+    }
+
     a {
-        border: 0;
-        color: $offwhite;
+        background: $pink;
+        color: $brown;
         display: block;
-        font-size: 17px;
-        font-weight: 400;
-        padding: 14px;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 12px 14px;
+        line-height: 16px;
 
-        // &[href="#"] span {
-        //     color: $pink;
-        //     font-size: 10px;
-        //     line-height: 23px;
-        //     padding: 0 5px;
-        // }
+        &[href="#"] {
+            background: $green;
 
-        span {
-            display: block;
-            font-size: 11px;
-                line-height: 23px;
-            font-weight: 300;
+            span {
+                float: right;
+            }
         }
     }
-    li {
-        border-bottom: 1px solid rgba(255,255,255,.8);
-        position: relative;
-        overflow: hidden;
+
+    span {
+        display: block;
+        font-size: 11px;
+        font-weight: 300;
     }
-
-
-    li{
-        margin-bottom: 5px;
-    }
-
-    // li:nth-child(2n){
-    //     background: $green;
-    // }
-    // li:nth-child(3n){
-    //     background: $beige;
-    // }
 }
 
 
@@ -309,8 +332,8 @@ akyral-docs {
         code,
         pre {
             background: $offwhite;
-            padding: 6px;
             overflow: auto;
+            padding: 6px;
         }
         pre {
             padding: 10px;
