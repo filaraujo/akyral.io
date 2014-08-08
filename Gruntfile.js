@@ -28,13 +28,15 @@ module.exports = function(grunt) {
         },
 
         assemble: {
+            options: {
+                assets: '<%= config.dist %>/assets'
+            },
             pages: {
                 options: {
                     collections: [{
                         name: 'components'
                     }],
                     flatten: true,
-                    assets: '<%= config.dist %>/assets',
                     layout: '<%= config.src %>/templates/layouts/default.hbs',
                     data: '<%= config.src %>/data/*.{json,yml}',
                     partials: '<%= config.src %>/templates/partials/*.hbs',
