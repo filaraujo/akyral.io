@@ -79,6 +79,8 @@ components: { name: layout }
                 anchor.addEventListener('click', createNewUi);
             });
 
+
+
             document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
             document.querySelector('a[data-position="'+currentPosition+'"]').classList.add('active');
         }
@@ -114,10 +116,12 @@ components: { name: layout }
             drawer.setAttribute(currentPosition,'');
             drawer.setAttribute(currentType,'');
 
-            // ga('send', 'event', 'ui-layout', 'set type and position', currentPosition+' '+currentType);
+            ga('send', 'event', 'akyral-layout', 'set type and position', currentPosition+' '+currentType);
 
             document.body.removeChild(ui);
             document.body.appendChild(newUi);
+
+            ui = document.querySelector('akyral-layout');
 
             bindEvents();
 
