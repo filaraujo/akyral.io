@@ -256,8 +256,14 @@ div[main][demo="layout"]{
         content: attr(data-position);
     }
 
+    .section__inverted {
         color: $pink;
-        font-weight: 400;
+        // font-weight: 400;
+
+        a {
+            color: $lightpink;
+        }
+    }
     .resize {
         display: none;
     }
@@ -272,7 +278,7 @@ div[main][demo="layout"]{
 }
 
 div[drawer] {
-    // background: $pink !important;
+    background: $brown !important;
     padding: 75px 20px 20px;
     position: absolute;
     top: 0;

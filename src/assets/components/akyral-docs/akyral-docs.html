@@ -1,0 +1,65 @@
+<polymer-element name="akyral-docs" attributes="component">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <context-free-parser id="parser" url="{{component}}" data="{{data}}">
+        </context-free-parser>
+
+        <template id="dataRow">
+            <div class="row">
+                <code class="name">{{name}}</code>
+                <div class="info">
+                    <template if="{{type}}">
+                        <code>{{type}}</code>
+                    </template>
+                    <marked-element text="{{description}}"></marked-element>
+                </div>
+            </div>
+        </template>
+
+        <template repeat="{{data.classes}}">
+            <template if="{{extends}}">
+                <h4>Extends</h4>
+                <p><a href="#{{extends}}">{{data.extends}}</a>
+                </p>
+            </template>
+
+            <template if="{{description}}">
+                <marked-element text="{{description}}"></marked-element>
+            </template>
+
+            <template if="{{attributes.length}}">
+                <h2>attributes</h2>
+                <template repeat="{{attributes}}" ref="dataRow"></template>
+            </template>
+
+
+            <template if="{{properties.length}}">
+                <h2>properties</h2>
+                <template repeat="{{properties}}" ref="dataRow"></template>
+            </template>
+
+            <template if="{{events.length}}">
+                <h2>properties</h2>
+                <template repeat="{{events}}" ref="dataRow"></template>
+            </template>
+
+            <template if="{{methods.length}}">
+                <h2>properties</h2>
+                <template repeat="{{methods}}" ref="dataRow"></template>
+            </template>
+        </template>
+
+    </template>
+    <script>
+        Polymer('akyral-docs', {
+            dataChanged: function() {
+                console.log(this.data)
+            },
+            ready: function() {}
+        })
+    </script>
+</polymer-element>

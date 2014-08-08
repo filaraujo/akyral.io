@@ -1,7 +1,7 @@
 ---
 title: Layout
 headerType: compressed
-componentName: ui-layout
+componentName: akyral-layout
 components: { name: layout }
 
 ---
@@ -46,7 +46,7 @@ components: { name: layout }
         and import the {{componentName}} asset and you're ready to go.
     </p>
     <code>
-        $ bower install --save ui-layout
+        $ bower install --save akyral-layout
     </code>
 </section>
 
@@ -68,7 +68,7 @@ components: { name: layout }
     (function(){
         var drawerInner = document.querySelector('[drawer]').innerHTML,
             mainInner = document.querySelector('[main]').innerHTML,
-            ui = document.querySelector('ui-layout'),
+            ui = document.querySelector('akyral-layout'),
             currentType = 'pan',
             currentPosition = 'left';
 
@@ -84,7 +84,7 @@ components: { name: layout }
         }
 
         function createNewUi(e){
-            var ui = document.querySelector('ui-layout'),
+            var ui = document.querySelector('akyral-layout'),
                 drawer = document.createElement('div'),
                 main = document.createElement('div'),
                 newUi = new UiLayout();
@@ -97,7 +97,7 @@ components: { name: layout }
             main.innerHTML = mainInner;
 
             main.querySelector('button[name="menu"]').addEventListener('click', function(){
-                document.querySelector('ui-layout').toggleDrawer();
+                document.querySelector('akyral-layout').toggleDrawer();
             });
 
             newUi.appendChild(drawer);

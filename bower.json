@@ -15,6 +15,6 @@
   ],
   "dependencies": {
     "polymer": "~0.3.3",
-    "ui-layout": "~0.0.6"
+    "akyral-layout": "~0.1.0"
   }
 }

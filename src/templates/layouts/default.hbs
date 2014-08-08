@@ -2,11 +2,11 @@
 layout: src/templates/layouts/blank.hbs
 ---
 
-<ui-layout>
+<akyral-layout>
     {{> drawer }}
     <div main {{#isnt page.components undefined}}demo="{{page.components.name}}"{{/isnt}} {{#isnt pageType undefined}}page="{{pageType}}"{{/isnt}}>
         {{> header}}
         {{> body }}
         {{> footer }}
     </div>
-</ui-layout>
+</akyral-layout>

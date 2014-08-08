@@ -29,7 +29,6 @@
     "grunt-contrib-connect": "~0.8.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-fontsmith": "^0.9.1",
     "grunt-gh-pages": "^0.9.1",
     "grunt-sass": "^0.14.0",
     "load-grunt-tasks": "~0.6.0",
