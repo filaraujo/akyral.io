@@ -113,9 +113,9 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
-        htmlmin: { // Task
-            dist: { // Target
-                options: { // Target options
+        htmlmin: {
+            dist: {
+                options: {
                     removeComments: true,
                     collapseWhitespace: true,
                     minifyJS: true
@@ -123,18 +123,18 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.dist %>/',
-                    src: ['*.html','!assets/**/*.html'],
+                    src: ['*.html', '!assets/**/*.html'],
                     dest: '<%= config.dist %>/',
                     ext: '.html'
                 }]
             }
         },
 
-        sass: { // task
+        sass: {
             options: {
                 outputStyle: 'compressed'
             },
-            dist: { // target
+            dist: {
                 files: [{
                     expand: true,
                     cwd: '<%= config.src %>/',
@@ -165,7 +165,35 @@ module.exports = function(grunt) {
                     '<%= config.dist %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
-        }
+        },
+
+        // usemin: {
+        //     html: ['<%= config.dist %>/{,*/}*.html'],
+        //     options: {
+        //         dirs: ['<%= config.dist %>'],
+        //         blockReplacements: {
+        //             vulcanized: function(block) {
+        //                 console.log('BLOCK REPLACEMENT RUNNING!!!!');
+        //                 return '<link rel="import" href="' + block.dest + '">';
+        //             }
+        //         }
+        //     }
+        // },
+
+        vulcanize: {
+            dist: {
+                options: {
+                    inline: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.dist %>/',
+                    src: ['*.html'],
+                    dest: '<%= config.dist %>/',
+                    ext: '.html'
+                }]
+            },
+        },
 
     });
 
@@ -178,14 +206,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.loadNpmTasks('grunt-vulcanize');
 
     grunt.registerTask('server', [
-        'clean',
-        'assemble',
-        'sass',
-        'autoprefixer',
-        'copy',
-        'htmlmin',
+        'build',
+        'optimize',
         'connect:livereload',
         'watch'
     ]);
@@ -193,12 +218,18 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean',
         'assemble',
-        'copy'
+        'sass',
+        'autoprefixer',
+        'copy',
     ]);
 
-
+    grunt.registerTask('optimize', [
+        // 'vulcanize',
+        'htmlmin'
+    ]);
 
     grunt.registerTask('publish', [
+        'optimize',
         'gh-pages'
     ]);
 

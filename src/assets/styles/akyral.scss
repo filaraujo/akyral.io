@@ -181,21 +181,23 @@ div[main][demo="layout"]{
     a[data-type] {
         box-sizing: border-box;
         display: inline-block;
-        border: 1px solid #000;
+        // border: 1px solid $pink;
+        box-shadow: 0 0 2px rgba(0,0,0,.3);
         text-decoration: none;
-        background-image: url(../images/demo/layout.gif);
-        height: 150px;
+        background-image: url(../images/demo/layout.png);
+        height: 145px;
         width: 125px;
         position: relative;
         font-size: 0;
         opacity: .4;
+        margin: 4px;
         will-change: opacity;
         transform: translate3d(0,0,0) scale(.9);
         transition: opacity .2s, transform .2s;
     }
     a[data-position].active,
     a[data-type].active {
-        outline: 1px solid #000;
+        // outline: 1px solid $pink;
         opacity: 1;
         transform: scale(1);
     }
@@ -213,7 +215,7 @@ div[main][demo="layout"]{
         bottom: 0;
         left: 0;
         right: 0;
-        background: #333;
+        background: $pink;
         padding: 2px 6px;
     }
 

@@ -6,10 +6,6 @@
     margin-bottom: 40px;
     text-align: center;
 
-    @media (max-width: 600px){
-        padding-top: 0;
-    }
-
     button {
         background: $palepurple;
         border: 0;
@@ -58,6 +54,13 @@
     }
 }
 
+[drawer][right] + [main]{
+    [name="menu"] {
+        left: auto;
+        right: 7px;
+    }
+}
+
 
 .page__header--compressed {
     height: 45px;
@@ -82,4 +85,8 @@
     h2 {
         display: none;
     }
+}
+
+[drawer][right] + [main] .page__header--compressed h1 {
+    margin-left: 0;
 }
