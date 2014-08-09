@@ -12,20 +12,20 @@ components: { name: layout }
     <p>
         Position will define where the sidebar is positioned.
     </p>
-    <div class="text-centered">
+    <div>
         <a href="#" data-position="left">left</a>
         <a href="#" data-position="right">right</a>
     </div>
 </section>
 
-<section class="section__green">
+<section>
     <h3>Type</h3>
     <p>
         Type will define the visual effect given to the drawer on exiting and entering.
         This value only applies to viewports smaller than 944 pixels
         <span class="resize">, so go ahead and resize down your browser</span>.
     </p>
-    <div class="text-centered">
+    <div>
         <a href="#" data-type="pan">pan</a>
         <a href="#" data-type="parallax">parallax</a>
         <a href="#" data-type="reveal">reveal</a>
@@ -50,9 +50,7 @@ components: { name: layout }
     </code>
 </section>
 
-
-
-<section class="section__green section__tip">
+<section class="section__palepurple">
     <h3 class="icon-chat">Helpful Gotchas</h3>
     <p>
         <b>{{componentName}}</b> should be placed immediately inside the body tag, this will allow
@@ -60,7 +58,6 @@ components: { name: layout }
     </p>
 </section>
 
-<h2>Documentation</h2>
 <akyral-docs component="assets/components/{{componentName}}/{{componentName}}.html"></akyral-docs>
 
 
@@ -78,7 +75,6 @@ components: { name: layout }
             [].forEach.call(anchors, function(anchor){
                 anchor.addEventListener('click', createNewUi);
             });
-
 
 
             document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
@@ -124,6 +120,8 @@ components: { name: layout }
             ui = document.querySelector('akyral-layout');
 
             bindEvents();
+
+            e.preventDefault();
 
             return false;
         }

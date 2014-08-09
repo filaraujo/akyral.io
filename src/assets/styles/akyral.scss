@@ -1,27 +1,38 @@
-$brown: #372d3b;
-$lighterBrown: #4f3043;
+$offwhite: #ffffde;
+$darkpurple: #372d3b;
+$palepurple: #826D76;
 $gray: #514A53;
 $pink: #c5415d;
 $lightpink: #E27D93;
-$beige: #eddeab;
-$offwhite: #ffffde;
-$green: #c6ce9e;
+$pastelpurple: #BDAAA2;
+$beige: #E8DAC3;
+$green: #A6A67F;
+
+
 
 @import 'normalize';
 @import 'icons';
 @import 'header';
 @import 'footer';
-@import 'footer';
+@import 'drawer';
 
 
+html,
+body {
+    height: 100%;
+}
 
 body {
-    background: $brown;
-    color: $pink;
+    background: $darkpurple;
+    color: $gray;
     font-family: 'Roboto Slab';
     font-weight: 300;
 }
 
+akyral-layout {
+    height: 100%;
+    max-width: none;
+}
 
 ul {
     list-style: none;
@@ -50,56 +61,44 @@ b {
 
 
 div[main]{
-    background: $brown !important;
-    padding: 20px;
-
+    background: $beige !important;
 
     h3 {
-        color: $brown;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 400;
         margin: 0 0 10px;
         text-transform: uppercase;
     }
 
+    h2:before,
+    h3:before {
+        margin-right: 7px;
+    }
+
     section {
-        background: $pink;
-        color: $lighterBrown;
-        padding: 20px 20px;
-        margin-bottom: 6px;
-
-        svg {
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            width: 100%;
-        }
-        g {
-            width: 100%;
-        }
-
-        path {
-            fill: $pink;
-        }
-
+        margin: 40px auto;
+        padding: 0 40px;
 
         p {
             margin-top: 0;
         }
 
-        &.section__yellow {
-            background: $beige;
-        }
+        &.section__palepurple {
+            background: $pastelpurple;
+            color: $darkpurple;
+            padding: 40px;
+            margin: 0;
 
-        &.section__green {
-            background: $green;
+            h3 {
+                color: $darkpurple;
+            }
         }
 
         &.section__inverted {
-            background: transparent;
-            color: $pink;
+            background: $darkpurple;
+            color: $beige;
+            padding: 40px;
+            margin-bottom: 0;
 
             h3 {
                 color: $pink;
@@ -113,21 +112,17 @@ div[main]{
 }
 div[main][page="index"]{
 
-    .section__yellow {
+    .section__inverted {
         display: flex;
-        padding-top: 40px;
         position: relative;
 
         @media (max-width:600px){
             flex-direction: column;
         }
 
-        h3 {
-            font-weight: 700;
-        }
-
         p {
-            font-size: 12px;
+            color: $offwhite;
+            font-size: 14px;
             line-height: 18px;
         }
 
@@ -154,29 +149,18 @@ div[main][page="index"]{
 div[main][demo] {
     h2 {
         color: $pink;
-        font-size: 18px;
-        font-weight: 300;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 40px 0 0 0;
+        padding: 0 40px;
         text-transform: uppercase;
 
+
         span {
-            font-size: 15px;
+            font-size: 17px;
             color: $lightpink;
             margin-left: 3px;
         }
-    }
-
-    section {
-        font-size: 14px;
-        margin-bottom: 24px;
-
-        h3 {
-            // text-transform: lowercase;
-            font-size: 16px;
-        }
-    }
-    h2:before,
-    h3:before {
-        margin-right: 7px;
     }
 
 
@@ -185,7 +169,7 @@ div[main][demo] {
         color: $offwhite;
         display: block;
         font-weight: 300;
-        padding: 10px;
+        padding: 20px;
     }
 }
 
@@ -257,8 +241,6 @@ div[main][demo="layout"]{
     }
 
     .section__inverted {
-        color: $pink;
-        // font-weight: 400;
 
         a {
             color: $lightpink;
@@ -277,69 +259,32 @@ div[main][demo="layout"]{
     }
 }
 
-div[drawer] {
-    background: $brown !important;
-    padding: 75px 20px 20px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: $pink;
 
-    h2 {
-        font-size: 18px;
-        font-weight: 300;
-        margin: 0 0 10px;
-        text-transform: uppercase;
-    }
-
-    li {
-        margin-bottom: 3px;
-    }
-
-    a {
-        background: $pink;
-        color: $brown;
-        display: block;
-        font-size: 18px;
-        font-weight: 700;
-        padding: 12px 14px;
-        line-height: 16px;
-
-        &[href="#"] {
-            background: $green;
-
-            span {
-                float: right;
-            }
-        }
-    }
-
-    span {
-        display: block;
-        font-size: 11px;
-        font-weight: 300;
-    }
-}
 
 
 akyral-docs {
-    background: $beige;
-    padding: 20px;
+    background: transparent;
+    padding: 40px;
     margin-bottom: 6px;
 
 
     &::shadow {
         * {
-            color: $brown;
+            color: $darkpurple;
+        }
+
+        context-free-parser + h2 {
+            font-size: 22px;
+            font-weight: 400;
+            text-transform: uppercase;
         }
 
         code,
         pre {
-            background: $offwhite;
+            background: $pastelpurple;
             overflow: auto;
-            padding: 6px;
+            padding: 10px;
+            border-radius: 3px;
         }
         pre {
             padding: 10px;
@@ -349,10 +294,17 @@ akyral-docs {
             }
         }
 
+        p code,
+        .row code {
+            background: transparent;
+            color: $pink;
+            padding: 4px;
+        }
+
         h2 {
             font-size: 16px;
             font-weight: 400;
-            margin: 40px 0 20px;
+            margin: 20px 0 20px;
             text-transform: uppercase;
         }
 
@@ -366,7 +318,7 @@ akyral-docs {
 
         .row {
             margin: 10px;
-            border-bottom: 1px solid $offwhite;
+            border-bottom: 1px solid $pastelpurple;
             min-height: 40px;
 
             &:last-child {

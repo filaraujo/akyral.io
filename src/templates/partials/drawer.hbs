@@ -5,8 +5,11 @@
             {{#is component.disabled undefined}}
                 <li>
                     <a href="{{component.name}}.html">
-                        {{component.name}}
-                        <span>akyral-{{component.name}}</span>
+                        <span>
+                            {{component.name}}
+                            <b>akyral-{{component.name}}</b>
+                        </span>
+
                     </a>
                 </li>
             {{/is}}
@@ -15,8 +18,10 @@
             {{#isnt component.disabled undefined}}
                 <li>
                     <a href="#">
-                        {{component.name}}
-                        <span>in development</span>
+                        <span>
+                            {{component.name}}
+                            <b>[ in development ]</b>
+                        </span>
                     </a>
                 </li>
             {{/isnt}}

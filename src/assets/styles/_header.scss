@@ -1,8 +1,9 @@
 .page__header {
+    background: $darkpurple;
     color: $offwhite;
-    padding: 30px 20px 70px;
-    margin-bottom: 6px;
+    padding: 50px 20px 50px;
     position: relative;
+    margin-bottom: 40px;
     text-align: center;
 
     @media (max-width: 600px){
@@ -10,17 +11,18 @@
     }
 
     button {
-        background: $gray;
+        background: $palepurple;
         border: 0;
-        bottom: 0;
+        bottom: -16px;
         display: inline-block;
         font-size: 12px;
         font-weight: 100;
-        left: 0;
+        left: 7px;
         margin: 0;
         padding: 12px;
         position: absolute;
         text-transform: uppercase;
+        border: 3px solid $beige;
 
         &:before {
             margin-right: 10px;
@@ -34,6 +36,7 @@
     h1 {
         font-size: 80px;
         font-weight: 700;
+        height: auto;
         margin: 0;
 
         @media (max-width: 600px){
@@ -57,21 +60,10 @@
 
 
 .page__header--compressed {
-    padding: 0;
-    margin: 13px 0 30px;
     height: 45px;
-
-    button {
-        display: inline;
-        float: left;
-        height: 45px;
-        margin: 0;
-        position: static;
-    }
+    padding: 20px 0 10px 30px;
 
     h1 {
-        background: $pink;
-        color: $brown;
         font-size: 32px;
         height: 45px;
         padding-left: 10px;
@@ -83,7 +75,6 @@
         }
 
         span {
-            color: $brown;
             font-weight: 400;
         }
     }
