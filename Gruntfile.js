@@ -51,6 +51,18 @@ module.exports = function(grunt) {
             }
         },
 
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 version']
+            },
+            files: {
+                expand: true,
+                flatten: true,
+                src: '<%= config.dist %>/assets/styles/*.css',
+                dest: '<%= config.dist %>/assets/styles/'
+            },
+        },
+
         // Before generating any new files,
         // remove any previously-created files.
         clean: ['<%= config.dist %>/**'],
@@ -101,7 +113,27 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
+        htmlmin: { // Task
+            dist: { // Target
+                options: { // Target options
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    minifyJS: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.dist %>/',
+                    src: ['*.html','!assets/**/*.html'],
+                    dest: '<%= config.dist %>/',
+                    ext: '.html'
+                }]
+            }
+        },
+
         sass: { // task
+            options: {
+                outputStyle: 'compressed'
+            },
             dist: { // target
                 files: [{
                     expand: true,
@@ -116,11 +148,11 @@ module.exports = function(grunt) {
         watch: {
             assemble: {
                 files: ['<%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
-                tasks: ['assemble']
+                tasks: ['assemble', 'htmlmin']
             },
             assets: {
                 files: ['<%= config.src %>/assets/**'],
-                tasks: ['sass', 'copy']
+                tasks: ['sass', 'autoprefixer', 'copy', ]
             },
             livereload: {
                 options: {
@@ -138,11 +170,12 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('assemble');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-fontsmith');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-gh-pages');
 
@@ -150,8 +183,9 @@ module.exports = function(grunt) {
         'clean',
         'assemble',
         'sass',
-        // 'font',
+        'autoprefixer',
         'copy',
+        'htmlmin',
         'connect:livereload',
         'watch'
     ]);
