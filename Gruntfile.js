@@ -123,7 +123,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.dist %>/',
-                    src: ['*.html', '!assets/**/*.html'],
+                    src: ['*.html'],
                     dest: '<%= config.dist %>/',
                     ext: '.html'
                 }]
@@ -167,28 +167,16 @@ module.exports = function(grunt) {
             }
         },
 
-        // usemin: {
-        //     html: ['<%= config.dist %>/{,*/}*.html'],
-        //     options: {
-        //         dirs: ['<%= config.dist %>'],
-        //         blockReplacements: {
-        //             vulcanized: function(block) {
-        //                 console.log('BLOCK REPLACEMENT RUNNING!!!!');
-        //                 return '<link rel="import" href="' + block.dest + '">';
-        //             }
-        //         }
-        //     }
-        // },
-
         vulcanize: {
             dist: {
                 options: {
                     inline: true
                 },
+
                 files: [{
                     expand: true,
                     cwd: '<%= config.dist %>/',
-                    src: ['*.html'],
+                    src: ['assets/components/akyral-app/akyral-app.html'],
                     dest: '<%= config.dist %>/',
                     ext: '.html'
                 }]
@@ -224,12 +212,11 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('optimize', [
-        // 'vulcanize',
+        'vulcanize',
         'htmlmin'
     ]);
 
     grunt.registerTask('publish', [
-        'optimize',
         'gh-pages'
     ]);
 
