@@ -19,5 +19,5 @@ node_modules
 dist
 .grunt
 src/assets/components/*
-!src/assets/components/akyral-docs/*
-!src/assets/components/akyral-app/*
+!src/assets/components/akyral-docs**/*
+!src/assets/components/akyral-app**/*
