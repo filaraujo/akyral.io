@@ -3,11 +3,10 @@ title: Layout
 headerType: compressed
 componentName: akyral-layout
 components: { name: layout }
-
 ---
 
 <h2>[ Drawer ]  <span>Configuration</span></h2>
-<section class="section__yellow">
+<section>
     <h3>Position</h3>
     <p>
         Position will define where the sidebar is positioned.
@@ -33,28 +32,13 @@ components: { name: layout }
     </div>
 </section>
 
-<section class="section__inverted">
-    <h3>Install</h3>
-    <p>
-        If you haven't used Polymer before you can checkout out the
-        <a href="http://www.polymer-project.org/docs/start/getting-the-code.html">Getting the Code</a>
-        and <a href="http://www.polymer-project.org/docs/start/usingelements.html">Using the Elements</a>
-        guides for a quick introduction to Polymer.
-    </p>
-    <p>
-        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>
-        and import the {{componentName}} asset and you're ready to go.
-    </p>
-    <code>
-        $ bower install --save akyral-layout
-    </code>
-</section>
+{{> install}}
 
 <section class="section__palepurple">
     <h3 class="icon-chat">Helpful Gotchas</h3>
     <p>
         <b>{{componentName}}</b> should be placed immediately inside the body tag, this will allow
-        to fully fit the window.
+        to fully fit the viewport.
     </p>
 </section>
 

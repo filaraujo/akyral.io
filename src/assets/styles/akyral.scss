@@ -29,6 +29,12 @@ body {
     font-weight: 300;
 }
 
+button {
+    font-family: 'Arial';
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
 akyral-layout {
     height: 100%;
     max-width: none;
@@ -104,6 +110,21 @@ div[main]{
                 color: $pink;
             }
         }
+
+        &.section__pink{
+            background: $pink;
+            color: $offwhite;
+            padding: 40px;
+            margin-bottom: 0;
+
+            h3 {
+                font-weight: 300;
+            }
+
+            + section {
+                margin-top: 0;
+            }
+        }
     }
 }
 
@@ -173,6 +194,281 @@ div[main][demo] {
     }
 }
 
+
+//dialog
+div[main][demo="dialog"]{
+
+    .section__pink demo-dialog-configuration {
+        &::shadow code {
+            color: $darkpurple;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+    }
+    .dialog__pinned,
+    .dialog__position {
+        background: $pastelpurple;
+        height: 300px;
+        position: relative;
+        width: 100%;
+    }
+    .dialog__pinned {
+
+        button {
+            background: $darkpurple;
+            border: 2px solid transparent;
+            color: $offwhite;
+            line-height: 70px;
+            text-align: center;
+            position: absolute;
+            width: 100px;
+            transition: background .3s;
+
+            &:hover {
+                background: $pink;
+                border: 2px solid $offwhite;
+            }
+
+            &.core-selected {
+                background: $pink;
+                border: 2px solid $offwhite;
+                font-weight: 400;
+            }
+        }
+
+    }
+    [data-pinned="top"] {
+        top: 0;
+    }
+    [data-pinned="right"] {
+        right: 0;
+    }
+    [data-pinned="bottom"] {
+        bottom: 0;
+    }
+    [data-pinned="left"] {
+        left: 0;
+    }
+    [data-pinned="bottom"],
+    [data-pinned="top"] {
+        left: 50%;
+        transform: translate3d(-50%,0,0);
+    }
+    [data-pinned="right"],
+    [data-pinned="left"] {
+        top: 50%;
+        transform: translate3d(0,-50%,0);
+    }
+
+    .dialog__position button {
+        background: $darkpurple;
+        border: 0;
+        color: $offwhite;
+        display: inline-block;
+        line-height: 70px;
+        padding: 0;
+        position: absolute;
+        width: 100px;
+        transition: background .3s;
+        border: 2px solid transparent;
+
+        &:hover {
+            background: $pink;
+            border: 2px solid $offwhite;
+
+            &:after,
+            &:before {
+                border-color: $offwhite;
+                transition: border .3s;
+            }
+        }
+
+        &.core-selected {
+            background: $pink;
+            border-color: $offwhite;
+            z-index: 1;
+            border: 2px solid $offwhite;
+            font-weight: 400;
+
+            &:after,
+            &:before {
+                border-color: $offwhite;
+            }
+        }
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+        }
+    }
+    [data-position="top"],
+    [data-position="bottom"] {
+        left: 50%;
+        transform: translate3d(-50%,0,0);
+
+        &:before,
+        &:after {
+            border-top: 2px dotted $darkpurple;
+            width: 70px;
+        }
+        &:before {
+            right: 100%;
+        }
+        &:after {
+            left: 100%;
+        }
+    }
+
+    [data-position="left"],
+    [data-position="right"] {
+        top: 50%;
+        transform: translate3d(0,-50%,0);
+
+        &:before,
+        &:after {
+            border-left: 2px dotted $darkpurple;
+            height: 70px;
+        }
+        &:before {
+            top: 100%;
+        }
+        &:after {
+            bottom: 100%;
+        }
+    }
+
+    [data-position="top"] {
+        top: 10%;
+
+        &:after,
+        &:before {
+            top: 10%;
+        }
+    }
+    [data-position="bottom"] {
+        bottom: 10%;
+
+        &:after,
+        &:before {
+            bottom: 10%;
+        }
+    }
+    [data-position="left"] {
+        left: 10%;
+
+        &:after,
+        &:before {
+            left: 10%;
+        }
+    }
+    [data-position="right"] {
+        right: 10%;
+
+        &:after,
+        &:before {
+            right: 10%;
+        }
+    }
+
+    .dialog__type button {
+        background: $darkpurple;
+        border: 2px solid transparent;
+        color: $offwhite;
+        line-height: 30px;
+        margin: 4px;
+        width: 100px;
+        transition: background .3s;
+
+        &:hover {
+            background: $pink;
+        }
+
+        &.core-selected {
+            background: $pink;
+            border: 2px solid $offwhite;
+        }
+    }
+
+    [class^="dialog__"] [notap] button {
+        background: transparent;
+        border: 2px solid $palepurple;
+        color: $palepurple;
+    }
+
+    .dialog__position [notap] button:after,
+    .dialog__position [notap] button:before {
+        border-color: $palepurple;
+    }
+
+    .section__pink{
+        overflow: auto;
+    }
+
+    button[name="dialog"] {
+        background: $gray;
+        border: 2px solid $offwhite;
+        border: 0;
+        color: $offwhite;
+        padding: 14px 20px;
+        margin-top: 10px;
+        text-transform: uppercase;
+        transition: background .3s;
+        &:hover {
+            background: $darkpurple;
+        }
+    }
+
+    .icon-lab {
+        &:before {
+            margin-right: 6px;
+        }
+    }
+}
+
+demo-dialog-content {
+    box-sizing: border-box;
+    color: $offwhite;
+    padding: 18px;
+
+    &::shadow {
+        p {
+            margin: 0;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        button {
+            background: $gray;
+            border: 2px solid $offwhite;
+            border: 0;
+            color: $offwhite;
+            cursor: pointer;
+            padding: 14px 20px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            transition: background .3s;
+
+            &:hover {
+                background: $darkpurple;
+            }
+        }
+
+    }
+}
+
+akyral-dialog {
+    background: $darkpurple;
+
+    &::shadow #modal {
+        background: $pink;
+    }
+}
+akyral-dialog[type="takeover"] {
+    background: $pink !important;
+}
 
 // layout
 div[main][demo="layout"]{

@@ -198,7 +198,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', [
         'build',
-        'optimize',
+        // 'optimize',
         'connect:livereload',
         'watch'
     ]);
