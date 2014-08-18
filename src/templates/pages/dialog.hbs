@@ -8,7 +8,7 @@ components: { name: dialog }
 
 <h2>[ Dialog ]  <span>Configuration</span></h2>
 
-<section>
+<section class="section">
     <p>
         You can configure a dialog by setting the type, position and pinned with the toggles below.
         Clicking on the <span class="icon-lab">show dialog</span> button will display the current configuration. The current
@@ -27,7 +27,7 @@ components: { name: dialog }
     </div>
 </section>
 
-<section>
+<section class="section">
     <h3>Position</h3>
     <p>
         Setting a position will set the visual effect's starting position.
@@ -43,7 +43,7 @@ components: { name: dialog }
     </div>
 </section>
 
-<section>
+<section class="section">
     <h3>Pinned</h3>
     <p>
         Setting the pinned attribute will pin the element to that side on the viewport.
@@ -61,8 +61,7 @@ components: { name: dialog }
 </section>
 
 <a name="review"></a>
-
-<section class="section__pink">
+<section class="section__review">
     <h3>Config Review</h3>
     <demo-dialog-configuration type="takeover"></demo-dialog-configuration>
     <button name="dialog" class="icon-lab">show dialog</button>
@@ -70,12 +69,8 @@ components: { name: dialog }
 
 {{> install}}
 
-<section>
-    <h3>Styling</h3>
-    TBD
-</section>
 
-<section class="section__palepurple">
+<section class="section__gotchas">
     <h3 class="icon-chat">Helpful Gotchas</h3>
     <p>
         <b>{{componentName}}</b> should be placed immediately inside the body tag, this will allow
@@ -83,6 +78,11 @@ components: { name: dialog }
     </p>
 </section>
 
+<a name="styling"></a>
+<section class="section">
+    <h3>Styling</h3>
+    TBD
+</section>
 
 <a name="documentation"></a>
 <akyral-docs component="assets/components/{{componentName}}/{{componentName}}.html"></akyral-docs>

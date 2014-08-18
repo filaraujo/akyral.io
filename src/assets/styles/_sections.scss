@@ -1,0 +1,48 @@
+.section {
+    margin: 40px auto;
+    padding: 0 40px;
+
+    p {
+        margin-top: 0;
+    }
+}
+
+.section__gotchas,
+.section__pastelpurple {
+    background: $pastelpurple;
+    color: $darkpurple;
+    padding: 40px;
+    margin: 0;
+
+    h3 {
+        color: $darkpurple;
+    }
+}
+
+.section__inverted,
+.section__install {
+    background: $darkpurple;
+    color: $beige;
+    padding: 40px;
+    margin-bottom: 0;
+
+    h3 {
+        color: $pink;
+    }
+}
+
+.section__pink,
+.section__review {
+    background: $pink;
+    color: $offwhite;
+    padding: 40px;
+    margin-bottom: 0;
+
+    h3 {
+        font-weight: 300;
+    }
+
+    + section {
+        margin-top: 0;
+    }
+}

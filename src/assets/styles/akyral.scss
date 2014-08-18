@@ -15,6 +15,8 @@ $green: #A6A67F;
 @import 'header';
 @import 'footer';
 @import 'drawer';
+@import 'sections';
+
 
 
 html,
@@ -81,51 +83,36 @@ div[main]{
         margin-right: 7px;
     }
 
-    section {
-        margin: 40px auto;
-        padding: 0 40px;
-
-        p {
-            margin-top: 0;
-        }
-
-        &.section__palepurple {
-            background: $pastelpurple;
-            color: $darkpurple;
-            padding: 40px;
-            margin: 0;
-
-            h3 {
-                color: $darkpurple;
-            }
-        }
-
-        &.section__inverted {
-            background: $darkpurple;
-            color: $beige;
-            padding: 40px;
-            margin-bottom: 0;
-
-            h3 {
-                color: $pink;
-            }
-        }
-
-        &.section__pink{
-            background: $pink;
-            color: $offwhite;
-            padding: 40px;
-            margin-bottom: 0;
-
-            h3 {
-                font-weight: 300;
-            }
-
-            + section {
-                margin-top: 0;
-            }
-        }
-    }
+    // section {
+    //     margin: 40px auto;
+    //     padding: 0 40px;
+    //
+    //     p {
+    //         margin-top: 0;
+    //     }
+    //
+    //     &.section__palepurple {
+    //         background: $pastelpurple;
+    //         color: $darkpurple;
+    //         padding: 40px;
+    //         margin: 0;
+    //
+    //         h3 {
+    //             color: $darkpurple;
+    //         }
+    //     }
+    //
+    //     &.section__inverted {
+    //         background: $darkpurple;
+    //         color: $beige;
+    //         padding: 40px;
+    //         margin-bottom: 0;
+    //
+    //         h3 {
+    //             color: $pink;
+    //         }
+    //     }
+    // }
 }
 
 .text-centered {
@@ -198,13 +185,18 @@ div[main][demo] {
 //dialog
 div[main][demo="dialog"]{
 
-    .section__pink demo-dialog-configuration {
-        &::shadow code {
-            color: $darkpurple;
-            font-size: 1.3em;
-            font-weight: 700;
+    .section__review {
+        overflow: auto;
+
+        demo-dialog-configuration {
+            &::shadow code {
+                color: $darkpurple;
+                font-size: 1.3em;
+                font-weight: 700;
+            }
         }
     }
+
     .dialog__pinned,
     .dialog__position {
         background: $pastelpurple;
@@ -399,10 +391,6 @@ div[main][demo="dialog"]{
     .dialog__position [notap] button:after,
     .dialog__position [notap] button:before {
         border-color: $palepurple;
-    }
-
-    .section__pink{
-        overflow: auto;
     }
 
     button[name="dialog"] {

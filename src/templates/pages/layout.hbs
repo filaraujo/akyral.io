@@ -6,7 +6,7 @@ components: { name: layout }
 ---
 
 <h2>[ Drawer ]  <span>Configuration</span></h2>
-<section>
+<section class="section">
     <h3>Position</h3>
     <p>
         Position will define where the sidebar is positioned.
@@ -17,7 +17,7 @@ components: { name: layout }
     </div>
 </section>
 
-<section>
+<section class="section">
     <h3>Type</h3>
     <p>
         Type will define the visual effect given to the drawer on exiting and entering.
@@ -32,9 +32,17 @@ components: { name: layout }
     </div>
 </section>
 
+<a name="review"></a>
+<section class="section__review">
+    <h3>Config Review</h3>
+    <demo-dialog-configuration type="takeover"></demo-dialog-configuration>
+    <button name="dialog" class="icon-lab">show dialog</button>
+</section>
+
 {{> install}}
 
-<section class="section__palepurple">
+<a name="gotchas"></a>
+<section class="section__gotchas">
     <h3 class="icon-chat">Helpful Gotchas</h3>
     <p>
         <b>{{componentName}}</b> should be placed immediately inside the body tag, this will allow

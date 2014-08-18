@@ -1,12 +1,27 @@
----
-layout: src/templates/layouts/blank.hbs
----
+<!DOCTYPE html>
+<html lang="en">
 
-<akyral-layout>
-    {{> drawer }}
-    <div main {{#isnt page.components undefined}}demo="{{page.components.name}}"{{/isnt}} {{#isnt pageType undefined}}page="{{pageType}}"{{/isnt}}>
-        {{> header}}
-        {{> body }}
-        {{> footer }}
-    </div>
-</akyral-layout>
+<head>
+    <title>{{site.title}}</title>
+    {{> meta }}
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{assets}}/styles/akyral.css">
+    <script src="{{assets}}/components/platform/platform.js"></script>
+    <link rel="import" href="{{assets}}/components/akyral-app/akyral-app.html">
+</head>
+
+<body unresolved>
+
+    <akyral-layout>
+        {{> drawer }}
+        <div main {{#isnt page.components undefined}}demo="{{page.components.name}}"{{/isnt}} {{#isnt pageType undefined}}page="{{pageType}}"{{/isnt}}>
+            {{> header}}
+            {{> body }}
+            {{> footer }}
+        </div>
+    </akyral-layout>
+
+    <script src="{{assets}}/scripts/akyral.js"></script>
+</body>
+
+</html>
