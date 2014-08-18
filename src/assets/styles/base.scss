@@ -10,11 +10,14 @@ $green: #A6A67F;
 
 
 
-@import 'normalize';
-@import 'icons';
-@import 'header';
-@import 'footer';
-@import 'drawer';
+@import 'partials/normalize';
+@import 'partials/buttons';
+@import 'partials/icons';
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/drawer';
+@import 'partials/sections';
+
 
 
 html,
@@ -61,9 +64,6 @@ b {
     font-weight: 400;
 }
 
-.icon {
-    font-family: 'icon';
-}
 
 
 div[main]{
@@ -80,50 +80,21 @@ div[main]{
     h3:before {
         margin-right: 7px;
     }
+}
 
-    section {
-        margin: 40px auto;
+div[main][demo] {
+    h2 {
+        color: $pink;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 40px 0 0 0;
         padding: 0 40px;
+        text-transform: uppercase;
 
-        p {
-            margin-top: 0;
-        }
-
-        &.section__palepurple {
-            background: $pastelpurple;
-            color: $darkpurple;
-            padding: 40px;
-            margin: 0;
-
-            h3 {
-                color: $darkpurple;
-            }
-        }
-
-        &.section__inverted {
-            background: $darkpurple;
-            color: $beige;
-            padding: 40px;
-            margin-bottom: 0;
-
-            h3 {
-                color: $pink;
-            }
-        }
-
-        &.section__pink{
-            background: $pink;
-            color: $offwhite;
-            padding: 40px;
-            margin-bottom: 0;
-
-            h3 {
-                font-weight: 300;
-            }
-
-            + section {
-                margin-top: 0;
-            }
+        span {
+            font-size: 17px;
+            color: $lightpink;
+            margin-left: 3px;
         }
     }
 }

@@ -5,7 +5,14 @@
     <title>{{site.title}}</title>
     {{> meta }}
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{assets}}/styles/akyral.css">
+
+    {{#is page.components.name undefined}}
+        <link rel="stylesheet" href="{{assets}}/styles/index.css">
+    {{/is}}
+
+    {{#isnt page.components.name undefined}}
+        <link rel="stylesheet" href="{{assets}}/styles/{{page.components.name}}.css">
+    {{/isnt}}
     <script src="{{assets}}/components/platform/platform.js"></script>
     <link rel="import" href="{{assets}}/components/akyral-app/akyral-app.html">
 </head>

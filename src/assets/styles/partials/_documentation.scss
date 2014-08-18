@@ -1,0 +1,115 @@
+akyral-docs {
+    background: transparent;
+    padding: 40px;
+    margin-bottom: 6px;
+
+
+    &::shadow {
+        * {
+            color: $darkpurple;
+        }
+
+        context-free-parser + h2 {
+            font-size: 22px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        code,
+        pre {
+            background: $pastelpurple;
+            overflow: auto;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        pre {
+            padding: 10px;
+
+            code {
+                background: transparent;
+            }
+        }
+
+        p code,
+        .row code {
+            background: transparent;
+            color: $pink;
+            padding: 4px;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0 20px;
+            text-transform: uppercase;
+        }
+
+        .name {
+            float: left;
+        }
+
+        .info {
+            margin-left: 150px;
+        }
+
+        .row {
+            margin: 10px;
+            border-bottom: 1px solid $pastelpurple;
+            min-height: 40px;
+
+            &:last-child {
+                border: 0;
+            }
+        }
+    }
+}
+
+core-component-page {
+    height: auto;
+    font-family: 'Roboto Slab';
+
+    &::shadow core-toolbar {
+        display: none;
+    }
+
+    &::shadow core-doc-viewer::shadow core-doc-page::shadow core-header-panel {
+        position: static !important;
+
+        .main {
+            margin: 0;
+            padding: 0;
+
+            h1,
+            h1 + p,
+            .top .ntitle {
+                display: none;
+            }
+
+            .ntitle {
+                font-size: 16px;
+                padding: 10px;
+                text-transform: uppercase;
+            }
+
+            h2 {
+                font-size: 16px;
+                font-weight: 400;
+                margin-top: 20px;
+                text-transform: uppercase;
+            }
+        }
+
+        pre {
+            font-size: 14px;
+            overflow: auto;
+        }
+
+        &::shadow #dropShadow {
+            display: none;
+        }
+
+        &::shadow #outerContainer {
+            position: static;
+        }
+    }
+}

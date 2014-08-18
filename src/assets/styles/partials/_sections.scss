@@ -28,6 +28,15 @@
 
     h3 {
         color: $pink;
+        margin-top: 0;
+    }
+
+    code {
+        background: $gray;
+        color: $offwhite;
+        display: block;
+        font-weight: 300;
+        padding: 20px;
     }
 }
 
