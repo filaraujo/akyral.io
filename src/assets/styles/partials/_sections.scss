@@ -55,3 +55,12 @@
         margin-top: 0;
     }
 }
+
+.section__review {
+
+    demo-configuration::shadow code {
+        color: $darkpurple;
+        font-size: 1.3em;
+        font-weight: 700;
+    }
+}

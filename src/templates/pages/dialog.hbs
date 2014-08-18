@@ -63,7 +63,7 @@ components: { name: dialog }
 <a name="review"></a>
 <section class="section__review">
     <h3>Config Review</h3>
-    <demo-dialog-configuration type="takeover"></demo-dialog-configuration>
+    <demo-configuration type="takeover"></demo-configuration>
     <button class="button__preview icon-lab">show dialog</button>
 </section>
 
@@ -114,7 +114,7 @@ components: { name: dialog }
 </polymer-element>
 
 
-<polymer-element name="demo-dialog-configuration" attributes="type position pinned">
+<polymer-element name="demo-configuration" attributes="type position pinned">
     <template>
         <style>
             :host {
@@ -154,7 +154,7 @@ components: { name: dialog }
 
     </template>
     <script>
-        Polymer('demo-dialog-configuration', {
+        Polymer('demo-configuration', {
             position: null,
             pinned: null
         });
@@ -165,7 +165,7 @@ components: { name: dialog }
     (function() {
         var el = document.createElement('akyral-dialog'),
             demoDialog = document.createElement('demo-dialog-content'),
-            demoConfig = document.querySelector('demo-dialog-configuration'),
+            demoConfig = document.querySelector('demo-configuration'),
             typeSelector = document.querySelector('core-selector[data-attribute="type"]'),
             positionSelector = document.querySelector('core-selector[data-attribute="position"]'),
             pinnedSelector = document.querySelector('core-selector[data-attribute="pinned"]');

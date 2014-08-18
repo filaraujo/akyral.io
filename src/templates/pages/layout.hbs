@@ -6,16 +6,6 @@ components: { name: layout }
 ---
 
 <h2>[ Drawer ]  <span>Configuration</span></h2>
-<section class="section">
-    <h3>Position</h3>
-    <p>
-        Position will define where the sidebar is positioned.
-    </p>
-    <div>
-        <a href="#" data-position="left">left</a>
-        <a href="#" data-position="right">right</a>
-    </div>
-</section>
 
 <section class="section">
     <h3>Type</h3>
@@ -24,18 +14,34 @@ components: { name: layout }
         This value only applies to viewports smaller than 944 pixels
         <span class="resize">, so go ahead and resize down your browser</span>.
     </p>
-    <div>
-        <a href="#" data-type="pan">pan</a>
-        <a href="#" data-type="parallax">parallax</a>
-        <a href="#" data-type="reveal">reveal</a>
-        <a href="#" data-type="slide">slide</a>
+    <div class="demo__type">
+        <core-selector data-attribute="type" selected="1" selectedClass="button__config--selected">
+            <button class="button__config" data-type="pan">pan</button>
+            <button class="button__config" data-type="parallax">parallax</button>
+            <button class="button__config" data-type="reveal">reveal</button>
+            <button class="button__config" data-type="slide">slide</button>
+        </core-selector>
+    </div>
+</section>
+
+<section class="section">
+    <h3>Position</h3>
+    <p>
+        Position will define on what side the sidebar is positioned in the viewport.
+    </p>
+    <button class="button__preview icon-lab">toggle sidebar</button>
+    <div class="demo__position">
+        <core-selector data-attribute="position" selected="0" selectedClass="button__config--selected">
+            <button class="button__config" data-position="left">left</button>
+            <button class="button__config" data-position="right">right</button>
+        </core-selector>
     </div>
 </section>
 
 <a name="review"></a>
 <section class="section__review">
     <h3>Config Review</h3>
-    <demo-dialog-configuration type="takeover"></demo-dialog-configuration>
+    <demo-configuration type="parallax" position="left"></demo-configuration>
     <button class="button__preview icon-lab">toggle sidebar</button>
 </section>
 
@@ -54,71 +60,69 @@ components: { name: layout }
 <akyral-docs component="assets/components/{{componentName}}/{{componentName}}.html"></akyral-docs>
 
 
+<polymer-element name="demo-configuration" attributes="type position">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        This page's layout is currently configured with <code>\{{type}}</code> positioned
+        drawer that is positioned on the <code>\{{position}}</code>
+
+    </template>
+    <script>
+        Polymer('demo-configuration', {
+            position: null,
+            type: null
+        });
+    </script>
+</polymer-element>
+
+
 <script charset="utf-8">
     (function(){
-        var drawerInner = document.querySelector('[drawer]').innerHTML,
-            mainInner = document.querySelector('[main]').innerHTML,
+        var sidebars = {
+                position: ['left', 'right'],
+                type: ['pan', 'parallax', 'reveal', 'slide']
+            },
             ui = document.querySelector('akyral-layout'),
-            currentType = 'pan',
-            currentPosition = 'left';
+            previewBtns = ui.querySelectorAll('.button__preview'),
+            demoConfig = document.querySelector('demo-configuration');
 
-        function bindEvents(){
-            var anchors = document.querySelectorAll('[main] a');
+        ui.querySelector('core-selector[data-attribute="position"]')
+            .addEventListener('core-activate', setProperty('position'));
 
-            [].forEach.call(anchors, function(anchor){
-                anchor.addEventListener('click', createNewUi);
+        ui.querySelector('core-selector[data-attribute="type"]')
+            .addEventListener('core-activate', setProperty('type'));
+
+        [].forEach.call(previewBtns, function(button){
+            button.addEventListener('click', function(){
+                ui.toggleDrawer();
             });
+        });
 
+        function setProperty(prop){
+            return function(e){
+                var drawer = ui.shadowRoot.querySelector('#drawer'),
+                    currentProp = this.querySelectorAll('button')[this.selected].getAttribute('data-'+prop);
 
-            document.querySelector('a[data-type="'+currentType+'"]').classList.add('active');
-            document.querySelector('a[data-position="'+currentPosition+'"]').classList.add('active');
-        }
+                drawer.style.display = 'none';
 
-        function createNewUi(e){
-            var ui = document.querySelector('akyral-layout'),
-                drawer = document.createElement('div'),
-                main = document.createElement('div'),
-                newUi = new UiLayout();
+                sidebars[prop].forEach(function(p){
+                    drawer.removeAttribute(p);
+                })
 
-            drawer.setAttribute('drawer', '');
-            drawer.innerHTML = drawerInner;
+                drawer.setAttribute(currentProp, '');
+                demoConfig.setAttribute(prop, currentProp);
 
-            main.setAttribute('main', '');
-            main.setAttribute('demo', 'layout');
-            main.innerHTML = mainInner;
+                ga('send', 'event', 'akyral-layout', 'set '+prop, currentProp);
 
-            main.querySelector('button[name="menu"]').addEventListener('click', function(){
-                document.querySelector('akyral-layout').toggleDrawer();
-            });
-
-            newUi.appendChild(drawer);
-            newUi.appendChild(main);
-
-            if(this.hasAttribute('data-type')){
-                currentType = this.getAttribute('data-type');
+                // prevent FOC
+                setTimeout(function(){
+                    drawer.style.display = '';
+                }, 300);
             }
-
-            if(this.hasAttribute('data-position')){
-                currentPosition = this.getAttribute('data-position');
-            }
-
-            drawer.setAttribute(currentPosition,'');
-            drawer.setAttribute(currentType,'');
-
-            ga('send', 'event', 'akyral-layout', 'set type and position', currentPosition+' '+currentType);
-
-            document.body.removeChild(ui);
-            document.body.appendChild(newUi);
-
-            ui = document.querySelector('akyral-layout');
-
-            bindEvents();
-
-            e.preventDefault();
-
-            return false;
         }
-
-        bindEvents();
     }());
 </script>

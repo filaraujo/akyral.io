@@ -2,18 +2,6 @@
 @import 'partials/documentation';
 
 
-.section__review {
-    overflow: auto;
-
-    demo-dialog-configuration {
-        &::shadow code {
-            color: $darkpurple;
-            font-size: 1.3em;
-            font-weight: 700;
-        }
-    }
-}
-
 .dialog__type .button__config {
     margin: 4px;
     width: 100px;
