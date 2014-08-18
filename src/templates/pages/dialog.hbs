@@ -16,13 +16,13 @@ components: { name: dialog }
     </p>
     <h3>Type</h3>
     <div class="dialog__type">
-        <core-selector data-attribute="type" selected="0">
-            <button data-type="takeover">takeover</button>
-            <button data-type="lift">lift</button>
-            <button data-type="drop">drop</button>
-            <button data-type="flip">flip</button>
-            <button data-type="slide">slide</button>
-            <button data-type="swing">swing</button>
+        <core-selector data-attribute="type" selected="0" selectedClass="button__config--selected">
+            <button class="button__config" data-type="takeover">takeover</button>
+            <button class="button__config" data-type="lift">lift</button>
+            <button class="button__config" data-type="drop">drop</button>
+            <button class="button__config" data-type="flip">flip</button>
+            <button class="button__config" data-type="slide">slide</button>
+            <button class="button__config" data-type="swing">swing</button>
         </core-selector>
     </div>
 </section>
@@ -32,13 +32,13 @@ components: { name: dialog }
     <p>
         Setting a position will set the visual effect's starting position.
     </p>
-    <button name="dialog" class="icon-lab">show dialog</button>
+    <button class="button__preview icon-lab">show dialog</button>
     <div class="dialog__position">
-        <core-selector data-attribute="position" notap="true">
-            <button data-position="top">top</button>
-            <button data-position="left">left</button>
-            <button data-position="bottom">bottom</button>
-            <button data-position="right">right</button>
+        <core-selector data-attribute="position" notap="true" selectedClass="button__config--selected">
+            <button class="button__config" data-position="top">top</button>
+            <button class="button__config" data-position="left">left</button>
+            <button class="button__config" data-position="bottom">bottom</button>
+            <button class="button__config" data-position="right">right</button>
         </core-selector>
     </div>
 </section>
@@ -49,13 +49,13 @@ components: { name: dialog }
         Setting the pinned attribute will pin the element to that side on the viewport.
         This will override the position attribute.
     </p>
-    <button name="dialog" class="icon-lab">show dialog</button>
+    <button class="button__preview icon-lab">show dialog</button>
     <div class="dialog__pinned">
-        <core-selector data-attribute="pinned" notap="true">
-            <button data-pinned="top">top</button>
-            <button data-pinned="left">left</button>
-            <button data-pinned="bottom">bottom</button>
-            <button data-pinned="right">right</button>
+        <core-selector data-attribute="pinned" notap="true" selectedClass="button__config--selected">
+            <button class="button__config" data-pinned="top">top</button>
+            <button class="button__config" data-pinned="left">left</button>
+            <button class="button__config" data-pinned="bottom">bottom</button>
+            <button class="button__config" data-pinned="right">right</button>
         </core-selector>
     </div>
 </section>
@@ -64,7 +64,7 @@ components: { name: dialog }
 <section class="section__review">
     <h3>Config Review</h3>
     <demo-dialog-configuration type="takeover"></demo-dialog-configuration>
-    <button name="dialog" class="icon-lab">show dialog</button>
+    <button class="button__preview icon-lab">show dialog</button>
 </section>
 
 {{> install}}

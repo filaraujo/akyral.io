@@ -11,6 +11,7 @@ $green: #A6A67F;
 
 
 @import 'normalize';
+@import 'buttons';
 @import 'icons';
 @import 'header';
 @import 'footer';
@@ -197,38 +198,56 @@ div[main][demo="dialog"]{
         }
     }
 
+    .dialog__type .button__config {
+        margin: 4px;
+        width: 100px;
+    }
+
     .dialog__pinned,
     .dialog__position {
         background: $pastelpurple;
         height: 300px;
         position: relative;
         width: 100%;
-    }
-    .dialog__pinned {
 
-        button {
-            background: $darkpurple;
-            border: 2px solid transparent;
-            color: $offwhite;
+        .button__config {
             line-height: 70px;
-            text-align: center;
             position: absolute;
             width: 100px;
-            transition: background .3s;
-
-            &:hover {
-                background: $pink;
-                border: 2px solid $offwhite;
-            }
-
-            &.core-selected {
-                background: $pink;
-                border: 2px solid $offwhite;
-                font-weight: 400;
-            }
         }
 
+        .button__config--selected {
+            z-index: 1;
+            font-weight: 400;
+        }
+
+        [notap] .button__config {
+            background: transparent;
+            border: 2px solid $palepurple;
+            color: $palepurple;
+        }
     }
+
+    .dialog__position .button__config {
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+        }
+
+        &:hover:after,
+        &:hover:before,
+        &.button__config--selected:after,
+        &.button__config--selected:before {
+            border-color: $offwhite;
+        }
+    }
+
+    .dialog__position [notap] button:after,
+    .dialog__position [notap] button:before {
+        border-color: $palepurple;
+    }
+
     [data-pinned="top"] {
         top: 0;
     }
@@ -252,48 +271,6 @@ div[main][demo="dialog"]{
         transform: translate3d(0,-50%,0);
     }
 
-    .dialog__position button {
-        background: $darkpurple;
-        border: 0;
-        color: $offwhite;
-        display: inline-block;
-        line-height: 70px;
-        padding: 0;
-        position: absolute;
-        width: 100px;
-        transition: background .3s;
-        border: 2px solid transparent;
-
-        &:hover {
-            background: $pink;
-            border: 2px solid $offwhite;
-
-            &:after,
-            &:before {
-                border-color: $offwhite;
-                transition: border .3s;
-            }
-        }
-
-        &.core-selected {
-            background: $pink;
-            border-color: $offwhite;
-            z-index: 1;
-            border: 2px solid $offwhite;
-            font-weight: 400;
-
-            &:after,
-            &:before {
-                border-color: $offwhite;
-            }
-        }
-
-        &:after,
-        &:before {
-            content: '';
-            position: absolute;
-        }
-    }
     [data-position="top"],
     [data-position="bottom"] {
         left: 50%;
@@ -360,56 +337,6 @@ div[main][demo="dialog"]{
         &:after,
         &:before {
             right: 10%;
-        }
-    }
-
-    .dialog__type button {
-        background: $darkpurple;
-        border: 2px solid transparent;
-        color: $offwhite;
-        line-height: 30px;
-        margin: 4px;
-        width: 100px;
-        transition: background .3s;
-
-        &:hover {
-            background: $pink;
-        }
-
-        &.core-selected {
-            background: $pink;
-            border: 2px solid $offwhite;
-        }
-    }
-
-    [class^="dialog__"] [notap] button {
-        background: transparent;
-        border: 2px solid $palepurple;
-        color: $palepurple;
-    }
-
-    .dialog__position [notap] button:after,
-    .dialog__position [notap] button:before {
-        border-color: $palepurple;
-    }
-
-    button[name="dialog"] {
-        background: $gray;
-        border: 2px solid $offwhite;
-        border: 0;
-        color: $offwhite;
-        padding: 14px 20px;
-        margin-top: 10px;
-        text-transform: uppercase;
-        transition: background .3s;
-        &:hover {
-            background: $darkpurple;
-        }
-    }
-
-    .icon-lab {
-        &:before {
-            margin-right: 6px;
         }
     }
 }

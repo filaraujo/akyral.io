@@ -1,0 +1,37 @@
+.button__config {
+    background: $darkpurple;
+    border: 2px solid transparent;
+    color: $offwhite;
+    line-height: 30px;
+    transition: background .3s;
+
+    &:hover {
+        background: $pink;
+        border: 2px solid $offwhite;
+    }
+}
+
+.button__config--selected {
+    background: $pink;
+    border: 2px solid $offwhite;
+}
+
+
+.button__preview {
+    background: $gray;
+    border: 2px solid $offwhite;
+    border: 0;
+    color: $offwhite;
+    padding: 14px 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    transition: background .3s;
+
+    &:hover {
+        background: $darkpurple;
+    }
+
+    &[class*=icon]:before {
+        margin-right: 6px;
+    }
+}
