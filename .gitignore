@@ -18,6 +18,8 @@ node_modules
 *.sublime-*
 dist
 .grunt
-src/assets/components/*
-!src/assets/components/akyral-docs**/*
+src/assets/components/**/*
+!src/assets/components
 !src/assets/components/akyral-app**/*
+!src/assets/components/akyral-docs**/*
+.tmp

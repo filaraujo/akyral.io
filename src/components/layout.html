@@ -1,8 +1,8 @@
 ---
+component: { name: layout, package: akyral-layout, type: ui }
+page: layout
+template: base.html
 title: Layout
-headerType: compressed
-componentName: akyral-layout
-components: { name: layout }
 ---
 
 <h2>[ Drawer ]  <span>Configuration</span></h2>
@@ -45,7 +45,7 @@ components: { name: layout }
     <button class="button__preview icon-lab">toggle sidebar</button>
 </section>
 
-{{> install}}
+{% include "templates/partials/install.html" %}
 
 <a name="gotchas"></a>
 <section class="section__gotchas">
@@ -56,9 +56,7 @@ components: { name: layout }
     </p>
 </section>
 
-<a name="documentation"></a>
-<akyral-docs component="assets/components/{{componentName}}/{{componentName}}.html"></akyral-docs>
-
+{% include "templates/partials/documentation.html" %}
 
 <polymer-element name="demo-configuration" attributes="type position">
     <template>
@@ -67,8 +65,8 @@ components: { name: layout }
                 display: block;
             }
         </style>
-        This page's layout is currently configured with <code>\{{type}}</code> positioned
-        drawer that is positioned on the <code>\{{position}}</code>
+        This page's layout is currently configured with <code>{{type}}</code> positioned
+        drawer that is positioned on the <code>{{position}}</code>
 
     </template>
     <script>

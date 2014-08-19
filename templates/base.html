@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "partials/meta.html" %}
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+
+    {% if component.name %}
+        <link rel="stylesheet" href="{{pathRoot}}assets/styles/{{component.name}}.css">
+    {% else %}
+        <link rel="stylesheet" href="{{pathRoot}}assets/styles/index.css">
+    {% endif %}
+
+    <script src="{{pathRoot}}assets/components/platform/platform.js"></script>
+    <link rel="import" href="{{pathRoot}}assets/components/akyral-app/akyral-app.html">
+</head>
+
+<body unresolved>
+
+    <akyral-layout>
+        {% include "partials/drawer.html" %}
+        <div main {% if component.name%}demo="{{component.name}}"{% endif %} {% if component.pageType%}page="{{component.pageType}}"{% endif %}>
+            {% include "partials/header.html" %}
+            {% autoescape false %}{{ contents }}{% endautoescape %}
+            {% include "partials/footer.html" %}
+        </div>
+    </akyral-layout>
+
+    <script src="{{pathRoot}}assets/scripts/akyral.js"></script>
+</body>
+
+</html>

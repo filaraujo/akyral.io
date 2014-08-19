@@ -1,9 +1,8 @@
 ---
+component: { name: dialog, package: akyral-dialog, type: ui }
+page: dialog
+template: base.html
 title: Dialog
-headerType: compressed
-componentName: akyral-dialog
-components: { name: dialog }
-
 ---
 
 <h2>[ Dialog ]  <span>Configuration</span></h2>
@@ -67,7 +66,7 @@ components: { name: dialog }
     <button class="button__preview icon-lab">show dialog</button>
 </section>
 
-{{> install}}
+{% include "templates/partials/install.html" %}
 
 
 <section class="section__gotchas">
@@ -84,8 +83,7 @@ components: { name: dialog }
     TBD
 </section>
 
-<a name="documentation"></a>
-<akyral-docs component="assets/components/{{componentName}}/{{componentName}}.html"></akyral-docs>
+{% include "templates/partials/documentation.html" %}
 
 <polymer-element name="demo-dialog-content">
   <template>
@@ -121,31 +119,31 @@ components: { name: dialog }
                 display: block;
             }
         </style>
-        This page is currently configured containing a <code>\{{type}}</code> dialog&nbsp;
+        This page is currently configured containing a <code>{{type}}</code> dialog&nbsp;
 
-        <template if="\{{type === 'takeover'}}">
+        <template if="{{type === 'takeover'}}">
             . This type does not support position or pinned configuration.
         </template>
 
-        <template if="\{{type !== 'takeover'}}">
-            <template if="\{{!position && !pinned}}">
+        <template if="{{type !== 'takeover'}}">
+            <template if="{{!position && !pinned}}">
                 without a position
             </template>
-            <template if="\{{position !== null}}">
-                with a postion of <code>\{{position}}</code>
+            <template if="{{position !== null}}">
+                with a postion of <code>{{position}}</code>
             </template>
 
 
-            <template if="\{{pinned !== null}}">
-                with a pinned of <code>\{{pinned}}</code>
+            <template if="{{pinned !== null}}">
+                with a pinned of <code>{{pinned}}</code>
             </template>
 
-            <template if="\{{type !== 'swing' && type !== 'slide'}}">
+            <template if="{{type !== 'swing' && type !== 'slide'}}">
                 . This type does not support pinned configuration
             </template>
 
-            <template if="\{{type === 'swing' || type === 'slide'}}">
-                <template if="\{{!pinned && !position}}">
+            <template if="{{type === 'swing' || type === 'slide'}}">
+                <template if="{{!pinned && !position}}">
                     &nbsp;or a pinned configuration
                 </template>
             </template>
@@ -224,7 +222,7 @@ components: { name: dialog }
         positionSelector.addEventListener('core-activate', setPosition);
         pinnedSelector.addEventListener('core-activate', setPinned);
 
-        [].forEach.call(document.querySelectorAll('button[name="dialog"]'),function(button){
+        [].forEach.call(document.querySelectorAll('button[class*="button__preview"]'),function(button){
             button.addEventListener('click', function(){
                 ga('send', 'event', 'akyral-dialog', 'open dialog');
                 el.toggle();
