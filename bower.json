@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
+    "akyral-element-query": "~0.1.0"
   },
   "devDependencies": {
     "polymer": "~0.3.4",
