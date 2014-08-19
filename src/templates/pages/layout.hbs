@@ -107,7 +107,8 @@ components: { name: layout }
                 var drawer = ui.shadowRoot.querySelector('#drawer'),
                     currentProp = this.querySelectorAll('button')[this.selected].getAttribute('data-'+prop);
 
-                drawer.style.display = 'none';
+                drawer.classList.add('adjusting');
+                console.log(drawer)
 
                 sidebars[prop].forEach(function(p){
                     drawer.removeAttribute(p);
@@ -120,7 +121,7 @@ components: { name: layout }
 
                 // prevent FOC
                 setTimeout(function(){
-                    drawer.style.display = '';
+                    drawer.classList.remove('adjusting');
                 }, 300);
             }
         }

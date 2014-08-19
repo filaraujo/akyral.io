@@ -102,11 +102,18 @@ a[data-position]:after {
 }
 
 .resize {
+    font-weight: 700;
     display: none;
 }
 
 @media (min-width: 944px){
     .resize {
         display: inline;
+    }
+}
+
+@media (max-width: 944px){
+    akyral-layout::shadow #drawer.adjusting {
+        display: none;
     }
 }
