@@ -260,31 +260,31 @@
                 display: block;
             }
         </style>
-        This page is currently configured containing a <code></code> dialog&nbsp;
+        This page is currently configured containing a <code>{{type}}</code> dialog&nbsp;
 
-        <template if="false">
+        <template if="{{type === 'takeover'}}">
             . This type does not support position or pinned configuration.
         </template>
 
-        <template if="true">
-            <template if="true">
+        <template if="{{type !== 'takeover'}}">
+            <template if="{{!position && !pinned}}">
                 without a position
             </template>
-            <template if="false">
-                with a postion of <code></code>
+            <template if="{{position !== null}}">
+                with a postion of <code>{{position}}</code>
             </template>
 
 
-            <template if="false">
-                with a pinned of <code></code>
+            <template if="{{pinned !== null}}">
+                with a pinned of <code>{{pinned}}</code>
             </template>
 
-            <template if="true">
+            <template if="{{type !== 'swing' && type !== 'slide'}}">
                 . This type does not support pinned configuration
             </template>
 
-            <template if="false">
-                <template if="true">
+            <template if="{{type === 'swing' || type === 'slide'}}">
+                <template if="{{!pinned && !position}}">
                     &nbsp;or a pinned configuration
                 </template>
             </template>
@@ -337,6 +337,7 @@
 
             pinnedSelector.setAttribute('notap', true);
             el.removeAttribute('pinned');
+            demoConfig.removeAttribute('pinned');
         }
 
         function setPosition(){
