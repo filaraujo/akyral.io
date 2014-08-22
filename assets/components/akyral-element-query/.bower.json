@@ -1,0 +1,43 @@
+{
+  "name": "akyral-element-query",
+  "version": "0.1.0",
+  "authors": [
+    "Filipe Araujo <filipe.alves.araujo@gmail.com>"
+  ],
+  "description": "A utility element that implements element queries to its parent node.",
+  "keywords": [
+    "akyral",
+    "element-query",
+    "element-queries",
+    "media-query",
+    "media-queries",
+    "polymer",
+    "responsive",
+    "web-components"
+  ],
+  "main": "akyral-element-query.html",
+  "license": "MIT",
+  "homepage": "https://github.com/filaraujo/akyral-element-query/",
+  "ignore": [
+    "**/.*",
+    "**/*.scss",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.5",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.5"
+  },
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "916accbfd9e1fa093710a4065f3aaef1736cbc17"
+  },
+  "_source": "git://github.com/filaraujo/akyral-element-query.git",
+  "_target": "~0.1.0",
+  "_originalSource": "akyral-element-query"
+}

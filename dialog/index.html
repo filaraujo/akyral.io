@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akyral  - Dialog</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+
+    
+        <link rel="stylesheet" href="../assets/styles/dialog.css">
+    
+
+    <script src="../assets/components/platform/platform.js"></script>
+    <link rel="import" href="../assets/components/akyral-app/akyral-app.html">
+</head>
+
+<body unresolved>
+
+    <akyral-layout>
+        <div drawer parallax>
+    <h2>User Interface</h2>
+    <ul>
+        
+            
+                <li>
+                    <a href="../dialog/index.html">
+                        <span>
+                            dialog
+                            <b>akyral-dialog</b>
+                        </span>
+                    </a>
+
+                </li>
+            
+        
+            
+        
+            
+                <li>
+                    <a href="../layout/index.html">
+                        <span>
+                            layout
+                            <b>akyral-layout</b>
+                        </span>
+                    </a>
+
+                </li>
+            
+        
+            
+        
+
+        
+            
+        
+            
+        
+            
+        
+            
+            <li class="drawer__dev">
+                <span>
+                    toaster
+                    <b>[ in development ]</b>
+                </span>
+            </li>
+            
+        
+    </ul>
+
+    <h2>Utility</h2>
+    <ul>
+        
+            
+        
+            
+        
+            
+        
+            
+        
+
+        
+            
+        
+            
+            <li class="drawer__dev">
+                <span>
+                    element-query
+                    <b>[ in development ]</b>
+                </span>
+            </li>
+            
+        
+            
+        
+            
+        
+    </ul>
+</div>
+
+        <div main demo="dialog" >
+            <header class="page__header page__header--compressed">
+    <button name="menu" class="icon icon-menu">menu</button>
+    <h1>
+        Akyral
+        <span>alpha</span>
+    </h1>
+    <h2>Responsive, highly customizable web components built on Polymer.</h2>
+</header>
+
+            
+<h2>[ Dialog ]  <span>Configuration</span></h2>
+
+<section class="section">
+    <p>
+        You can configure a dialog by setting the type, position and pinned with the toggles below.
+        Clicking on the <span class="icon-lab">show dialog</span> button will display the current configuration. The current
+        configuration can be reviewed <a href="#review">here</a>.
+    </p>
+    <h3>Type</h3>
+    <div class="dialog__type">
+        <core-selector data-attribute="type" selected="0" selectedClass="button__config--selected">
+            <button class="button__config" data-type="takeover">takeover</button>
+            <button class="button__config" data-type="lift">lift</button>
+            <button class="button__config" data-type="drop">drop</button>
+            <button class="button__config" data-type="flip">flip</button>
+            <button class="button__config" data-type="slide">slide</button>
+            <button class="button__config" data-type="swing">swing</button>
+        </core-selector>
+    </div>
+</section>
+
+<section class="section">
+    <h3>Position</h3>
+    <p>
+        Setting a position will set the visual effect's starting position.
+    </p>
+    <button class="button__preview icon-lab">show dialog</button>
+    <div class="dialog__position">
+        <core-selector data-attribute="position" notap="true" selectedClass="button__config--selected">
+            <button class="button__config" data-position="top">top</button>
+            <button class="button__config" data-position="left">left</button>
+            <button class="button__config" data-position="bottom">bottom</button>
+            <button class="button__config" data-position="right">right</button>
+        </core-selector>
+    </div>
+</section>
+
+<section class="section">
+    <h3>Pinned</h3>
+    <p>
+        Setting the pinned attribute will pin the element to that side on the viewport.
+        This will override the position attribute.
+    </p>
+    <button class="button__preview icon-lab">show dialog</button>
+    <div class="dialog__pinned">
+        <core-selector data-attribute="pinned" notap="true" selectedClass="button__config--selected">
+            <button class="button__config" data-pinned="top">top</button>
+            <button class="button__config" data-pinned="left">left</button>
+            <button class="button__config" data-pinned="bottom">bottom</button>
+            <button class="button__config" data-pinned="right">right</button>
+        </core-selector>
+    </div>
+</section>
+
+<a name="review"></a>
+<section class="section__review">
+    <h3>Config Review</h3>
+    <demo-configuration type="takeover"></demo-configuration>
+    <button class="button__preview icon-lab">show dialog</button>
+</section>
+
+<a name="install"></a>
+<section class="section__install">
+    <h3>Install</h3>
+    <p>
+        If you haven't used Polymer before you can checkout out the
+        <a href="http://www.polymer-project.org/docs/start/getting-the-code.html">Getting the Code</a>
+        and <a href="http://www.polymer-project.org/docs/start/usingelements.html">Using the Elements</a>
+        guides for a quick introduction to Polymer.
+    </p>
+    <p>
+        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>
+        and import the  asset and you're ready to go.
+    </p>
+    <code>
+        $ bower install --save 
+    </code>
+</section>
+
+
+
+<section class="section__gotchas">
+    <h3 class="icon-chat">Helpful Gotchas</h3>
+    <p>
+        <b></b> should be placed immediately inside the body tag, this will allow
+        to fully fit the viewport.
+    </p>
+</section>
+
+<a name="styling"></a>
+<section class="section">
+    <h3>Styling</h3>
+    TBD
+</section>
+
+<a name="documentation"></a>
+<akyral-docs component="../assets/components/akyral-dialog/akyral-dialog.html"></akyral-docs>
+
+
+<polymer-element name="demo-dialog-content">
+  <template>
+      <style>
+          :host {
+              display: block;
+          }
+      </style>
+     <h3>Heres some lorem lipsum for you</h3>
+    <p>
+        Magna dolore aliqua qui aliquip fugiat nostrud sunt duis veniam ipsum reprehenderit est non incididunt.
+    </p>
+    <button id="button" name="button">close dialog</button>
+  </template>
+  <script>
+    Polymer('demo-dialog-content', {
+        ready: function(){
+            var _this = this;
+
+            this.$.button.addEventListener('click', function(){
+                _this.fire('demo-close');
+            });
+        }
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="demo-configuration" attributes="type position pinned">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        This page is currently configured containing a <code></code> dialog&nbsp;
+
+        <template if="false">
+            . This type does not support position or pinned configuration.
+        </template>
+
+        <template if="true">
+            <template if="true">
+                without a position
+            </template>
+            <template if="false">
+                with a postion of <code></code>
+            </template>
+
+
+            <template if="false">
+                with a pinned of <code></code>
+            </template>
+
+            <template if="true">
+                . This type does not support pinned configuration
+            </template>
+
+            <template if="false">
+                <template if="true">
+                    &nbsp;or a pinned configuration
+                </template>
+            </template>
+            .
+        </template>
+
+    </template>
+    <script>
+        Polymer('demo-configuration', {
+            position: null,
+            pinned: null
+        });
+    </script>
+</polymer-element>
+
+<script charset="utf-8">
+    (function() {
+        var el = document.createElement('akyral-dialog'),
+            demoDialog = document.createElement('demo-dialog-content'),
+            demoConfig = document.querySelector('demo-configuration'),
+            typeSelector = document.querySelector('core-selector[data-attribute="type"]'),
+            positionSelector = document.querySelector('core-selector[data-attribute="position"]'),
+            pinnedSelector = document.querySelector('core-selector[data-attribute="pinned"]');
+
+
+        function setType(){
+            var val = this.querySelectorAll('button')[this.selected].getAttribute('data-type');
+
+            el.setAttribute('type', val);
+            demoConfig.setAttribute('type', val);
+
+            ga('send', 'event', 'akyral-dialog', 'set type', val);
+
+            if(val === 'takeover'){
+                positionSelector.selected = null;
+                positionSelector.setAttribute('notap', true);
+                pinnedSelector.selected = null;
+                pinnedSelector.setAttribute('notap', true);
+                el.removeAttribute('position');
+                el.removeAttribute('pinned');
+                return;
+            }
+
+            positionSelector.removeAttribute('notap');
+
+            if(val === 'swing' || val === 'slide'){
+                pinnedSelector.removeAttribute('notap');
+                return;
+            }
+
+            pinnedSelector.setAttribute('notap', true);
+            el.removeAttribute('pinned');
+        }
+
+        function setPosition(){
+            var val = this.querySelectorAll('button')[this.selected].getAttribute('data-position');
+            ga('send', 'event', 'akyral-dialog', 'set position', val);
+            el.setAttribute('position', val);
+            el.removeAttribute('pinned');
+            demoConfig.setAttribute('position', val);
+            demoConfig.removeAttribute('pinned');
+            pinnedSelector.selected = null;
+        }
+
+        function setPinned(){
+            var val = this.querySelectorAll('button')[this.selected].getAttribute('data-pinned');
+            ga('send', 'event', 'akyral-dialog', 'set pinned', val);
+            el.setAttribute('pinned', val);
+            el.removeAttribute('position');
+            demoConfig.setAttribute('pinned', val);
+            demoConfig.removeAttribute('position');
+            positionSelector.selected = null;
+        }
+
+        typeSelector.addEventListener('core-activate', setType);
+        positionSelector.addEventListener('core-activate', setPosition);
+        pinnedSelector.addEventListener('core-activate', setPinned);
+
+        [].forEach.call(document.querySelectorAll('button[class*="button__preview"]'),function(button){
+            button.addEventListener('click', function(){
+                ga('send', 'event', 'akyral-dialog', 'open dialog');
+                el.toggle();
+            });
+        });
+
+        el.setAttribute('type', 'takeover');
+        el.appendChild(demoDialog);
+        el.addEventListener('demo-close', function(){
+            ga('send', 'event', 'akyral-dialog', 'close dialog');
+            el.close();
+        });
+        document.body.appendChild(el);
+
+    }());
+</script>
+
+            <footer class="page__footer">
+    maintained and built by
+    <span>
+        <a href="https://twitter.com/filipearaujo" class="icon-twitter">filipearaujo</a>
+        <a href="https://github.com/filaraujo" class="icon-github">filaraujo</a>
+    </span>
+</footer>
+
+        </div>
+    </akyral-layout>
+
+    <script src="../assets/scripts/akyral.js"></script>
+</body>
+
+</html>
