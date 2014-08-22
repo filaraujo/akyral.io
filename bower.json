@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "polymer": "~0.3.4",
-    "akyral-layout": "~0.1.1",
-    "akyral-dialog": "~0.0.2"
+    "akyral-layout": "^1.0.0",
+    "akyral-dialog": "^1.0.0"
   }
 }
