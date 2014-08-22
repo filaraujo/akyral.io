@@ -32,6 +32,7 @@ function setAssetPath(config){
 }
 
 metalsmith(__dirname)
+    .use(setAssetPath())
     .use(ignore([
       'assets/components',
       'assets/components/**/*',
@@ -54,7 +55,6 @@ metalsmith(__dirname)
         destination: './assets/components'
     }))
     .use(renderContents())
-    .use(setAssetPath())
     .use(templates({
         engine: 'swig',
         partials: {
