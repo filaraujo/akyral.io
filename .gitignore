@@ -17,6 +17,7 @@ node_modules
 
 *.sublime-*
 dist
+.cache
 .grunt
 src/assets/components/**/*
 !src/assets/components

@@ -40,8 +40,10 @@ gulp.task('build', function(cb){
 });
 
 gulp.task('deploy', function () {
-    gulp.src("./dist/**/*")
-        .pipe(deploy())
+    gulp.src('dist/**/*.*')
+        .pipe(deploy({
+            cacheDir: '.cache' // needed for some odd reason
+        }))
         .pipe(gulp.dest('.tmp'));
 });
 
