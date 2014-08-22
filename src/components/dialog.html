@@ -119,31 +119,31 @@ title: Dialog
                 display: block;
             }
         </style>
-        This page is currently configured containing a <code>{{type}}</code> dialog&nbsp;
+        This page is currently configured containing a <code>{% raw %}{{type}}{% endraw %}</code> dialog&nbsp;
 
-        <template if="{{type === 'takeover'}}">
+        <template if="{% raw %}{{type === 'takeover'}}{% endraw %}">
             . This type does not support position or pinned configuration.
         </template>
 
-        <template if="{{type !== 'takeover'}}">
-            <template if="{{!position && !pinned}}">
+        <template if="{% raw %}{{type !== 'takeover'}}{% endraw %}">
+            <template if="{% raw %}{{!position && !pinned}}{% endraw %}">
                 without a position
             </template>
-            <template if="{{position !== null}}">
-                with a postion of <code>{{position}}</code>
+            <template if="{% raw %}{{position !== null}}{% endraw %}">
+                with a postion of <code>{% raw %}{{position}}{% endraw %}</code>
             </template>
 
 
-            <template if="{{pinned !== null}}">
-                with a pinned of <code>{{pinned}}</code>
+            <template if="{% raw %}{{pinned !== null}}{% endraw %}">
+                with a pinned of <code>{% raw %}{{pinned}}{% endraw %}</code>
             </template>
 
-            <template if="{{type !== 'swing' && type !== 'slide'}}">
+            <template if="{% raw %}{{type !== 'swing' && type !== 'slide'}}{% endraw %}">
                 . This type does not support pinned configuration
             </template>
 
-            <template if="{{type === 'swing' || type === 'slide'}}">
-                <template if="{{!pinned && !position}}">
+            <template if="{% raw %}{{type === 'swing' || type === 'slide'}}{% endraw %}">
+                <template if="{% raw %}{{!pinned && !position}}{% endraw %}">
                     &nbsp;or a pinned configuration
                 </template>
             </template>
@@ -196,6 +196,7 @@ title: Dialog
 
             pinnedSelector.setAttribute('notap', true);
             el.removeAttribute('pinned');
+            demoConfig.removeAttribute('pinned');
         }
 
         function setPosition(){
