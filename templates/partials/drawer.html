@@ -13,14 +13,15 @@
 
                 </li>
             {% endif %}
+        {% endfor %}
+
+        {% for comp in collections.components %}
             {% if comp.component.type === 'ui' && comp.component.inDev %}
-            <li>
-                <a href="#">
-                    <span>
-                        {{comp.component.name}}
-                        <b>[ in development ]</b>
-                    </span>
-                </a>
+            <li class="drawer__dev">
+                <span>
+                    {{comp.component.name}}
+                    <b>[ in development ]</b>
+                </span>
             </li>
             {% endif %}
         {% endfor %}
@@ -39,15 +40,15 @@
                 </a>
             </li>
             {% endif %}
+        {% endfor %}
 
+        {% for comp in collections.components %}
             {% if comp.component.type === 'utility' && comp.component.inDev %}
-            <li>
-                <a href="#">
-                    <span>
-                        {{comp.component.name}}
-                        <b>[ in development ]</b>
-                    </span>
-                </a>
+            <li class="drawer__dev">
+                <span>
+                    {{comp.component.name}}
+                    <b>[ in development ]</b>
+                </span>
             </li>
             {% endif %}
         {% endfor %}

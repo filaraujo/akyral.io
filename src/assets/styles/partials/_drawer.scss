@@ -9,10 +9,14 @@ div[drawer] {
     color: $pink;
 
     h2 {
-        font-size: 18px;
-        font-weight: 300;
+        font-size: 15px;
+        font-weight: 400;
         margin: 0 0 10px;
         text-transform: uppercase;
+    }
+
+    ul + h2 {
+        margin-top: 20px;
     }
 
     li {
@@ -23,19 +27,21 @@ div[drawer] {
         background: $pink;
         color: $darkpurple;
         display: block;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 400;
         padding: 12px 14px;
         line-height: 16px;
         opacity: 1;
         transition: opacity .3s;
+    }
 
-        &[href="#"] {
-            cursor: auto;
-            background: $gray;
-            color: $pastelpurple;
-            font-weight: 300;
-        }
+    .drawer__dev {
+        background: $gray;
+        color: $pastelpurple;
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 16px;
+        padding: 12px 14px;
     }
 
     span {
