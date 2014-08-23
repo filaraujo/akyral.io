@@ -1,5 +1,6 @@
 var metalsmith  = require('metalsmith');
 var assets      = require('metalsmith-assets');
+var autoprefixer= require('metalsmith-autoprefixer');
 var templates   = require('metalsmith-templates');
 var collections = require('metalsmith-collections');
 var ignore      = require('metalsmith-ignore');
@@ -65,6 +66,7 @@ metalsmith(__dirname)
             meta: 'partials/meta'
         }
     }))
+    .use(autoprefixer())
     .destination('dist')
     .build(function(err, files) {
         if (err) { throw err; }
