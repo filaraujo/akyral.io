@@ -91,6 +91,15 @@
             
         
             
+            <li>
+                <a href="../element-query/index.html">
+                    <span>
+                        element-query
+                        <b>akyral-element-query</b>
+                    </span>
+                </a>
+            </li>
+            
         
             
         
@@ -100,13 +109,6 @@
         
             
         
-            
-            <li class="drawer__dev">
-                <span>
-                    element-query
-                    <b>[ in development ]</b>
-                </span>
-            </li>
             
         
             
@@ -120,16 +122,64 @@
             <header class="page__header page__header--compressed">
     <button name="menu" class="icon icon-menu">menu</button>
     <h1>
-        Akyral
+        
+            <a href="../index.html">Akyral</a>
+        
         <span>alpha</span>
     </h1>
     <h2>Responsive, highly customizable web components built on Polymer.</h2>
 </header>
 
             
-<section class="section__yellow">
-    <h3>In Development</h3>
+<h2>[ Element Query ]  <span>What is it?</span></h2>
+
+<section class="section">
+    <p>
+        Where as a media query applies to the viewport of a device or page, an element query is
+        affected by its individual dimensions on the page.
+    </p>
+    <div class="demo__type">
+        <core-selector data-attribute="type" selected="1" selectedClass="button__config--selected">
+            <button class="button__config" data-type="pan">pan</button>
+            <button class="button__config" data-type="parallax">parallax</button>
+            <button class="button__config" data-type="reveal">reveal</button>
+            <button class="button__config" data-type="slide">slide</button>
+        </core-selector>
+    </div>
 </section>
+
+<a name="install"></a>
+<section class="section__install">
+    <h3>Install</h3>
+    <p>
+        If you haven't used Polymer before you can checkout out the
+        <a href="http://www.polymer-project.org/docs/start/getting-the-code.html">Getting the Code</a>
+        and <a href="http://www.polymer-project.org/docs/start/usingelements.html">Using the Elements</a>
+        guides for a quick introduction to Polymer.
+    </p>
+    <p>
+        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>
+        and import the  asset and you're ready to go.
+    </p>
+    <code>
+        $ bower install akyral-element-query --save
+    </code>
+</section>
+
+
+<a name="gotchas"></a>
+<section class="section__gotchas">
+    <h3 class="icon-chat">Helpful Gotchas</h3>
+    <p>
+        Be aware of circularity in element query styling <a href="http://www.xanthir.com/b4PR0">@see</a>
+
+
+    </p>
+</section>
+
+<a name="documentation"></a>
+<akyral-docs component="../assets/components/akyral-element-query/akyral-element-query.html"></akyral-docs>
+
 
             <footer class="page__footer">
     maintained and built by
