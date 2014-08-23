@@ -5,25 +5,27 @@ title: Element Query
 template: base.html
 ---
 
-<h2>[ Element Query ]  <span>What is it?</span></h2>
+<h2>[ Element Query ]</h2>
 
 <section class="section">
+
+    <h3>What is it?</h3>
     <p>
         Where as a media query applies to the viewport of a device or page, an element query is
-        affected by its individual dimensions on the page.
+        affected by its own dimensions.
     </p>
 
-    <template is="auto-binding">
-        <div class="demo-query" media="{% raw %}{{media}}{% endraw %}">
-
-
-            <akyral-element-query queries='["(max-width:250px)","(min-width:251px) and (max-width:375px)","(min-width:376px) and (max-width:500px)","(min-width:501px) and (max-width:750px)"]' media="{% raw %}{{media}}{% endraw %}"></akyral-element-query>
-            <div class="demo-query__marker"></div>
-            <div class="demo-query__marker"></div>
-            <div class="demo-query__marker"></div>
-            <div class="demo-query__marker"></div>
-        </div>
-    </template>
+    <h3>How it works?</h3>
+    <p>
+        When a media query is passed into the element query, akyral-element-query polyfills
+        element query functionality into its parent. When media query is successfully
+        matches against the element, the media attribute of the akyral-element-query is updated.
+        You then can databind or event listeners to reactively use that media attribute for styling.
+    </p>
+    <p>
+        Your can adjust the slider to visualize the different queries associated with the below element.
+    </p>
+    <demo-query-content></demo-query-content>
 </section>
 
 {% include "templates/partials/install.html" %}
@@ -47,3 +49,32 @@ template: base.html
 </section>
 
 {% include "templates/partials/documentation.html" %}
+
+<polymer-element name="demo-query-content">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <input type="range" value="{% raw %}{{width}}{% endraw %}" min="50" max="100" step="1">
+
+        <div class="demo-query"  media="{% raw %}{{media}}{% endraw %}" style="width: {% raw %}{{width}}%{% endraw %}">
+            <akyral-element-query id="eq" queries='["(max-width:375px)","(min-width:376px) and (max-width:500px)","(min-width:501px) and (max-width:750px)", "(min-width:751px)"]' media="{% raw %}{{media}}{% endraw %}"></akyral-element-query>
+            <div class="demo-query__inner">
+                <div class="demo-query__review">
+                    This element is configured with an element query that is currently displaying the <code>{% raw %}{{media}}{% endraw %}</code> media query .
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        Polymer('demo-query-content', {
+            width: 100,
+            ready: function(){
+                this.count = this.$.eq.queries.length;
+            }
+        });
+    </script>
+</polymer-element>
