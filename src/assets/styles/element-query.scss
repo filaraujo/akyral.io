@@ -22,10 +22,12 @@ demo-query-content::shadow {
         margin: 0 auto;
         overflow: hidden;
         transition: background .3s, color .3s;
+        min-width: 200px;
         width: 100%;
     }
 
     .demo-query__inner {
+        border: 2px solid transparent;
         box-sizing: border-box;
         height: 100%;
         transition: border-color .3s, background .3s;
@@ -50,7 +52,7 @@ demo-query-content::shadow {
 
     .demo-query[media="(min-width:501px) and (max-width:750px)"] {
         .demo-query__inner {
-            background: $darkpurple;
+            background: $palepurple;
         }
 
         .demo-query__review {
@@ -59,9 +61,9 @@ demo-query-content::shadow {
         }
     }
 
-    .demo-query[media="(min-width:750px)"] {
+    .demo-query[media="(min-width:751px)"] {
         .demo-query__inner {
-            background: $palepurple;
+            background: $darkpurple;
         }
 
         .demo-query__review {
@@ -72,12 +74,12 @@ demo-query-content::shadow {
 
     .demo-query__review {
         background: $pastelpurple;
+        border: 2px solid transparent;
         border-width: 2px 0;
         bottom: 20%;
         color: $darkpurple;
         content: attr(media);
         display: block;
-        font-size: 14px;
         left: -2px;
         margin: 0;
         min-height: 20px;
@@ -88,7 +90,7 @@ demo-query-content::shadow {
 
         code {
             color: $darkpurple;
-            font-size: 14px;
+            font-size: 1.2em;
             font-weight: 700;
         }
     }
