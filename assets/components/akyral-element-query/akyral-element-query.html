@@ -159,6 +159,8 @@ Fired when an element query changes, also fired on element load. Passes the
 
                     viewport = viewport[0] || '';
 
+                    console.log(viewport)
+
                     this.job('event', function() {
                         this.fire('element-query-change', {
                             media: viewport

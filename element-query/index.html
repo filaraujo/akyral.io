@@ -131,21 +131,27 @@
 </header>
 
             
-<h2>[ Element Query ]  <span>What is it?</span></h2>
+<h2>[ Element Query ]</h2>
 
 <section class="section">
+
+    <h3>What is it?</h3>
     <p>
         Where as a media query applies to the viewport of a device or page, an element query is
-        affected by its individual dimensions on the page.
+        affected by its own dimensions.
     </p>
-    <div class="demo__type">
-        <core-selector data-attribute="type" selected="1" selectedClass="button__config--selected">
-            <button class="button__config" data-type="pan">pan</button>
-            <button class="button__config" data-type="parallax">parallax</button>
-            <button class="button__config" data-type="reveal">reveal</button>
-            <button class="button__config" data-type="slide">slide</button>
-        </core-selector>
-    </div>
+
+    <h3>How it works?</h3>
+    <p>
+        When a media query is passed into the element query, akyral-element-query polyfills
+        element query functionality into its parent. When media query is successfully
+        matches against the element, the media attribute of the akyral-element-query is updated.
+        You then can databind or event listeners to reactively use that media attribute for styling.
+    </p>
+    <p>
+        Your can adjust the slider to visualize the different queries associated with the below element.
+    </p>
+    <demo-query-content></demo-query-content>
 </section>
 
 <a name="install"></a>
@@ -170,17 +176,53 @@
 <a name="gotchas"></a>
 <section class="section__gotchas">
     <h3 class="icon-chat">Helpful Gotchas</h3>
+
+    <h4>Parent Composition</h4>
     <p>
-        Be aware of circularity in element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
+        akyral-element-query requires its parent css position be set to absolute
+        or relative to work correctly.
+    </p>
+
+    <h4>Circularity</h4>
+    <p>
+        Be aware of circular style references in element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
         One style may cause cycling in-between another and back again. Avoid defining
         a fixed width in components;
-
     </p>
 </section>
 
 <a name="documentation"></a>
 <akyral-docs component="../assets/components/akyral-element-query/akyral-element-query.html"></akyral-docs>
 
+
+<polymer-element name="demo-query-content">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <input type="range" value="{{width}}" min="50" max="100" step="1">
+
+        <div class="demo-query"  media="{{media}}" style="width: {{width}}%">
+            <akyral-element-query id="eq" queries='["(max-width:375px)","(min-width:376px) and (max-width:500px)","(min-width:501px) and (max-width:750px)", "(min-width:751px)"]' media="{{media}}"></akyral-element-query>
+            <div class="demo-query__inner">
+                <div class="demo-query__review">
+                    This element is configured with an element query that is currently displaying the <code>{{media}}</code> media query .
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        Polymer('demo-query-content', {
+            width: 100,
+            ready: function(){
+                this.count = this.$.eq.queries.length;
+            }
+        });
+    </script>
+</polymer-element>
 
             <footer class="page__footer">
     maintained and built by
