@@ -49,7 +49,7 @@
 
 .dialog__position [notap] button:after,
 .dialog__position [notap] button:before {
-    border-color: $palepurple;
+    border-color: $palepurple !important;
 }
 
 [data-pinned="top"] {

@@ -1,0 +1,68 @@
+@import 'base';
+@import 'partials/documentation';
+
+
+.demo-query {
+    background: $pastelpurple;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.demo-query__marker{
+    border: 2px dotted $darkpurple;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100px;
+
+
+
+    &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 8px 10px 0 0;
+    }
+
+    &:first-of-type{
+        left: 0;
+        width: 250px;
+
+        &:after {
+            content: '250px';
+        }
+    }
+
+    &:nth-of-type(2){
+        left: 0;
+        width: 375px;
+
+        &:after {
+            content: '375px';
+        }
+    }
+
+    &:nth-of-type(3){
+        left: 0;
+        width: 500px;
+
+        &:after {
+            content: '500px';
+        }
+    }
+
+    &:nth-of-type(4){
+        left: 0;
+        width: 750px;
+
+        .demo-query[media="(min-width:501px) and (max-width:750px)"] & {
+            background: $pink;
+        }
+
+        &:after {
+            content: '750px';
+        }
+    }
+}

@@ -1,10 +1,49 @@
 ---
-component: { name: element-query, package: akyral-element-query, type: utility, inDev: true }
+component: { name: element-query, package: akyral-element-query, type: utility }
 page: element-query
 title: Element Query
 template: base.html
 ---
 
-<section class="section__yellow">
-    <h3>In Development</h3>
+<h2>[ Element Query ]  <span>What is it?</span></h2>
+
+<section class="section">
+    <p>
+        Where as a media query applies to the viewport of a device or page, an element query is
+        affected by its individual dimensions on the page.
+    </p>
+
+    <template is="auto-binding">
+        <div class="demo-query" media="{% raw %}{{media}}{% endraw %}">
+
+
+            <akyral-element-query queries='["(max-width:250px)","(min-width:251px) and (max-width:375px)","(min-width:376px) and (max-width:500px)","(min-width:501px) and (max-width:750px)"]' media="{% raw %}{{media}}{% endraw %}"></akyral-element-query>
+            <div class="demo-query__marker"></div>
+            <div class="demo-query__marker"></div>
+            <div class="demo-query__marker"></div>
+            <div class="demo-query__marker"></div>
+        </div>
+    </template>
 </section>
+
+{% include "templates/partials/install.html" %}
+
+<a name="gotchas"></a>
+<section class="section__gotchas">
+    <h3 class="icon-chat">Helpful Gotchas</h3>
+
+    <h4>Parent Composition</h4>
+    <p>
+        {{component.package}} requires its parent css position be set to absolute
+        or relative to work correctly.
+    </p>
+
+    <h4>Circularity</h4>
+    <p>
+        Be aware of circular style references in element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
+        One style may cause cycling in-between another and back again. Avoid defining
+        a fixed width in components;
+    </p>
+</section>
+
+{% include "templates/partials/documentation.html" %}
