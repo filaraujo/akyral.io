@@ -1,7 +1,11 @@
 <header class="page__header {% if page %}page__header--compressed{% endif %}">
     <button name="menu" class="icon icon-menu">menu</button>
     <h1>
-        Akyral
+        {% if component %}
+            <a href="{{pathRoot}}index.html">Akyral</a>
+        {% else %}
+            Akyral
+        {% endif %}
         <span>alpha</span>
     </h1>
     <h2>Responsive, highly customizable web components built on Polymer.</h2>
