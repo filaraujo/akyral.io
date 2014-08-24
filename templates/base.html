@@ -6,7 +6,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
 
     {% if component.name %}
-        <link rel="stylesheet" href="{{pathRoot}}assets/styles/{{component.name}}.css">
+        <link rel="stylesheet" href="{{pathRoot}}assets/styles/{{component.name}}.css" shim-shadowdom>
     {% else %}
         <link rel="stylesheet" href="{{pathRoot}}assets/styles/index.css">
     {% endif %}

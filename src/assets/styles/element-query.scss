@@ -2,6 +2,12 @@
 @import 'partials/documentation';
 
 
+
+%rangeinput {
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+}
+
 demo-query-content::shadow {
 
     input {
@@ -9,27 +15,63 @@ demo-query-content::shadow {
         box-shadow: inset 0 1px 1px rgba(0,0,0,.2);
         border-radius: 50px;
         height: 5px;
-        background: $pink;
+        background: $pastelpurple;
+        outline: none;
+        transition: background .3s;
         margin: 20px 0;
         width: 100%;
 
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none;
+        &:active {
+            // background: $pink;
+        }
+    }
+
+    input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: $darkpurple;
+        border:2px solid transparent;
+        border-radius: 100%;
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+        cursor: pointer;
+        height: 22px;
+        position: relative;
+        transition: background .3s, box-shadow .3s;
+        width: 22px;
+        z-index: 3;
+
+        &:hover,
+        &:active {
             background: $pink;
             border: 2px solid $offwhite;
-            border-radius: 100%;
-            box-shadow: 0 0 3px rgba(0,0,0,.3);
-            cursor: pointer;
-            height: 26px;
-            position: relative;
-            transition: box-shadow .3s;
-            width: 26px;
-            z-index: 3;
+            box-shadow: 0 0 3px rgba(0,0,0,.1);
+        }
+    }
 
-            &:hover {
-                background: $pink;
-                box-shadow: 0 0 3px rgba(0,0,0,.1);
-            }
+    input::-moz-range-track {
+        border-radius: 50px;
+        height: 5px;
+        background: $pastelpurple;
+        margin: 20px 0;
+        width: 100%;
+    }
+
+    input::-moz-range-thumb {
+        background: $darkpurple;
+        border: 2px solid transparent;
+        border-radius: 100%;
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+        cursor: pointer;
+        height: 26px;
+        position: relative;
+        transition: box-shadow .3s;
+        width: 26px;
+        z-index: 3;
+
+        &:hover,
+        &:active {
+            background: $pink;
+            border: 2px solid $offwhite;
+            box-shadow: 0 0 3px rgba(0,0,0,.1);
         }
     }
 
