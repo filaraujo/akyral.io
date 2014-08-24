@@ -72,7 +72,14 @@ template: base.html
     <script>
         Polymer('demo-query-content', {
             width: 100,
+            widthChanged: function(){
+                this.job('track', function(){
+                    // console.log(this.width);
+                    ga('send', 'event', 'akyral-element-query', 'drag range', this.width);
+                }, 100);
+            },
             ready: function(){
+
             }
         });
     </script>
