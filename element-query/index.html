@@ -143,7 +143,7 @@
 
     <h3>How it works?</h3>
     <p>
-        When a media query is passed into the element query, akyral-element-query polyfills
+        When a media query is passed into the element query, <code>akyral-element-query</code> polyfills
         element query functionality into its parent. When media query is successfully
         matches against the element, the media attribute of the akyral-element-query is updated.
         You then can databind or event listeners to reactively use that media attribute for styling.
@@ -164,8 +164,7 @@
         guides for a quick introduction to Polymer.
     </p>
     <p>
-        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>
-        and import the akyral-element-query asset and you're ready to go.
+        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>.
     </p>
     <code>
         $ bower install akyral-element-query --save
@@ -185,9 +184,9 @@
 
     <h4>Circularity</h4>
     <p>
-        Be aware of circular style references in element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
-        One style may cause cycling in-between another and back again. Avoid defining
-        a fixed width in components;
+        Be aware of circular style references with element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
+        One style may cause cycling between another and back again. Avoid defining
+        a fixed width in components.
     </p>
 </section>
 
@@ -218,7 +217,6 @@
         Polymer('demo-query-content', {
             width: 100,
             ready: function(){
-                this.count = this.$.eq.queries.length;
             }
         });
     </script>
