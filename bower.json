@@ -13,12 +13,10 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-  },
   "devDependencies": {
     "polymer": "~0.3.4",
     "akyral-layout": "^1.0.0",
     "akyral-dialog": "^1.0.0",
-    "akyral-element-query": "^0.1.0"
+    "akyral-element-query": "~0.2.0"
   }
 }
