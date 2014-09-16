@@ -1,14 +1,19 @@
 var gulp = require('gulp');
+var clean = require('gulp-clean');
 var watch = require('gulp-watch');
 var webserver = require('gulp-webserver');
 var exec = require('child_process').exec;
 var deploy = require("gulp-gh-pages");
 
 
-
 var paths = {
     distDir: './dist',
     src: './src/**/*',
+    components: [
+        './src/assets/components/**/*',
+        '!./src/assets/components/{akyral-app,akyral-app/**}',
+        '!./src/assets/components/{akyral-docs,akyral-docs/**}'
+    ],
     templates: './templates/**/*'
 };
 
@@ -22,6 +27,11 @@ gulp.task('webserver', function() {
       },
       open: true
     }));
+});
+
+gulp.task('clean', function () {
+    return gulp.src(paths.components,{read: false})
+        .pipe(clean({force: true}));
 });
 
 
