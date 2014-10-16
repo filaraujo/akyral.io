@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
 
 <!--
 A responsive dialog/modal element.
@@ -15,15 +16,52 @@ A responsive dialog/modal element.
 </pre>
 
 ## Using the element
-Using the element is as simple as defining a `akyral-dialog` element and nesting
-all your content within that tag.
+### Nested content
+Using the element is as simple as defining a `akyral-dialog` element and nesting content
 
 Example:
 
-    <akyral-dialog></akyral-dialog>
+    <akyral-dialog>
+        I am content...
+    </akyral-dialog>
 
 
-## Setting a type
+### Extending
+You can extend `akyral-dialog` directly. Note the shadow element that will transfer akyral-dialog
+shadow DOM into the new element
+
+Example:
+
+    <polymer-element name="new-dialog" extends="akyral-dialog">
+        <template>
+            <shadow></shadow>
+        </template>
+        <script>
+            Polymer('new-dialog', {});
+        </script>
+    </polymer-element>
+
+
+### Setting `.contents`
+You can also define an empty `akryal-dialog` element and set the contents at any point
+
+Example:
+
+    <akyral-dialog id="dialog"></akyral-dialog>
+
+    <div id="dialog-contents">
+        I am content...
+    </div>
+
+    <script>
+        var dialog = document.querySelector('#dialog'),
+            content = document.querySelector('#dialog-content');
+
+        dialog.contents = content;
+    </script>
+
+
+## Type
 Setting a type allows you to define a visual effect to the dialog. You can
 choose from the following types: `drop`, `flip`, `lift`, `slide`, `swing` and
 `takeover`.
@@ -32,7 +70,7 @@ Example:
 
     <akyral-dialog type="flip"></akyral-dialog>
 
-## Setting a position
+## Position
 Setting a position will set the visual effect's starting position. You can
 choose from the following position: `top`, `left`, `bottom`, and `right`.
 A dialog with a type of `takeover` is not affected by position.
@@ -42,7 +80,7 @@ Example:
     <akyral-dialog type="slide" position="top"></akyral-dialog>
 
 
-## Setting a pinned location
+## Pinned location
 Setting the `pinned` attribute will pin the element to that side on the viewport.
 This will override the position attribute. Only types of `swing` and `slide` support the pinned attribute.
 
@@ -57,18 +95,78 @@ Example:
 @demo http://filaraujo.github.io/akyral-dialog/components/akyral-dialog/demo
 -->
 
-<polymer-element name="akyral-dialog" attributes="type position pinned shown">
+<polymer-element name="akyral-dialog">
     <template>
+
         <link rel="stylesheet" href="akyral-dialog.css" />
 
+        <core-a11y-keys
+            target="{{}}"
+            keys="esc"
+            on-keys-pressed="{{ close }}">
+        </core-a11y-keys>
+
+        <core-a11y-keys
+            target="{{}}"
+            keys="tab"
+            on-keys-pressed="{{ setFocus }}">
+        </core-a11y-keys>
+
         <div id="modal" type="{{type}}" position="{{position}}" pinned="{{pinned}}">
-            <content></content>
+            <content id="content"></content>
         </div>
 
     </template>
     <script>
         (function(){
-            var authors = ['Filipe Araujo'];
+            var authors = ['Filipe Araujo'],
+
+                targetEl,
+
+                targetElParent,
+
+                lastFocus,
+
+                focusableSelectors = 'a[href], button, input, textarea, select',
+
+                baseEl = document.createElement('akyral-dialog');
+
+
+            // inject core dialog to page
+            baseEl.setAttribute('core','');
+            baseEl.show = baseEl.toggle = baseEl.close = warnApi;
+            document.body.insertBefore(baseEl, document.body.firstChild);
+
+            /**
+              * The `setFocus` will query the contents of the dialog for any element that is
+              * focusable. It will determine the focused index and choose the next appropriate
+              * element to focus. It will stay within the modal to prevent from leaving.
+              *
+              * @method setFocus
+              * @private
+              */
+            function setFocus(e){
+                var nodes = this.querySelectorAll(focusableSelectors),
+                    nodesArray = [].slice.call(nodes, 0),
+                    focusedIndex = nodesArray.indexOf(document.activeElement);
+
+                if(focusedIndex === nodesArray.length - 1){
+                    focusedIndex = -1;
+                }
+
+                nodesArray[focusedIndex + 1] && nodesArray[focusedIndex + 1].focus();
+            }
+
+            /**
+              * Attempting to call methods against the instance managed `akyral-dialog` will result
+              * in calling `warnApi` instead.
+              *
+              * @method warnApi
+              * @private
+              */
+            function warnApi(){
+                console.error('akyral-dialog :: You can\'t interact with this element directly');
+            }
 
             Polymer('akyral-dialog', {
 
@@ -84,7 +182,7 @@ Example:
                     if(authors.indexOf(name) > 0){
                         return;
                     }
-                    authors.push(name);
+                    authors = [].concat.apply(authors, [name]);
                 },
 
                 get author(){
@@ -92,6 +190,7 @@ Example:
                 },
 
                 publish: {
+
                     /**
                      * The `pinned` will pin the element to that side on the
                      * viewport.  Only supported by elements with type of
@@ -141,7 +240,10 @@ Example:
                      * @type string
                      * @default 'takeover'
                      */
-                    type: 'takeover'
+                    type: {
+                        reflect: true,
+                        value: 'takeover'
+                    }
                 },
 
                 /**
@@ -151,7 +253,14 @@ Example:
                 */
                 close: function(){
                     this.shown = false;
+                    targetElParent.appendChild( targetEl );
+                    targetEl.removeAttribute('content');
+
+                    lastFocus.focus();
+                    this.fire('dialog-closed', { dialog: this });
                 },
+
+                setFocus: setFocus,
 
                 /**
                 * The `show` method will open the dialog
@@ -159,7 +268,31 @@ Example:
                 * @method show
                 */
                 show: function(){
+                    targetEl = this;
+                    targetEl.setAttribute('content','');
+                    targetElParent = this.parentNode || document.body;
+
+                    baseEl.bind( 'pinned', new PathObserver( this, 'pinned' ) );
+                    baseEl.bind( 'position', new PathObserver( this, 'position' ) );
+                    baseEl.bind( 'shown', new PathObserver( this, 'shown' ) );
+                    baseEl.bind( 'type', new PathObserver( this, 'type' ) );
+
+                    baseEl.appendChild( targetEl );
                     this.shown = true;
+
+                    lastFocus = document.activeElement;
+                    this.setFocus();
+                    this.fire('dialog-shown', { dialog: this });
+                },
+
+                /**
+                * The `contentsChanged` method will inject the content into the modal
+                *
+                * @method contentsChanged
+                */
+                contentsChanged: function(){
+                    this.appendChild(this.contents);
+                    this.contents.eventController = this.element.findController(this.contents);
                 },
 
                 /**
@@ -168,7 +301,7 @@ Example:
                 * @method toggle
                 */
                 toggle: function(){
-                    this.shown = !this.shown;
+                    this[ this.shown ? 'close' : 'show' ]();
                 }
             });
         }());
