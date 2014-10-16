@@ -179,13 +179,16 @@ demo-dialog-content {
     }
 }
 
-akyral-dialog {
+akyral-dialog[core] {
     background: $darkpurple;
+}
 
+akyral-dialog {
     &::shadow #modal {
         background: $pink;
     }
 }
+
 akyral-dialog[type="takeover"] {
     background: $pink !important;
 }
