@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Akyral  - Dialog</title>
+<title>Akyral  - Modal</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -24,7 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
 
     
-        <link rel="stylesheet" href="../assets/styles/dialog.css" shim-shadowdom>
+        <link rel="stylesheet" href="../assets/styles/modal.css" shim-shadowdom>
     
 
     <script src="../assets/components/platform/platform.js"></script>
@@ -39,18 +39,6 @@
     <ul>
         
             
-                <li>
-                    <a href="../dialog/index.html">
-                        <span>
-                            dialog
-                            <b>akyral-dialog</b>
-                        </span>
-                    </a>
-
-                </li>
-            
-        
-            
         
             
                 <li>
@@ -58,6 +46,18 @@
                         <span>
                             layout
                             <b>akyral-layout</b>
+                        </span>
+                    </a>
+
+                </li>
+            
+        
+            
+                <li>
+                    <a href="../modal/index.html">
+                        <span>
+                            modal
+                            <b>akyral-modal</b>
                         </span>
                     </a>
 
@@ -89,8 +89,6 @@
     <ul>
         
             
-        
-            
             <li>
                 <a href="../element-query/index.html">
                     <span>
@@ -99,6 +97,8 @@
                     </span>
                 </a>
             </li>
+            
+        
             
         
             
@@ -118,7 +118,7 @@
     </ul>
 </div>
 
-        <div main demo="dialog" >
+        <div main demo="modal" >
             <header class="page__header page__header--compressed">
     <button name="menu" class="icon icon-menu">menu</button>
     <h1>
@@ -131,16 +131,16 @@
 </header>
 
             
-<h2>[ Dialog ]  <span>Configuration</span></h2>
+<h2>[ Modal ]  <span>Configuration</span></h2>
 
 <section class="section">
     <p>
-        You can configure a dialog by setting the type, position and pinned with the toggles below.
-        Clicking on the <span class="icon-lab">show dialog</span> button will display the current configuration. The current
+        You can configure a modal by setting the type, position and pinned with the toggles below.
+        Clicking on the <span class="icon-lab">show modal</span> button will display the current configuration. The current
         configuration can be reviewed <a href="#review">here</a>.
     </p>
     <h3>Type</h3>
-    <div class="dialog__type">
+    <div class="modal__type">
         <core-selector data-attribute="type" selected="0" selectedClass="button__config--selected">
             <button class="button__config" data-type="takeover">takeover</button>
             <button class="button__config" data-type="lift">lift</button>
@@ -157,8 +157,8 @@
     <p>
         Setting a position will set the visual effect's starting position.
     </p>
-    <button class="button__preview icon-lab">show dialog</button>
-    <div class="dialog__position">
+    <button class="button__preview icon-lab">show modal</button>
+    <div class="modal__position">
         <core-selector data-attribute="position" notap="true" selectedClass="button__config--selected">
             <button class="button__config" data-position="top">top</button>
             <button class="button__config" data-position="left">left</button>
@@ -174,8 +174,8 @@
         Setting the pinned attribute will pin the element to that side on the viewport.
         This will override the position attribute.
     </p>
-    <button class="button__preview icon-lab">show dialog</button>
-    <div class="dialog__pinned">
+    <button class="button__preview icon-lab">show modal</button>
+    <div class="modal__pinned">
         <core-selector data-attribute="pinned" notap="true" selectedClass="button__config--selected">
             <button class="button__config" data-pinned="top">top</button>
             <button class="button__config" data-pinned="left">left</button>
@@ -189,7 +189,7 @@
 <section class="section__review">
     <h3>Config Review</h3>
     <demo-configuration type="takeover"></demo-configuration>
-    <button class="button__preview icon-lab">show dialog</button>
+    <button class="button__preview icon-lab">show modal</button>
 </section>
 
 <a name="install"></a>
@@ -205,7 +205,7 @@
         Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>.
     </p>
     <code>
-        $ bower install akyral-dialog --save
+        $ bower install akyral-modal --save
     </code>
 </section>
 
@@ -214,7 +214,7 @@
 <section class="section__gotchas">
     <h3 class="icon-chat">Helpful Gotchas</h3>
     <p>
-        <b>akyral-dialog</b> should be placed immediately inside the body tag, this will allow
+        <b>akyral-modal</b> should be placed immediately inside the body tag, this will allow
         to fully fit the viewport.
     </p>
 </section>
@@ -226,10 +226,10 @@
 </section>
 
 <a name="documentation"></a>
-<akyral-docs component="../assets/components/akyral-dialog/akyral-dialog.html"></akyral-docs>
+<akyral-docs component="../assets/components/akyral-modal/akyral-modal.html"></akyral-docs>
 
 
-<polymer-element name="demo-dialog-content">
+<polymer-element name="demo-modal-content">
   <template>
       <style>
           :host {
@@ -240,10 +240,10 @@
     <p>
         Magna dolore aliqua qui aliquip fugiat nostrud sunt duis veniam ipsum reprehenderit est non incididunt.
     </p>
-    <button id="button" name="button">close dialog</button>
+    <button id="button" name="button">close modal</button>
   </template>
   <script>
-    Polymer('demo-dialog-content', {
+    Polymer('demo-modal-content', {
         ready: function(){
             var _this = this;
 
@@ -263,7 +263,7 @@
                 display: block;
             }
         </style>
-        This page is currently configured containing a <code>{{type}}</code> dialog&nbsp;
+        This page is currently configured containing a <code>{{type}}</code> modal&nbsp;
 
         <template if="{{type === 'takeover'}}">
             . This type does not support position or pinned configuration.
@@ -305,8 +305,8 @@
 
 <script charset="utf-8">
     (function() {
-        var el = document.createElement('akyral-dialog'),
-            demoDialog = document.createElement('demo-dialog-content'),
+        var el = document.createElement('akyral-modal'),
+            demomodal = document.createElement('demo-modal-content'),
             demoConfig = document.querySelector('demo-configuration'),
             typeSelector = document.querySelector('core-selector[data-attribute="type"]'),
             positionSelector = document.querySelector('core-selector[data-attribute="position"]'),
@@ -319,7 +319,7 @@
             el.setAttribute('type', val);
             demoConfig.setAttribute('type', val);
 
-            ga('send', 'event', 'akyral-dialog', 'set type', val);
+            ga('send', 'event', 'akyral-modal', 'set type', val);
 
             if(val === 'takeover'){
                 positionSelector.selected = null;
@@ -345,7 +345,7 @@
 
         function setPosition(){
             var val = this.querySelectorAll('button')[this.selected].getAttribute('data-position');
-            ga('send', 'event', 'akyral-dialog', 'set position', val);
+            ga('send', 'event', 'akyral-modal', 'set position', val);
             el.setAttribute('position', val);
             el.removeAttribute('pinned');
             demoConfig.setAttribute('position', val);
@@ -355,7 +355,7 @@
 
         function setPinned(){
             var val = this.querySelectorAll('button')[this.selected].getAttribute('data-pinned');
-            ga('send', 'event', 'akyral-dialog', 'set pinned', val);
+            ga('send', 'event', 'akyral-modal', 'set pinned', val);
             el.setAttribute('pinned', val);
             el.removeAttribute('position');
             demoConfig.setAttribute('pinned', val);
@@ -369,15 +369,15 @@
 
         [].forEach.call(document.querySelectorAll('button[class*="button__preview"]'),function(button){
             button.addEventListener('click', function(){
-                ga('send', 'event', 'akyral-dialog', 'open dialog');
+                ga('send', 'event', 'akyral-modal', 'open modal');
                 el.toggle();
             });
         });
 
         el.setAttribute('type', 'takeover');
-        el.appendChild(demoDialog);
+        el.appendChild(demomodal);
         el.addEventListener('demo-close', function(){
-            ga('send', 'event', 'akyral-dialog', 'close dialog');
+            ga('send', 'event', 'akyral-modal', 'close modal');
             el.close();
         });
         document.body.appendChild(el);

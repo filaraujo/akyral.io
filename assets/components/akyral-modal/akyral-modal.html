@@ -2,10 +2,10 @@
 <link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
 
 <!--
-A responsive dialog/modal element.
+A responsive modal element.
 
 ##Responsive Breakpoints
-`akyral-dialog` is currently built using the following breakpoints.
+`akyral-modal` is currently built using the following breakpoints.
 
 <pre>
     <code>
@@ -17,88 +17,108 @@ A responsive dialog/modal element.
 
 ## Using the element
 ### Nested content
-Using the element is as simple as defining a `akyral-dialog` element and nesting content
+Using the element is as simple as defining a `akyral-modal` element and nesting content
 
 Example:
 
-    <akyral-dialog>
+    <akyral-modal>
         I am content...
-    </akyral-dialog>
+    </akyral-modal>
 
 
 ### Extending
-You can extend `akyral-dialog` directly. Note the shadow element that will transfer akyral-dialog
+You can extend `akyral-modal` directly. Note the shadow element that will transfer akyral-modal
 shadow DOM into the new element
 
 Example:
 
-    <polymer-element name="new-dialog" extends="akyral-dialog">
+    <polymer-element name="new-modal" extends="akyral-modal">
         <template>
             <shadow></shadow>
         </template>
         <script>
-            Polymer('new-dialog', {});
+            Polymer('new-modal', {});
         </script>
     </polymer-element>
 
 
 ### Setting `.contents`
-You can also define an empty `akryal-dialog` element and set the contents at any point
+You can also define an empty `akryal-modal` element and set the contents at any point
 
 Example:
 
-    <akyral-dialog id="dialog"></akyral-dialog>
+    <akyral-modal id="modal"></akyral-modal>
 
-    <div id="dialog-contents">
+    <div id="modal-contents">
         I am content...
     </div>
 
     <script>
-        var dialog = document.querySelector('#dialog'),
-            content = document.querySelector('#dialog-content');
+        var modal = document.querySelector('#modal'),
+            content = document.querySelector('#modal-content');
 
-        dialog.contents = content;
+        modal.contents = content;
     </script>
 
-
-## Type
-Setting a type allows you to define a visual effect to the dialog. You can
+## Configuration
+### Type
+Setting a type allows you to define a visual effect to the modal. You can
 choose from the following types: `drop`, `flip`, `lift`, `slide`, `swing` and
 `takeover`.
 
 Example:
 
-    <akyral-dialog type="flip"></akyral-dialog>
+    <akyral-modal type="flip"></akyral-modal>
 
-## Position
+### Position
 Setting a position will set the visual effect's starting position. You can
 choose from the following position: `top`, `left`, `bottom`, and `right`.
-A dialog with a type of `takeover` is not affected by position.
+A modal with a type of `takeover` is not affected by position.
 
 Example:
 
-    <akyral-dialog type="slide" position="top"></akyral-dialog>
+    <akyral-modal type="slide" position="top"></akyral-modal>
 
 
-## Pinned location
+### Pinned location
 Setting the `pinned` attribute will pin the element to that side on the viewport.
-This will override the position attribute. Only types of `swing` and `slide` support the pinned attribute.
+This will override the position attribute. Only types of `swing` and `slide` support the pinned
+attribute.
 
 Example:
 
-    <akyral-dialog type="slide" position="top" pinned="top"></akyral-dialog>
+    <akyral-modal type="slide" position="top" pinned="top"></akyral-modal>
 
-@element akyral-dialog
+## Accessiblity (a11y)
+
+## Tab ordering
+By default `akyral-modal` will allow tabbing into accessible items with it. It will maintain tab
+focus within the modal until the escape key has been pressed or the modal has been closed.
+
+## Suggestions
+When marking up `akyral-modal`, it is recommended that the following standards are followed.
+
+Define a role and aria-labelledby attribute
+
+Example:
+
+    <akyral-modal role="dialog" aria-labelledby="elementID">
+        <h1 id="elementID">Modal Title</h1>
+    </akyral-modal>
+
+
+
+@element akyral-modal
 @blurb Web component which allows for easy modal creation
 @status alpha
-@homepage http://filaraujo.github.io/akyral-dialog
-@demo http://filaraujo.github.io/akyral-dialog/components/akyral-dialog/demo
+@homepage http://filaraujo.github.io/akyral-modal
+@demo http://filaraujo.github.io/akyral-modal/components/akyral-modal/demo
 -->
 
-<polymer-element name="akyral-dialog">
+<polymer-element name="akyral-modal">
     <template>
 
-        <link rel="stylesheet" href="akyral-dialog.css" />
+        <link rel="stylesheet" href="akyral-modal.css" />
 
         <core-a11y-keys
             target="{{}}"
@@ -108,11 +128,15 @@ Example:
 
         <core-a11y-keys
             target="{{}}"
-            keys="tab"
-            on-keys-pressed="{{ setFocus }}">
+            keys="shift+tab tab"
+            on-keys-pressed="{{ changeFocus }}">
         </core-a11y-keys>
 
-        <div id="modal" type="{{type}}" position="{{position}}" pinned="{{pinned}}">
+        <div
+            id="modal"
+            pinned="{{pinned}}"
+            position="{{position}}"
+            type="{{type}}">
             <content id="content"></content>
         </div>
 
@@ -129,46 +153,59 @@ Example:
 
                 focusableSelectors = 'a[href], button, input, textarea, select',
 
-                baseEl = document.createElement('akyral-dialog');
+                baseEl = document.createElement('akyral-modal');
 
 
-            // inject core dialog to page
+            // inject core modal to page
             baseEl.setAttribute('core','');
             baseEl.show = baseEl.toggle = baseEl.close = warnApi;
             document.body.insertBefore(baseEl, document.body.firstChild);
 
+
             /**
-              * The `setFocus` will query the contents of the dialog for any element that is
+              * The `changeFocus` will query the contents of the modal for any element that is
               * focusable. It will determine the focused index and choose the next appropriate
               * element to focus. It will stay within the modal to prevent from leaving.
               *
-              * @method setFocus
+              * @method changeFocus
               * @private
               */
-            function setFocus(e){
-                var nodes = this.querySelectorAll(focusableSelectors),
-                    nodesArray = [].slice.call(nodes, 0),
-                    focusedIndex = nodesArray.indexOf(document.activeElement);
+            function changeFocus(e){
+                var shadowNodes = this.shadowRoot.querySelectorAll(focusableSelectors),
+                    contentNodes = this.querySelectorAll(focusableSelectors),
+                    nodes = [].slice.call(shadowNodes).concat([].slice.call(contentNodes)),
+                    nextIndex;
 
-                if(focusedIndex === nodesArray.length - 1){
-                    focusedIndex = -1;
+                // if polyfill convert node into a polymer dom object
+                if(window.ShadowDOMPolyfill){
+                    nodes = nodes.map(function(node){
+                        return window.unwrap(node);
+                    });
                 }
 
-                nodesArray[focusedIndex + 1] && nodesArray[focusedIndex + 1].focus();
+                // push a loop reference to end of array
+                nodes.push(nodes[0]);
+
+                // if shift tab - reverse order
+                if(e && e.detail.shift){
+                    nodes = nodes.reverse();
+                }
+
+                nodes[nodes.indexOf(document.activeElement) + 1].focus();
             }
 
             /**
-              * Attempting to call methods against the instance managed `akyral-dialog` will result
+              * Attempting to call methods against the instance managed `akyral-modal` will result
               * in calling `warnApi` instead.
               *
               * @method warnApi
               * @private
               */
             function warnApi(){
-                console.error('akyral-dialog :: You can\'t interact with this element directly');
+                console.error('akyral-modal :: You can\'t interact with this element directly');
             }
 
-            Polymer('akyral-dialog', {
+            Polymer('akyral-modal', {
 
                 /**
                  * The `author` attribute defines the initial author, setting
@@ -220,7 +257,7 @@ Example:
 
                     /**
                      * The `shown` attribute manages the visibility state of the
-                     * dialog
+                     * modal
                      *
                      * @attribute shown
                      * @type boolean
@@ -234,7 +271,7 @@ Example:
 
                     /**
                      * The `type` attribute defines the visual effect of the
-                     * dialog. It defaults to `takeover` if it is not defined
+                     * modal. It defaults to `takeover` if it is not defined
                      *
                      * @attribute type
                      * @type string
@@ -247,23 +284,32 @@ Example:
                 },
 
                 /**
-                * The `close` method will close the dialog
+                * The `close` method will close the modal
                 *
                 * @method close
                 */
                 close: function(){
                     this.shown = false;
-                    targetElParent.appendChild( targetEl );
-                    targetEl.removeAttribute('content');
+                    this.tabIndex = '-1';
 
-                    lastFocus.focus();
-                    this.fire('dialog-closed', { dialog: this });
+                    this.job('modal-remove', function(){
+                        targetElParent.appendChild( targetEl );
+                        targetEl.removeAttribute('content');
+                        lastFocus.focus();
+                    }, 200);
+
+                    this.fire('modal-closed', { modal: this });
                 },
 
-                setFocus: setFocus,
+                /**
+                * The `changeFocus` is an alias method to the private `changeFocus` method
+                *
+                * @method changeFocus
+                */
+                changeFocus: changeFocus,
 
                 /**
-                * The `show` method will open the dialog
+                * The `show` method will open the modal
                 *
                 * @method show
                 */
@@ -271,18 +317,23 @@ Example:
                     targetEl = this;
                     targetEl.setAttribute('content','');
                     targetElParent = this.parentNode || document.body;
+                    lastFocus = document.activeElement;
 
                     baseEl.bind( 'pinned', new PathObserver( this, 'pinned' ) );
                     baseEl.bind( 'position', new PathObserver( this, 'position' ) );
                     baseEl.bind( 'shown', new PathObserver( this, 'shown' ) );
                     baseEl.bind( 'type', new PathObserver( this, 'type' ) );
-
                     baseEl.appendChild( targetEl );
-                    this.shown = true;
 
-                    lastFocus = document.activeElement;
-                    this.setFocus();
-                    this.fire('dialog-shown', { dialog: this });
+                    this.shown = true;
+                    this.tabIndex = 0;
+
+                    // wait until injected, then focus
+                    this.job('modal-focus', function(){
+                        this.focus();
+                    }, 150);
+
+                    this.fire('modal-shown', { modal: this });
                 },
 
                 /**
@@ -296,7 +347,7 @@ Example:
                 },
 
                 /**
-                * The `toggle` method will open and close the dialog
+                * The `toggle` method will open and close the modal
                 *
                 * @method toggle
                 */
