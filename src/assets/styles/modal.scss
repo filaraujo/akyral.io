@@ -2,13 +2,13 @@
 @import 'partials/documentation';
 
 
-.dialog__type .button__config {
+.modal__type .button__config {
     margin: 4px;
     width: 100px;
 }
 
-.dialog__pinned,
-.dialog__position {
+.modal__pinned,
+.modal__position {
     background: $pastelpurple;
     height: 300px;
     position: relative;
@@ -32,7 +32,7 @@
     }
 }
 
-.dialog__position .button__config {
+.modal__position .button__config {
     &:after,
     &:before {
         content: '';
@@ -47,8 +47,8 @@
     }
 }
 
-.dialog__position [notap] button:after,
-.dialog__position [notap] button:before {
+.modal__position [notap] button:after,
+.modal__position [notap] button:before {
     border-color: $palepurple !important;
 }
 
@@ -146,7 +146,7 @@
 
 
 
-demo-dialog-content {
+demo-modal-content {
     box-sizing: border-box;
     color: $offwhite;
     padding: 18px;
@@ -179,16 +179,16 @@ demo-dialog-content {
     }
 }
 
-akyral-dialog[core] {
+akyral-modal[core] {
     background: $darkpurple;
 }
 
-akyral-dialog {
+akyral-modal {
     &::shadow #modal {
         background: $pink;
     }
 }
 
-akyral-dialog[type="takeover"] {
+akyral-modal[type="takeover"] {
     background: $pink !important;
 }

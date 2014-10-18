@@ -1,20 +1,20 @@
 ---
-component: { name: dialog, package: akyral-dialog, type: ui }
-page: dialog
+component: { name: modal, package: akyral-modal, type: ui }
+page: modal
 template: base.html
-title: Dialog
+title: Modal
 ---
 
-<h2>[ Dialog ]  <span>Configuration</span></h2>
+<h2>[ Modal ]  <span>Configuration</span></h2>
 
 <section class="section">
     <p>
-        You can configure a dialog by setting the type, position and pinned with the toggles below.
-        Clicking on the <span class="icon-lab">show dialog</span> button will display the current configuration. The current
+        You can configure a modal by setting the type, position and pinned with the toggles below.
+        Clicking on the <span class="icon-lab">show modal</span> button will display the current configuration. The current
         configuration can be reviewed <a href="#review">here</a>.
     </p>
     <h3>Type</h3>
-    <div class="dialog__type">
+    <div class="modal__type">
         <core-selector data-attribute="type" selected="0" selectedClass="button__config--selected">
             <button class="button__config" data-type="takeover">takeover</button>
             <button class="button__config" data-type="lift">lift</button>
@@ -31,8 +31,8 @@ title: Dialog
     <p>
         Setting a position will set the visual effect's starting position.
     </p>
-    <button class="button__preview icon-lab">show dialog</button>
-    <div class="dialog__position">
+    <button class="button__preview icon-lab">show modal</button>
+    <div class="modal__position">
         <core-selector data-attribute="position" notap="true" selectedClass="button__config--selected">
             <button class="button__config" data-position="top">top</button>
             <button class="button__config" data-position="left">left</button>
@@ -48,8 +48,8 @@ title: Dialog
         Setting the pinned attribute will pin the element to that side on the viewport.
         This will override the position attribute.
     </p>
-    <button class="button__preview icon-lab">show dialog</button>
-    <div class="dialog__pinned">
+    <button class="button__preview icon-lab">show modal</button>
+    <div class="modal__pinned">
         <core-selector data-attribute="pinned" notap="true" selectedClass="button__config--selected">
             <button class="button__config" data-pinned="top">top</button>
             <button class="button__config" data-pinned="left">left</button>
@@ -63,7 +63,7 @@ title: Dialog
 <section class="section__review">
     <h3>Config Review</h3>
     <demo-configuration type="takeover"></demo-configuration>
-    <button class="button__preview icon-lab">show dialog</button>
+    <button class="button__preview icon-lab">show modal</button>
 </section>
 
 {% include "templates/partials/install.html" %}
@@ -85,7 +85,7 @@ title: Dialog
 
 {% include "templates/partials/documentation.html" %}
 
-<polymer-element name="demo-dialog-content">
+<polymer-element name="demo-modal-content">
   <template>
       <style>
           :host {
@@ -96,10 +96,10 @@ title: Dialog
     <p>
         Magna dolore aliqua qui aliquip fugiat nostrud sunt duis veniam ipsum reprehenderit est non incididunt.
     </p>
-    <button id="button" name="button">close dialog</button>
+    <button id="button" name="button">close modal</button>
   </template>
   <script>
-    Polymer('demo-dialog-content', {
+    Polymer('demo-modal-content', {
         ready: function(){
             var _this = this;
 
@@ -119,7 +119,7 @@ title: Dialog
                 display: block;
             }
         </style>
-        This page is currently configured containing a <code>{% raw %}{{type}}{% endraw %}</code> dialog&nbsp;
+        This page is currently configured containing a <code>{% raw %}{{type}}{% endraw %}</code> modal&nbsp;
 
         <template if="{% raw %}{{type === 'takeover'}}{% endraw %}">
             . This type does not support position or pinned configuration.
@@ -161,8 +161,8 @@ title: Dialog
 
 <script charset="utf-8">
     (function() {
-        var el = document.createElement('akyral-dialog'),
-            demoDialog = document.createElement('demo-dialog-content'),
+        var el = document.createElement('akyral-modal'),
+            demomodal = document.createElement('demo-modal-content'),
             demoConfig = document.querySelector('demo-configuration'),
             typeSelector = document.querySelector('core-selector[data-attribute="type"]'),
             positionSelector = document.querySelector('core-selector[data-attribute="position"]'),
@@ -175,7 +175,7 @@ title: Dialog
             el.setAttribute('type', val);
             demoConfig.setAttribute('type', val);
 
-            ga('send', 'event', 'akyral-dialog', 'set type', val);
+            ga('send', 'event', 'akyral-modal', 'set type', val);
 
             if(val === 'takeover'){
                 positionSelector.selected = null;
@@ -201,7 +201,7 @@ title: Dialog
 
         function setPosition(){
             var val = this.querySelectorAll('button')[this.selected].getAttribute('data-position');
-            ga('send', 'event', 'akyral-dialog', 'set position', val);
+            ga('send', 'event', 'akyral-modal', 'set position', val);
             el.setAttribute('position', val);
             el.removeAttribute('pinned');
             demoConfig.setAttribute('position', val);
@@ -211,7 +211,7 @@ title: Dialog
 
         function setPinned(){
             var val = this.querySelectorAll('button')[this.selected].getAttribute('data-pinned');
-            ga('send', 'event', 'akyral-dialog', 'set pinned', val);
+            ga('send', 'event', 'akyral-modal', 'set pinned', val);
             el.setAttribute('pinned', val);
             el.removeAttribute('position');
             demoConfig.setAttribute('pinned', val);
@@ -225,15 +225,15 @@ title: Dialog
 
         [].forEach.call(document.querySelectorAll('button[class*="button__preview"]'),function(button){
             button.addEventListener('click', function(){
-                ga('send', 'event', 'akyral-dialog', 'open dialog');
+                ga('send', 'event', 'akyral-modal', 'open modal');
                 el.toggle();
             });
         });
 
         el.setAttribute('type', 'takeover');
-        el.appendChild(demoDialog);
+        el.appendChild(demomodal);
         el.addEventListener('demo-close', function(){
-            ga('send', 'event', 'akyral-dialog', 'close dialog');
+            ga('send', 'event', 'akyral-modal', 'close modal');
             el.close();
         });
         document.body.appendChild(el);
