@@ -16,7 +16,7 @@
   "devDependencies": {
     "akyral-layout": "~1.1.0",
     "akyral-element-query": "~1.1.0",
-    "polymer": "Polymer/polymer#~0.4.0",
-    "akyral-modal": "~2.0.0"
+    "akyral-modal": "~2.1.1",
+    "polymer": "Polymer/polymer#~0.4.0"
   }
 }

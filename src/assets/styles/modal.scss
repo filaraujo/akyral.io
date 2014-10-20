@@ -183,12 +183,10 @@ akyral-modal[core] {
     background: $darkpurple;
 }
 
-akyral-modal {
-    &::shadow #modal {
-        background: $pink;
-    }
+akyral-modal[content] {
+    background: $pink;
 }
 
-akyral-modal[type="takeover"] {
+akyral-modal[core][type="takeover"] {
     background: $pink !important;
 }
