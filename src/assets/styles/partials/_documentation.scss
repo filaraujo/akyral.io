@@ -1,6 +1,6 @@
 akyral-docs {
     background: transparent;
-    padding: 40px;
+    padding: 30px;
     margin-bottom: 6px;
 
 
@@ -10,6 +10,7 @@ akyral-docs {
         }
 
         context-free-parser + h2 {
+            color: $pink;
             font-size: 22px;
             font-weight: 400;
             text-transform: uppercase;
@@ -17,7 +18,7 @@ akyral-docs {
 
         code,
         pre {
-            background: $pastelpurple;
+            background: $smokegray;
             overflow: auto;
             padding: 10px;
             border-radius: 3px;
@@ -68,7 +69,7 @@ akyral-docs {
 
         .row {
             margin: 10px;
-            border-bottom: 1px solid $pastelpurple;
+            border-bottom: 1px solid $smokegray;
             min-height: 40px;
 
             &:last-child {

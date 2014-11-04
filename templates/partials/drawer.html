@@ -1,8 +1,46 @@
-<div drawer parallax>
-    <h2>User Interface</h2>
+<div drawer parallax right>
     <ul>
-        {% for comp in collections.components %}
-            {% if comp.component.type === 'ui' && !comp.component.inDev %}
+        <li>
+            <a href="{{pathRoot}}/index.html">Home</a>
+        </li>
+    </ul>
+
+
+    <div>
+        <h2>User Interface</h2>
+        <ul>
+            {% for comp in collections.components %}
+                {% if comp.component.type === 'ui' && !comp.component.inDev %}
+                    <li>
+                        <a href="{{pathRoot}}{{comp.component.name}}/index.html">
+                            <span>
+                                {{comp.component.name}}
+                                <b>{{comp.component.package}}</b>
+                            </span>
+                        </a>
+
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% for comp in collections.components %}
+                {% if comp.component.type === 'ui' && comp.component.inDev %}
+                <li class="drawer__dev">
+                    <span>
+                        {{comp.component.name}}
+                        <b>[ in development ]</b>
+                    </span>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Utility</h2>
+        <ul>
+            {% for comp in collections.components %}
+                {% if comp.component.type === 'utility' && !comp.component.inDev %}
                 <li>
                     <a href="{{pathRoot}}{{comp.component.name}}/index.html">
                         <span>
@@ -10,47 +48,20 @@
                             <b>{{comp.component.package}}</b>
                         </span>
                     </a>
-
                 </li>
-            {% endif %}
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
 
-        {% for comp in collections.components %}
-            {% if comp.component.type === 'ui' && comp.component.inDev %}
-            <li class="drawer__dev">
-                <span>
-                    {{comp.component.name}}
-                    <b>[ in development ]</b>
-                </span>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-
-    <h2>Utility</h2>
-    <ul>
-        {% for comp in collections.components %}
-            {% if comp.component.type === 'utility' && !comp.component.inDev %}
-            <li>
-                <a href="{{pathRoot}}{{comp.component.name}}/index.html">
+            {% for comp in collections.components %}
+                {% if comp.component.type === 'utility' && comp.component.inDev %}
+                <li class="drawer__dev">
                     <span>
                         {{comp.component.name}}
-                        <b>{{comp.component.package}}</b>
+                        <b>[ in development ]</b>
                     </span>
-                </a>
-            </li>
-            {% endif %}
-        {% endfor %}
-
-        {% for comp in collections.components %}
-            {% if comp.component.type === 'utility' && comp.component.inDev %}
-            <li class="drawer__dev">
-                <span>
-                    {{comp.component.name}}
-                    <b>[ in development ]</b>
-                </span>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 </div>

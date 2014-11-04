@@ -1,34 +1,47 @@
 .section {
-    margin: 40px auto;
-    padding: 0 40px;
+    margin: 30px auto;
+    padding: 0 30px;
 
     p {
         margin-top: 0;
     }
+
+    [class^="icon"]:before {
+        margin-right: 4px;
+    }
 }
 
 .section__gotchas,
-.section__pastelpurple {
-    background: $pastelpurple;
+.section__smokegray {
+    background: $smokegray;
     color: $darkpurple;
     padding: 40px;
     margin: 0;
 
     h3 {
         color: $darkpurple;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    h4 + p {
+        margin-top: 0;
     }
 }
 
 .section__inverted,
 .section__install {
     background: $darkpurple;
-    color: $beige;
+    color: $offwhite;
     padding: 40px;
     margin-bottom: 0;
 
     h3 {
         color: $pink;
-        margin-top: 0;
+        margin-bottom: 20px;
     }
 
     code {
@@ -44,11 +57,14 @@
 .section__review {
     background: $pink;
     color: $offwhite;
+    font-family: 'Lato';
+    font-weight: 300;
     padding: 40px;
     margin-bottom: 0;
 
+
     h3 {
-        font-weight: 300;
+        margin-bottom: 20px;
     }
 
     + section {
@@ -62,5 +78,6 @@
         color: $darkpurple;
         font-size: 1.3em;
         font-weight: 700;
+
     }
 }

@@ -15,7 +15,7 @@ demo-query-content::shadow {
         box-shadow: inset 0 1px 1px rgba(0,0,0,.2);
         border-radius: 50px;
         height: 5px;
-        background: $pastelpurple;
+        background: $smokegray;
         outline: none;
         transition: background .3s;
         margin: 20px 0;
@@ -50,7 +50,7 @@ demo-query-content::shadow {
     input::-moz-range-track {
         border-radius: 50px;
         height: 5px;
-        background: $pastelpurple;
+        background: $smokegray;
         margin: 20px 0;
         width: 100%;
     }
@@ -76,7 +76,7 @@ demo-query-content::shadow {
     }
 
     .demo-query {
-        background: $pastelpurple;
+        background: $smokegray;
         box-sizing: border-box;
         height: 300px;
         padding: 10px;
@@ -135,7 +135,7 @@ demo-query-content::shadow {
     }
 
     .demo-query__review {
-        background: $pastelpurple;
+        background: $smokegray;
         border: 2px solid transparent;
         border-width: 2px 0;
         bottom: 20%;

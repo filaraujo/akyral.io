@@ -3,7 +3,7 @@
 
 <head>
     {% include "partials/meta.html" %}
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Lato:300,400' rel='stylesheet' type='text/css'>
 
     {% if component.name %}
         <link rel="stylesheet" href="{{pathRoot}}assets/styles/{{component.name}}.css" shim-shadowdom>
@@ -19,7 +19,7 @@
 
     <akyral-layout>
         {% include "partials/drawer.html" %}
-        <div main {% if component.name%}demo="{{component.name}}"{% endif %} {% if component.pageType%}page="{{component.pageType}}"{% endif %}>
+        <div main{% if component.name %} demo="{{component.name}}"{% else %} home{% endif %} {% if component.pageType%}page="{{component.pageType}}"{% endif %}>
             {% include "partials/header.html" %}
             {% autoescape false %}{{ contents }}{% endautoescape %}
             {% include "partials/footer.html" %}

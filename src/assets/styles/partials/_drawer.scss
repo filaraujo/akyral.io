@@ -1,65 +1,47 @@
 div[drawer] {
     background: $darkpurple !important;
-    padding: 75px 20px 20px;
+    padding: 50px 40px 40px;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    color: $pink;
+
+    > div {
+        position: relative;
+        margin: 30px 0;
+    }
 
     h2 {
-        font-size: 15px;
+        color: $pink;
+        font-size: 18px;
         font-weight: 400;
         margin: 0 0 10px;
         text-transform: uppercase;
-    }
 
-    ul + h2 {
-        margin-top: 20px;
+        a {
+            color: $pink;
+        }
     }
 
     li {
-        margin-bottom: 3px;
+        // margin-bottom: 3px;
     }
 
     a {
-        background: $pink;
-        color: $darkpurple;
+        // background: $pink;
+        color: $palepurple;
         display: block;
-        font-size: 15px;
+        // font-size: 14px;
         font-weight: 400;
-        padding: 12px 14px;
+        // padding: 12px 14px;
         line-height: 16px;
-        opacity: 1;
-        transition: opacity .3s;
+        margin-bottom: 10px;
     }
-
-    .drawer__dev {
-        background: $gray;
-        color: $pastelpurple;
-        font-size: 15px;
-        font-weight: 300;
-        line-height: 16px;
-        padding: 12px 14px;
-    }
-
-    span {
-        display: block;
-        transition: transform .3s;
-    }
-
     b {
         display: block;
-        font-size: 11px;
-        font-weight: 300;
-    }
-
-    a:not([href="#"]):hover {
-        background: $lightpink;
-
-        span {
-            transform: translate3d(5px,0,0);
-        }
+        font-size: 13px;
+        font-weight: 100;
+        text-transform: lowercase;
     }
 }

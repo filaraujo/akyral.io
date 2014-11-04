@@ -20,7 +20,7 @@ var paths = {
 gulp.task('webserver', function() {
   gulp.src(paths.distDir)
     .pipe(webserver({
-      livereload: true,
+      livereload: false,
       directoryListing: {
         enable:true,
         path: paths.distDir
@@ -42,7 +42,7 @@ gulp.task('watch', function() {
 
 
 gulp.task('build', function(cb){
-    exec('node index.js', function (err, stdout, stderr) {
+    return exec('node index.js', function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         cb(err);

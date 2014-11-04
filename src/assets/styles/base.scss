@@ -1,11 +1,10 @@
-$offwhite: #ffffde;
+$offwhite: #F1F1F1;
 $darkpurple: #372d3b;
-$palepurple: #826D76;
+$palepurple: #937F88;
 $gray: #514A53;
 $pink: #c5415d;
 $lightpink: #E27D93;
-$pastelpurple: #BDAAA2;
-$beige: #E8DAC3;
+$smokegray: #CFCFCF;
 $green: #A6A67F;
 
 
@@ -19,17 +18,19 @@ $green: #A6A67F;
 @import 'partials/sections';
 
 
-
-html,
 body {
-    height: 100%;
+    color: $gray;
+    font-family: 'Lato';
+    font-weight: 300;
 }
 
-body {
-    background: $darkpurple;
-    color: $gray;
-    font-family: 'Roboto Slab';
-    font-weight: 300;
+h1,
+h2,
+h3 {
+    font-family: 'News Cycle';
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
 }
 
 button {
@@ -37,12 +38,6 @@ button {
     font-size: 12px;
     text-transform: uppercase;
 }
-
-akyral-layout {
-    height: 100%;
-    max-width: none;
-}
-
 ul {
     list-style: none;
     margin: 0;
@@ -51,44 +46,34 @@ ul {
 
 a {
     color: $pink;
+    font-weight: 400;
+    text-decoration: none;
 
     &:hover {
-        border-color: $offwhite;
-        color: $offwhite;
-    }
-
-    text-decoration: none;
-}
-
-b {
-    font-weight: 400;
-}
-
-
-
-div[main]{
-    background: $beige !important;
-
-    h3 {
-        font-size: 17px;
-        font-weight: 400;
-        margin: 0 0 10px;
-        text-transform: uppercase;
-    }
-
-    h2:before,
-    h3:before {
-        margin-right: 7px;
+        color: $lightpink;
     }
 }
 
-div[main][demo] {
-    h2 {
+
+akyral-layout {
+    max-width: inherit !important;
+}
+
+
+[main][home]{
+    background: transparent !important;
+}
+
+div[main][demo]{
+    background: $offwhite !important;
+    padding: 0;
+
+    > h2 {
         color: $pink;
         font-size: 22px;
         font-weight: 400;
-        margin: 40px 0 0 0;
-        padding: 0 40px;
+        margin: 30px 0 0 0;
+        padding: 0 30px;
         text-transform: uppercase;
 
         span {
