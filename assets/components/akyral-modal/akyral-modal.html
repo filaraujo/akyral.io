@@ -141,18 +141,32 @@ Example:
 
                 targetEl,
 
-                targetElParent,
-
                 lastFocus,
 
                 focusableSelectors = 'a[href], button, input, textarea, select',
+
+                docEl = document.body || document.documentElement,
 
                 baseEl = document.createElement('akyral-modal');
 
             // inject core modal to page
             baseEl.setAttribute('core','');
             baseEl.show = baseEl.toggle = baseEl.close = warnApi;
-            document.body.insertBefore(baseEl, document.body.firstChild);
+            docEl.insertBefore(baseEl, docEl.firstChild);
+
+            /**
+              * The `ensureInBody` will move the element into the body
+              *
+              * @method initialize
+              * @private
+              */
+            function ensureInBody(){
+                docEl = document.body;
+
+                if(baseEl.parentNode !== docEl){
+                    docEl.insertBefore(baseEl, docEl.firstChild);
+                }
+            }
 
             /**
               * The `changeFocus` will query the contents of the modal for any element that is
@@ -167,6 +181,10 @@ Example:
                     contentNodes = this.querySelectorAll(focusableSelectors),
                     nodes = [].slice.call(shadowNodes).concat([].slice.call(contentNodes)),
                     nextIndex;
+
+                if(!nodes.length){
+                    return;
+                }
 
                 // if polyfill convert node into a polymer dom object
                 if(window.ShadowDOMPolyfill){
@@ -219,6 +237,14 @@ Example:
                 },
 
                 publish: {
+                    /**
+                     * The `heading` will set the modal aria-label value
+                     *
+                     * @attribute heading
+                     * @type string
+                     * @default ''
+                     */
+                    heading: '',
 
                     /**
                      * The `pinned` will pin the element to that side on the
@@ -285,7 +311,7 @@ Example:
                     this.tabIndex = '-1';
 
                     this.job('modal-remove', function(){
-                        targetElParent.appendChild( targetEl );
+                        this.parentContainer.appendChild( targetEl );
                         targetEl.removeAttribute('content');
                         baseEl.removeAttribute('position');
                         baseEl.removeAttribute('pinned');
@@ -310,18 +336,14 @@ Example:
                 show: function(){
                     targetEl = this;
                     targetEl.setAttribute('content','');
-                    targetElParent = this.parentNode || document.body;
                     lastFocus = document.activeElement;
 
-                    this.setAttribute('type', this.type);
                     this.tabIndex = 0;
 
                     baseEl.bind( 'shown', new PathObserver( this, 'shown' ) );
                     baseEl.bind( 'pinned', new PathObserver( this, 'pinned' ) );
                     baseEl.bind( 'type', new PathObserver( this, 'type' ) );
                     baseEl.appendChild( this );
-
-
 
                     // wait until injected, then focus
                     this.job('modal-shown', function(){
@@ -351,8 +373,32 @@ Example:
                 */
                 toggle: function(){
                     this[ this.shown ? 'close' : 'show' ]();
+                },
+
+                /**
+                 * The <polymer-element> has been fully prepared (e.g. Shadow DOM
+                 * created, property observers setup, event listeners attached, etc).
+                 * It will also bind accessibility
+                 *
+                 * @method ready
+                 */
+                ready: function(){
+                    this.type = 'takeover';
+                    this.setAttribute('role','dialog');
+
+                    this.async(function(){
+                        this.parentContainer = this.parentNode || document.body;
+                    }, 100);
+
+                    if(this.heading){
+                        this.setAttribute('aria-label', this.heading);
+                    }
+
                 }
             });
+
+            // bind to DOMContentLoaded event
+            document.addEventListener('DOMContentLoaded', ensureInBody);
         }());
     </script>
 </polymer-element>

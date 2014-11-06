@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akyral  - Code</title>
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+<meta name="msapplication-TileColor" content="#3372DF">
+
+    <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Lato:300,400' rel='stylesheet' type='text/css'>
+
+    
+        <link rel="stylesheet" href="../assets/styles/code.css" shim-shadowdom>
+    
+
+    <script src="../assets/components/platform/platform.js"></script>
+    <link rel="import" href="../assets/components/akyral-app/akyral-app.html">
+</head>
+
+<body unresolved>
+
+    <akyral-layout>
+        <div drawer parallax right>
+    <ul>
+        <li>
+            <a href="..//index.html">Home</a>
+        </li>
+    </ul>
+
+
+    <div>
+        <h2>User Interface</h2>
+        <ul>
+            
+                
+            
+                
+            
+                
+                    <li>
+                        <a href="../layout/index.html">
+                            <span>
+                                layout
+                                <b>akyral-layout</b>
+                            </span>
+                        </a>
+
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="../modal/index.html">
+                            <span>
+                                modal
+                                <b>akyral-modal</b>
+                            </span>
+                        </a>
+
+                    </li>
+                
+            
+                
+            
+
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+                <li class="drawer__dev">
+                    <span>
+                        toaster
+                        <b>[ in development ]</b>
+                    </span>
+                </li>
+                
+            
+        </ul>
+    </div>
+
+    <div>
+        <h2>Utility</h2>
+        <ul>
+            
+                
+                <li>
+                    <a href="../code/index.html">
+                        <span>
+                            code
+                            <b>akyral-code</b>
+                        </span>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a href="../element-query/index.html">
+                        <span>
+                            element-query
+                            <b>akyral-element-query</b>
+                        </span>
+                    </a>
+                </li>
+                
+            
+                
+            
+                
+            
+                
+            
+
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+</div>
+
+        <div main demo="code" >
+            <header class="page__header page__header--compressed">
+    <button name="menu" class="icon icon-menu">menu</button>
+    <h1>
+        
+            <a href="../index.html">Akyral</a>
+        
+    </h1>
+</header>
+
+            
+<h2>[ Code ]</h2>
+
+<section class="section">
+
+    <h3>What is it?</h3>
+    <p>
+        Akyral-code is a utility tag that will syntax highlight its content. It will automatically
+        detect the language and supports several themes.
+    </p>
+    <p>
+        Under the hood it uses
+        <a href="https://highlightjs.org/">highlightjs</a>
+    </p>
+
+    <code is="akyral-code">
+        function $initHighlight(block, cls) {
+          try {
+            if (cls.search(/\bno\-highlight\b/) != -1)
+              return process(block, true, 0x0F) +
+                     ' class=""';
+          } catch (e) {
+            /* handle exception */
+          }
+          for (var i = 0 / 2; i < classes.length; i++) {
+            if (checkCondition(classes[i]) === undefined)
+              return /\d+[\s/]/g;
+          }
+        }
+    </code>
+
+    <code is="akyral-code" theme="arta">
+        @font-face {
+          font-family: Chunkfive; src: url('Chunkfive.otf');
+        }
+
+        body, .usertext {
+          color: #F0F0F0; background: #600;
+          font-family: Chunkfive, sans;
+        }
+
+        @import url(print.css);
+        @media print {
+          a[href^=http]::after {
+            content: attr(href)
+          }
+        }
+    </code>
+
+    <code is="akyral-code" theme="obsidian">
+        {
+           "glossary":{
+              "title":"example glossary",
+              "GlossDiv":{
+                 "title":"S",
+                 "GlossList":{
+                    "GlossEntry":{
+                       "ID":"SGML",
+                       "SortAs":"SGML",
+                       "GlossTerm":"Standard Generalized Markup Language",
+                       "Acronym":"SGML",
+                       "Abbrev":"ISO 8879:1986",
+                       "GlossDef":{
+                          "para":"A meta-markup language, used to create markup languages such as DocBook.",
+                          "GlossSeeAlso":[
+                             "GML",
+                             "XML"
+                          ]
+                       },
+                       "GlossSee":"markup"
+                    }
+                 }
+              }
+           }
+        }
+    </code>
+</section>
+
+
+
+<a name="install"></a>
+<section class="section__install">
+    <h3>Install</h3>
+    <p>
+        If you haven't used Polymer before you can checkout out the
+        <a href="http://www.polymer-project.org/docs/start/getting-the-code.html">Getting the Code</a>
+        and <a href="http://www.polymer-project.org/docs/start/usingelements.html">Using the Elements</a>
+        guides for a quick introduction to Polymer.
+    </p>
+    <p>
+        Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>.
+    </p>
+    <code>
+        $ bower install akyral-code --save
+    </code>
+</section>
+
+
+<a name="documentation"></a>
+<akyral-docs component="../assets/components/akyral-code/akyral-code.html"></akyral-docs>
+
+
+            <footer class="page__footer">
+    maintained and built by
+    <span>
+        <a href="https://twitter.com/filipearaujo" class="icon-twitter">filipearaujo</a>
+        <a href="https://github.com/filaraujo" class="icon-github">filaraujo</a>
+    </span>
+</footer>
+
+        </div>
+    </akyral-layout>
+
+    <script src="../assets/scripts/akyral.js"></script>
+</body>
+
+</html>
