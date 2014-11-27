@@ -15,9 +15,11 @@ akyral-layout {
     }
 }
 
-
 akyral-layout::shadow #main {
-    background-image: url(../images/bg.jpg);
+    background-color: #fff;
+    background-image:
+        url(../images/bg.jpg)
+        url/akyral.io/images/bg.jpg) !important;
     background-size: cover;
     background-position: 25% 50%;
 }
