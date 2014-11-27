@@ -1,6 +1,6 @@
 {
   "name": "akyral-modal",
-  "version": "2.1.6",
+  "version": "2.3.2",
   "authors": [
     "Filipe Araujo <filipe.alves.araujo@gmail.com>"
   ],
@@ -26,8 +26,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.4.2",
-    "core-a11y-keys": "Polymer/core-a11y-keys#~0.4.2"
+    "polymer": "~0.5.1",
+    "core-a11y-keys": "polymer/core-a11y-keys#~0.5.1"
   },
   "devDependencies": {
     "sinon": "http://sinonjs.org/releases/sinon-1.10.3.js",
