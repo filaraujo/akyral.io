@@ -14,10 +14,11 @@
     "tests"
   ],
   "devDependencies": {
-      "akyral-code": "~1.4.2",
+    "akyral-code": "~1.4.2",
     "akyral-layout": "~1.1.2",
     "akyral-element-query": "~1.2.0",
     "akyral-modal": "~2.3.3",
-    "polymer": "~0.5.2"
+    "polymer": "~0.5.2",
+    "akyral-waypoint": "~0.0.4"
   }
 }

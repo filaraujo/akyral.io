@@ -1,0 +1,41 @@
+@import 'base';
+@import 'partials/documentation';
+
+akyral-waypoint {
+    border-bottom: 2px solid $darkpurple;
+    position: relative;
+
+    &:after {
+        background: $darkpurple;
+        top: 0;
+        color: $offwhite;
+        content: 'waypoint here';
+        font-size: 14px;
+        padding: 4px 8px;
+        position: absolute;
+        right: 0;
+
+    }
+}
+
+.waypoint__state-event {
+    display: none;
+}
+
+.waypoint__state-above,
+.waypoint__state-crossed {
+    @extend %section-smokegray;
+}
+
+.waypoint__state-below {
+    @extend %section-pink;
+}
+
+
+.waypoint__state-above,
+.waypoint__state-crossed,
+.waypoint__state-below {
+    .waypoint__state-event {
+        display: inline;
+    }
+}

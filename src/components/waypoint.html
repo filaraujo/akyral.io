@@ -1,0 +1,91 @@
+---
+component: { name: waypoint, package: akyral-waypoint, type: utility }
+page: waypoint
+template: base.html
+title: Code
+---
+
+<h2>[ Waypoint ]</h2>
+
+
+
+<section class="section">
+
+    <h3>What is it?</h3>
+    <p>
+        Akyral-waypoint allows you to use an element as marker to trigger javascript functionality.
+        When an akyral-waypoint reaches the top of the page, it will trigger events denoting
+        the direction in which it was crossed to.
+    </p>
+
+    <p>
+        A data attribute may also be defined allowing data to be passed along with
+        the events.
+    </p>
+
+    <h3>How it works</h3>
+    <p>
+        Any waypoint that is added to the dom is collected for calculation. On scroll, all waypoint positions
+        are evaluated to determine whether a <code>akyral-waypoint-above</code> or
+        <code>akyral-waypoint-below</code> event should be triggered. Crossing through a
+        waypoint will alway trigger the <code>akyral-waypoint-crossed</code> event.
+    </p>
+</section>
+
+
+
+<akyral-waypoint></akyral-waypoint>
+<section class="section__smokegray">
+    <h3>
+        Waypoint #1
+    </h3>
+
+    <p>
+        This section will trigger when the waypoint reaches the <code>top</code> of the page.
+        <span class="waypoint__state-event">
+            The last event triggered for this waypoint was <code>none</code>.
+        </span>
+    </p>
+
+</section>
+
+<akyral-waypoint within="100"></akyral-waypoint>
+<section class="section__smokegray">
+    <h3>
+        Waypoint #2
+    </h3>
+
+    <p>
+        This section will trigger when the waypoint reaches the <code>top</code> of the page.
+        <span class="waypoint__state-event">
+            The last event triggered for this waypoint was <code>none</code>.
+        </span>
+    </p>
+</section>
+
+
+
+{% include "templates/partials/install.html" %}
+
+{% include "templates/partials/documentation.html" %}
+
+
+<script>
+    (function(){
+        var waypoints = document.querySelectorAll('akyral-waypoint');
+
+        console.log(waypoints)
+
+        function doIt(e){
+            var el = this.nextElementSibling;
+
+            el.querySelector('.waypoint__state-event code').innerHTML = e.type;
+            el.className = 'waypoint__state-'+e.type.replace('akyral-waypoint-','');
+        }
+
+        [].forEach.call(waypoints, function(waypoint){
+            waypoint.addEventListener('akyral-waypoint-below', doIt)
+            waypoint.addEventListener('akyral-waypoint-above', doIt)
+        });
+    }());
+</script>
