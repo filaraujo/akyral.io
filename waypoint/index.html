@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Akyral  - Element Query</title>
+<title>Akyral  - Code</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -24,7 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Lato:300,400' rel='stylesheet' type='text/css'>
 
     
-        <link rel="stylesheet" href="../assets/styles/element-query.css" shim-shadowdom>
+        <link rel="stylesheet" href="../assets/styles/waypoint.css" shim-shadowdom>
     
 
     <script src="../assets/components/webcomponentsjs/webcomponents.js"></script>
@@ -163,7 +163,7 @@
     </div>
 </div>
 
-        <div main demo="element-query" >
+        <div main demo="waypoint" >
             <header class="page__header page__header--compressed">
     <button name="menu" class="icon icon-menu">menu</button>
     <h1>
@@ -174,28 +174,65 @@
 </header>
 
             
-<h2>[ Element Query ]</h2>
+<h2>[ Waypoint ]</h2>
+
+
 
 <section class="section">
 
     <h3>What is it?</h3>
     <p>
-        Where as a media query applies to the viewport of a device or page, an element query is
-        affected by its own dimensions.
+        Akyral-waypoint allows you to use an element as marker to trigger javascript functionality.
+        When an akyral-waypoint reaches the top of the page, it will trigger events denoting
+        the direction in which it was crossed to.
     </p>
 
-    <h3>How it works?</h3>
     <p>
-        When a media query is passed into the element query, <code>akyral-element-query</code> polyfills
-        element query functionality into its parent. When media query is successfully
-        matches against the element, the media attribute of the akyral-element-query is updated.
-        You then can databind or event listeners to reactively use that media attribute for styling.
+        A data attribute may also be defined allowing data to be passed along with
+        the events.
     </p>
+
+    <h3>How it works</h3>
     <p>
-        Your can adjust the slider to visualize the different queries associated with the below element.
+        Any waypoint that is added to the dom is collected for calculation. On scroll, all waypoint positions
+        are evaluated to determine whether a <code>akyral-waypoint-above</code> or
+        <code>akyral-waypoint-below</code> event should be triggered. Crossing through a
+        waypoint will alway trigger the <code>akyral-waypoint-crossed</code> event.
     </p>
-    <demo-query-content></demo-query-content>
 </section>
+
+
+
+<akyral-waypoint></akyral-waypoint>
+<section class="section__smokegray">
+    <h3>
+        Waypoint #1
+    </h3>
+
+    <p>
+        This section will trigger when the waypoint reaches the <code>top</code> of the page.
+        <span class="waypoint__state-event">
+            The last event triggered for this waypoint was <code>none</code>.
+        </span>
+    </p>
+
+</section>
+
+<akyral-waypoint within="100"></akyral-waypoint>
+<section class="section__smokegray">
+    <h3>
+        Waypoint #2
+    </h3>
+
+    <p>
+        This section will trigger when the waypoint reaches the <code>top</code> of the page.
+        <span class="waypoint__state-event">
+            The last event triggered for this waypoint was <code>none</code>.
+        </span>
+    </p>
+</section>
+
+
 
 <a name="install"></a>
 <section class="section__install">
@@ -210,67 +247,35 @@
         Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>.
     </p>
     <code>
-        $ bower install akyral-element-query --save
+        $ bower install akyral-waypoint --save
     </code>
 </section>
 
 
-<a name="gotchas"></a>
-<section class="section__gotchas">
-    <h3 class="icon-chat">Helpful Gotchas</h3>
-
-    <h4>Parent Composition</h4>
-    <p>
-        akyral-element-query requires its parent css position be set to absolute
-        or relative to work correctly.
-    </p>
-
-    <h4>Circularity</h4>
-    <p>
-        Be aware of circular style references with element query styles <a href="http://www.xanthir.com/b4PR0">@see</a>.
-        One style may cause cycling between another and back again. Avoid defining
-        a fixed width in components.
-    </p>
-</section>
-
 <a name="documentation"></a>
-<akyral-docs component="../assets/components/akyral-element-query/akyral-element-query.html"></akyral-docs>
+<akyral-docs component="../assets/components/akyral-waypoint/akyral-waypoint.html"></akyral-docs>
 
 
-<polymer-element name="demo-query-content">
-    <template>
-        <style>
-            :host {
-                display: block;
-            }
-        </style>
 
-        <input type="range" value="{{width}}" min="20" max="100" step="1">
+<script>
+    (function(){
+        var waypoints = document.querySelectorAll('akyral-waypoint');
 
-        <div class="demo-query"  media="{{media}}" style="width: {{width}}%">
-            <akyral-element-query id="eq" queries='["(max-width:375px)","(min-width:376px) and (max-width:500px)","(min-width:501px) and (max-width:750px)", "(min-width:751px)"]' media="{{media}}"></akyral-element-query>
-            <div class="demo-query__inner">
-                <div class="demo-query__review">
-                    This element is configured with an element query that is currently displaying the <code>{{media}}</code> media query .
-                </div>
-            </div>
-        </div>
-    </template>
-    <script>
-        Polymer('demo-query-content', {
-            width: 100,
-            widthChanged: function(){
-                this.job('track', function(){
-                    // console.log(this.width);
-                    ga('send', 'event', 'akyral-element-query', 'drag range', this.width);
-                }, 100);
-            },
-            ready: function(){
+        console.log(waypoints)
 
-            }
+        function doIt(e){
+            var el = this.nextElementSibling;
+
+            el.querySelector('.waypoint__state-event code').innerHTML = e.type;
+            el.className = 'waypoint__state-'+e.type.replace('akyral-waypoint-','');
+        }
+
+        [].forEach.call(waypoints, function(waypoint){
+            waypoint.addEventListener('akyral-waypoint-below', doIt)
+            waypoint.addEventListener('akyral-waypoint-above', doIt)
         });
-    </script>
-</polymer-element>
+    }());
+</script>
 
             <footer class="page__footer">
     maintained and built by

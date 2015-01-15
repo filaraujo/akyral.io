@@ -1,0 +1,37 @@
+{
+  "name": "akyral-waypoint",
+  "version": "0.0.4",
+  "authors": [
+    "Filipe Araujo <filipe.alves.araujo@gmail.com>"
+  ],
+  "description": "Web component which allows for scroll driven behaviors",
+  "keywords": [
+    "akyral",
+    "scrolling",
+    "scroll",
+    "waypoint",
+    "waypoints",
+    "polymer",
+    "responsive",
+    "web-components"
+  ],
+  "main": "akyral-waypoint.html",
+  "license": "MIT",
+  "homepage": "https://github.com/filaraujo/akyral-waypoint/",
+  "ignore": [
+    "**/.*",
+    "**/*.scss",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.5.2"
+  },
+  "devDependencies": {
+    "sinon": "http://sinonjs.org/releases/sinon-1.10.3.js",
+    "web-component-tester": "~2.0.5"
+  }
+}
