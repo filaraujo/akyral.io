@@ -49,6 +49,8 @@
                 
             
                 
+            
+                
                     <li>
                         <a href="../layout/index.html">
                             <span>
@@ -58,8 +60,6 @@
                         </a>
 
                     </li>
-                
-            
                 
             
                 
@@ -118,8 +118,6 @@
                 
             
                 
-            
-                
                 <li>
                     <a href="../element-query/index.html">
                         <span>
@@ -128,6 +126,8 @@
                         </span>
                     </a>
                 </li>
+                
+            
                 
             
                 
@@ -215,7 +215,6 @@
             The last event triggered for this waypoint was <code>none</code>.
         </span>
     </p>
-
 </section>
 
 <akyral-waypoint within="100"></akyral-waypoint>
@@ -225,7 +224,7 @@
     </h3>
 
     <p>
-        This section will trigger when the waypoint reaches the <code>top</code> of the page.
+        This section will trigger when the waypoint is with <code>100px</code> of the <code>top</code> of the page.
         <span class="waypoint__state-event">
             The last event triggered for this waypoint was <code>none</code>.
         </span>
@@ -260,8 +259,6 @@
 <script>
     (function(){
         var waypoints = document.querySelectorAll('akyral-waypoint');
-
-        console.log(waypoints)
 
         function doIt(e){
             var el = this.nextElementSibling;
