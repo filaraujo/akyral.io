@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Akyral  - Waypoint</title>
+<title>Akyral  - Details</title>
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -24,7 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Lato:300,400' rel='stylesheet' type='text/css'>
 
     
-        <link rel="stylesheet" href="../assets/styles/waypoint.css" shim-shadowdom>
+        <link rel="stylesheet" href="../assets/styles/details.css" shim-shadowdom>
     
 
     <script src="../assets/components/webcomponentsjs/webcomponents.js"></script>
@@ -181,7 +181,7 @@
     </div>
 </div>
 
-        <div main demo="waypoint" >
+        <div main demo="details" >
             <header class="page__header page__header--compressed">
     <button name="menu" class="icon icon-menu">menu</button>
     <h1>
@@ -192,64 +192,30 @@
 </header>
 
             
-<h2>[ Waypoint ]</h2>
-
-
+<h2>[ Details ]</h2>
 
 <section class="section">
-
     <h3>What is it?</h3>
     <p>
-        Akyral-waypoint allows you to use an element as marker to trigger javascript functionality.
-        When an akyral-waypoint reaches the top of the page, it will trigger events denoting
-        the direction in which it was crossed to.
-    </p>
-
-    <p>
-        A data attribute may also be defined allowing data to be passed along with
-        the events.
-    </p>
-
-    <h3>How it works</h3>
-    <p>
-        Any waypoint that is added to the dom is collected for calculation. On scroll, all waypoint positions
-        are evaluated to determine whether a <code>akyral-waypoint-above</code> or
-        <code>akyral-waypoint-below</code> event should be triggered. Crossing through a
-        waypoint will alway trigger the <code>akyral-waypoint-crossed</code> event.
+        Akyral-details is an element that can expose additional information.  It
+        closely follows the <a href="https://html.spec.whatwg.org/multipage/forms.html#the-details-element">details specification</a>
+        and can be used to polyfill details and summary for IE and Safari.
     </p>
 </section>
 
-
-
-<akyral-waypoint></akyral-waypoint>
-<section class="section__smokegray">
-    <h3>
-        Waypoint #1
-    </h3>
-
-    <p>
-        This section will trigger when the waypoint reaches the <code>top</code> of the page.
-        <span class="waypoint__state-event">
-            The last event triggered for this waypoint was <code>none</code>.
-        </span>
-    </p>
+<section class="section">
+    <button id="button" class="button__preview icon-lab">toggle details</button>
 </section>
 
-<akyral-waypoint within="100"></akyral-waypoint>
-<section class="section__smokegray">
-    <h3>
-        Waypoint #2
-    </h3>
-
-    <p>
-        This section will trigger when the waypoint is with <code>100px</code> of the <code>top</code> of the page.
-        <span class="waypoint__state-event">
-            The last event triggered for this waypoint was <code>none</code>.
-        </span>
-    </p>
-</section>
-
-
+<akyral-details id="details">
+    <section class="section__review">
+        <h3>Details Content</h3>
+        <p>
+            This content was originally hidden, now it can be seen. Thus, is
+            mysterious ways of the <code>akyral-details</code> element.
+        </p>
+    </section>
+</akyral-details>
 
 <a name="install"></a>
 <section class="section__install">
@@ -264,32 +230,21 @@
         Once your all setup with Polymer, you can install it directly into your project with <a href="http://bower.io/">Bower</a>.
     </p>
     <code>
-        $ bower install akyral-waypoint --save
+        $ bower install akyral-details --save
     </code>
 </section>
 
 
 <a name="documentation"></a>
-<akyral-docs component="../assets/components/akyral-waypoint/akyral-waypoint.html"></akyral-docs>
-
+<akyral-docs component="../assets/components/akyral-details/akyral-details.html"></akyral-docs>
 
 
 <script>
-    (function(){
-        var waypoints = document.querySelectorAll('akyral-waypoint');
+    Polymer.whenReady(function(){
+        var details = document.querySelector('#details');
 
-        function doIt(e){
-            var el = this.nextElementSibling;
-
-            el.querySelector('.waypoint__state-event code').innerHTML = e.type;
-            el.className = 'waypoint__state-'+e.type.replace('akyral-waypoint-','');
-        }
-
-        [].forEach.call(waypoints, function(waypoint){
-            waypoint.addEventListener('akyral-waypoint-below', doIt)
-            waypoint.addEventListener('akyral-waypoint-above', doIt)
-        });
-    }());
+        details.target = document.querySelector('#button');
+    });
 </script>
 
             <footer class="page__footer">

@@ -1,0 +1,169 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Web component which opens to show hidden content. This element is loosely
+based on html5 details tag which is not fully supported.
+
+## Using the element
+You can add content directly inside an `akyral-details` element.
+
+Example:
+
+    <akyral-details>
+      ...
+      hidden content goes here
+      ...
+    </akyral-details>
+
+## Summary
+A `akyral-summary` can be defined within the `akyral-details` as a trigger to
+toggle between close and open states. The summary tag will alway be visible and
+is optional
+
+Example:
+
+    <akyral-details>
+      <akyral-summary>Toggle Me</akyral-summary>
+      ...
+    </akyral-details>
+
+## Open
+Providing an open attribute will set the element to show its content.
+
+Example:
+
+    <akyral-details open>
+      ...
+      contents will be shown
+      ...
+    </akyral-details>
+
+## Target
+The `target` attribute will bind a click event to the provided element
+that toggles the details.
+
+Example:
+
+    <button id="el"></button>
+    <akyral-details target="{{ $.el }}">
+      ...
+    </akyral-details>
+
+@element akyral-details
+@blurb Web component which opens to show hidden content
+@demo http://filaraujo.github.io/akyral.io/details/index.html
+@homepage https://github.com/filaraujo/akyral-details
+-->
+<polymer-element name="akyral-details">
+  <template>
+    <link rel="stylesheet" href="akyral-details.css" />
+
+    <div on-click="{{ toggle }}">
+      <content select="akyral-summary"></content>
+    </div>
+
+    <div
+      aria-hidden="{{ open ? false : true }}"
+      class="akyral-details--container"
+      id="container">
+      <div id="content" class="akyral-details--content">
+        <content></content>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    (function() {
+      var authors = ['Filipe Araujo'];
+
+      Polymer('akyral-details', {
+
+        publish: {
+          /**
+           * The `target` defines the an element that when clicked will toggle
+           * the detail element.
+           *
+           * @attribute target
+           * @type object
+           * @default undefined
+           */
+          target: undefined,
+
+          /**
+           * The `open` defines the state of the details. A value of true
+           * will expose the contents of the details
+           *
+           * @attribute open
+           * @type boolean
+           * @default false
+           */
+          open: {
+            reflect: true,
+            value: false
+          }
+        },
+
+        /**
+         * The `author` attribute defines the initial author, setting
+         * this value will add another author
+         *
+         * @attribute author
+         * @type string
+         * @default 'Filipe Araujo'
+         */
+        set author(name) {
+          if (authors.indexOf(name) > 0) {
+            return;
+          }
+          authors = [].concat.apply(authors, [name]);
+        },
+
+        get author() {
+          return authors;
+        },
+
+        /**
+         * The `targetChanged` method is triggered whenever target
+         * is changed. It will unbind old target event listener
+         * and will add event listeners to new targets.
+         *
+         * @method targetChanged
+         */
+        targetChanged: function(oldEl, newEl) {
+          if (oldEl) {
+            oldEl.removeEventListener('click', this.oldHandler);
+          }
+
+          this.oldHandler = this.toggle.bind(this);
+          newEl.addEventListener('click', this.oldHandler);
+        },
+
+        /**
+         * The `toggle` method allows for toggling between open and closed
+         * states
+         *
+         * @method toggle
+         */
+        toggle: function() {
+          this.open = !this.open;
+        },
+
+        /**
+         * The `openChanged` method is triggered when the open attribute has
+         * been modified.
+         *
+         * @method openChanged
+         */
+        openChanged: function() {
+          var height = 0;
+
+          if (this.open) {
+            height = this.$.content.getBoundingClientRect().height + 'px';
+          }
+
+          this.$.container.style.height = height;
+        }
+      });
+    }());
+  </script>
+</polymer-element>

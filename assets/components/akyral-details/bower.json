@@ -1,0 +1,36 @@
+{
+  "name": "akyral-details",
+  "version": "1.0.0",
+  "authors": [
+    "Filipe Araujo <filipe.alves.araujo@gmail.com>"
+  ],
+  "description": "Web component which opens to show hidden content",
+  "keywords": [
+    "akyral",
+    "details",
+    "summary",
+    "expander",
+    "accordian",
+    "polymer",
+    "web-components"
+  ],
+  "main": "akyral-details.html",
+  "license": "MIT",
+  "homepage": "https://github.com/filaraujo/akyral-details/",
+  "ignore": [
+    "**/.*",
+    "**/*.scss",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.5.2"
+  },
+  "devDependencies": {
+    "sinon": "http://sinonjs.org/releases/sinon-1.10.3.js",
+    "web-component-tester": "~2.0.5"
+  }
+}

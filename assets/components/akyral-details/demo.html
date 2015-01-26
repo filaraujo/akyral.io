@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+  <head>
+    <script>
+        //window.location = 'http://filaraujo.github.io/akyral.io/waypoint/index.html';
+    </script>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>akyral-details Demo</title>
+
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="akyral-details.html">
+
+    <style>
+      body {
+        margin: 10% 30%;
+      }
+      akyral-details {
+        background: #fcc;
+      }
+    </style>
+
+  </head>
+
+  <body unresolved>
+
+
+    <template is="auto-binding">
+      <button id="button" on-click="{{ toggle }}">toggle details</button>
+
+      <akyral-details id="details" open?="{{ open }}" target="{{ $.button }}">
+        <p>
+
+          Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+          aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+          aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+          reprehenderit ex elit dolore eu officia mollit.
+        </p>
+
+        <p>
+          Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+          aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+          aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+          reprehenderit ex elit dolore eu officia mollit.
+        </p>
+
+        <p>
+          Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+          aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+          aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+          reprehenderit ex elit dolore eu officia mollit.
+        </p>
+      </akyral-details>
+
+    </template>
+
+    <p>
+      Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+      aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+      aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+      reprehenderit ex elit dolore eu officia mollit.
+    </p>
+
+    <akyral-details>
+      <akyral-summary>Toggle Me</akyral-summary>
+      <button name="button">button</button>
+      <p>
+        Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+        aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+        aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+        reprehenderit ex elit dolore eu officia mollit.
+      </p>
+
+      <p>
+        Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+        aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+        aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+        reprehenderit ex elit dolore eu officia mollit.
+      </p>
+
+      <p>
+        Aliquip est eu dolore voluptate dolore duis. Minim eu Lorem sint exercitation ut
+        aute consequat non minim qui labore incididunt irure commodo. Consectetur ex sit
+        aliquip id consequat ad et. Nulla proident cillum proident culpa est sunt
+        reprehenderit ex elit dolore eu officia mollit.
+      </p>
+    </akyral-details>
+
+
+    <script>
+      // var tmpl = document.querySelector('template[is="auto-binding"]');
+      //
+      // tmpl.toggle = function(e){
+      //   this.$.details.open = !this.$.details.open;
+      // }
+    </script>
+
+  </body>
+
+</html>
