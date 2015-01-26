@@ -1,0 +1,43 @@
+---
+component: { name: details, package: akyral-details, type: ui }
+page: details
+template: base.html
+title: Details
+---
+
+<h2>[ Details ]</h2>
+
+<section class="section">
+    <h3>What is it?</h3>
+    <p>
+        Akyral-details is an element that can expose additional information.  It
+        closely follows the <a href="https://html.spec.whatwg.org/multipage/forms.html#the-details-element">details specification</a>
+        and can be used to polyfill details and summary for IE and Safari.
+    </p>
+</section>
+
+<section class="section">
+    <button id="button" class="button__preview icon-lab">toggle details</button>
+</section>
+
+<akyral-details id="details">
+    <section class="section__review">
+        <h3>Details Content</h3>
+        <p>
+            This content was originally hidden, now it can be seen. Thus, is
+            mysterious ways of the <code>akyral-details</code> element.
+        </p>
+    </section>
+</akyral-details>
+
+{% include "templates/partials/install.html" %}
+
+{% include "templates/partials/documentation.html" %}
+
+<script>
+    Polymer.whenReady(function(){
+        var details = document.querySelector('#details');
+
+        details.target = document.querySelector('#button');
+    });
+</script>

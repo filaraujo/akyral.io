@@ -19,6 +19,7 @@
     "akyral-element-query": "~1.2.0",
     "akyral-modal": "~2.3.3",
     "polymer": "~0.5.2",
-    "akyral-waypoint": "~0.0.5"
+    "akyral-waypoint": "~0.0.5",
+    "akyral-details": "~1.0.0"
   }
 }
